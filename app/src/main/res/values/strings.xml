@@ -139,6 +139,7 @@
     <string name="title_activity_confirmation">Confirm</string>
     <string name="title_transaction_details">Transaction Details</string>
     <string name="title_add_token">Add Custom Token</string>
+    <string name="title_genera_wallet">Genera Wallet</string>
     <!-- Suggestions -->
     <string name="suggestion_field_required">* Field required</string>
     <string name="suggestion_import_keystore">Importing wallet as easy as creating</string>
@@ -230,4 +231,13 @@
     <string name="title_activity_barcode">Barcode Scan</string>
     <string name="error_add_token">Could not add token.</string>
     <string name="facebook">Facebook</string>
+
+    <string name="generate_text">You are about to generate a new and encrypted offline wallet on this device. We recommend choosing a strong password in order to be able to ensure the best security possible for your funds. Please note that generating a strong and secure wallet is a highly compute-intensive task that can take up to several minutes! This process will be performed in the background so you can still use your phone as you usually would in the meantime. The progress is displayed in the notification bar of your device and as soon as we have finished generating your wallet, we will let you know.</string>
+    <string name="import_text">You are about to import an unencrypted private key. We recommend choosing a strong password in order to be able to ensure the best security possible for your funds. Please note that importing a strong and secure wallet is a highly compute-intensive task that can take up to several minutes! This process will be performed in the background so you can still use your phone as you usually would in the meantime. The progress is displayed in the notification bar of your device and as soon as we have finished generating your wallet, we will let you know.</string>
+    <string name="import_button">Import</string>
+    <string name="dialog_write_down_pw_title">Important!</string>
+    <string name="dialog_write_down_pw_text">Mercury will encrypt your Wallet with the password your provided to keep your ether safe. Your password is literally the only way to unlock your wallet and spend your ether, so make sure you dont forget it! We suggest to write it down on a piece of paper.</string>
+    <string name="dialog_back_button">Cancel</string>
+    <string name="setting_show_ad">Display Ads</string>
+
 </resources>

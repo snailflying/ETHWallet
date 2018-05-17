@@ -48,7 +48,8 @@ public class CoinmarketcapTickerService implements TickerService {
     public Observable<Ticker> fetchTickerPrice(String ticker) {
         return coinmarketApiClient
                 .fetchTickerPrice(ticker)
-                .lift(apiError(gson))
+//                .lift(apiError(gson))
+                .map(Response::body)
                 .map(r -> r[0])
                 .subscribeOn(Schedulers.io());
     }

@@ -182,6 +182,7 @@ public class KS {
 				throw new ServiceErrorException(USER_NOT_AUTHENTICATED);
 			} else {
 				throw new ServiceErrorException(INVALID_KEY);
+
 			}
 		} catch (IOException | CertificateException | KeyStoreException | UnrecoverableKeyException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidAlgorithmParameterException e) {
 			throw new ServiceErrorException(KEY_STORE_ERROR);

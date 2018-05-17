@@ -35,7 +35,7 @@ public class TokensActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        AndroidInjection.inject(this);
+//        AndroidInjection.inject(this);
 
         super.onCreate(savedInstanceState);
 

@@ -5,7 +5,6 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 
-import com.crashlytics.android.Crashlytics;
 import com.wallet.crypto.trustapp.C;
 import com.wallet.crypto.trustapp.entity.ErrorEnvelope;
 import com.wallet.crypto.trustapp.entity.Wallet;
@@ -125,12 +124,10 @@ public class WalletsViewModel extends BaseViewModel {
     }
 
     private void onExportError(Throwable throwable) {
-        Crashlytics.logException(throwable);
         exportWalletError.postValue(new ErrorEnvelope(C.ErrorCode.UNKNOWN, null));
     }
 
     private void onCreateWalletError(Throwable throwable) {
-        Crashlytics.logException(throwable);
         createWalletError.postValue(new ErrorEnvelope(C.ErrorCode.UNKNOWN, null));
 	}
 

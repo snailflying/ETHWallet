@@ -23,8 +23,6 @@ import com.wallet.crypto.trustapp.repository.EthereumNetworkRepositoryType;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
-
 import static com.wallet.crypto.trustapp.C.Key.WALLET;
 
 public class MyAddressActivity extends BaseActivity implements View.OnClickListener {
@@ -39,7 +37,7 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        AndroidInjection.inject(this);
+//        AndroidInjection.inject(this);
 
         super.onCreate(savedInstanceState);
 
@@ -72,7 +70,7 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
             return barcodeEncoder.createBitmap(bitMatrix);
         } catch (Exception e) {
             Toast.makeText(this, getString(R.string.error_fail_generate_qr), Toast.LENGTH_SHORT)
-                .show();
+                    .show();
         }
         return null;
     }

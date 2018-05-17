@@ -53,7 +53,8 @@ public class BlockExplorerClient implements BlockExplorerClientType {
 	public Observable<Transaction[]> fetchTransactions(String address) {
 		return etherScanApiClient
 				.fetchTransactions(address)
-				.lift(apiError(gson))
+//				.lift(apiError(gson))
+				.map(Response::body)
 				.map(r -> r.docs)
 				.subscribeOn(Schedulers.io());
 	}

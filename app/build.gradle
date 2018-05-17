@@ -1,24 +1,25 @@
 buildscript {
-    repositories {
-        maven { url 'https://maven.fabric.io/public' }
-    }
+//    repositories {
+//        maven { url 'https://maven.fabric.io/public' }
+//    }
 
-    dependencies {
-        classpath 'io.fabric.tools:gradle:1.+'
-    }
+//    dependencies {
+//        classpath 'io.fabric.tools:gradle:1.+'
+//    }
 }
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
 apply plugin: 'realm-android'
-
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+//repositories {
+//    maven { url 'https://maven.fabric.io/public' }
+//}
 
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.wallet.crypto.trustapp"
         minSdkVersion 18
@@ -59,7 +60,7 @@ project.ext {
     retrofitVersion = "2.3.0"
     okhttpVersion = "3.9.0"
     supportVersion = "27.0.2"
-    web3jVersion = "3.0.1-android"
+    web3jVersion = "3.3.1-android"
     gethVersion = "1.7.0"
     gsonVersion = "2.8.2"
     rxJavaVersion = "2.1.6"
@@ -100,10 +101,10 @@ dependencies {
     // Dagger 2
     // Dagger core
     implementation "com.google.dagger:dagger:$project.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$project.daggerVersion"
     // Dagger Android
     implementation "com.google.dagger:dagger-android-support:$project.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$project.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$project.daggerVersion"
     // if you are not using support library, include this instead
     implementation "com.google.dagger:dagger-android:$project.daggerVersion"
     // Tests
@@ -115,13 +116,17 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     // Fabric
-    compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
-        transitive = true;
-    }
-    compile('com.crashlytics.sdk.android:answers:1.4.1@aar') {
-        transitive = true;
-    }
+//    compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+//        transitive = true;
+//    }
+//    compile('com.crashlytics.sdk.android:answers:1.4.1@aar') {
+//        transitive = true;
+//    }
     // PW
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(":tn")
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api project(":tn")
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

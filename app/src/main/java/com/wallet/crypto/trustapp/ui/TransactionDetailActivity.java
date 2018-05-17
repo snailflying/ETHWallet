@@ -45,7 +45,7 @@ public class TransactionDetailActivity extends BaseActivity implements View.OnCl
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AndroidInjection.inject(this);
+//        AndroidInjection.inject(this);
 
         setContentView(R.layout.activity_transaction_detail);
 

@@ -48,7 +48,8 @@ public class TrustWalletTickerService implements TickerService {
     public Observable<Ticker> fetchTickerPrice(String symbols) {
         return apiClient
                 .fetchTickerPrice(symbols)
-                .lift(apiError())
+//                .lift(apiError())
+                .map(Response::body)
                 .map(r -> r.response[0])
                 .subscribeOn(Schedulers.io());
     }

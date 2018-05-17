@@ -50,6 +50,8 @@ public class TrustPasswordStore implements PasswordStore {
     @Override
 	public Single<String> getPassword(Wallet wallet) {
 		return Single.fromCallable(() -> {
+//            return new String(KS.get(context, wallet.address));
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 return new String(KS.get(context, wallet.address));
             } else {

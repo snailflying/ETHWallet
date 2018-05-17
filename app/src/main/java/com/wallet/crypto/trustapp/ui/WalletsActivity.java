@@ -54,7 +54,7 @@ public class WalletsActivity extends BaseActivity implements
 
     @Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
-		AndroidInjection.inject(this);
+//		AndroidInjection.inject(this);
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_wallets);

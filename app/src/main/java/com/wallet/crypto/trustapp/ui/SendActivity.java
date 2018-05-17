@@ -52,7 +52,7 @@ public class SendActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        AndroidInjection.inject(this);
+//        AndroidInjection.inject(this);
 
         super.onCreate(savedInstanceState);
 

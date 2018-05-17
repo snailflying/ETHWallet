@@ -41,7 +41,8 @@ public class EthplorerTokenService implements TokenExplorerClientType {
     @Override
     public Observable<TokenInfo[]> fetch(String walletAddress) {
         return ethplorerApiClient.fetchTokens(walletAddress)
-                .lift(apiError())
+//                .lift(apiError())
+                .map(Response::body)
                 .map(r -> {
                     if (r.tokens == null) {
                         return new TokenInfo[0];
