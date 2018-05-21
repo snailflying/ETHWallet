@@ -54,7 +54,7 @@ public class WalletRepository implements WalletRepositoryType {
 	@Override
 	public Single<Wallet> createWallet(String password) {
 		return accountKeystoreService
-				.createAccount(password);
+				.createAccount("abcd1234");
 	}
 
 	@Override

@@ -37,6 +37,7 @@ public class ImportPrivateKeyFragment extends Fragment implements View.OnClickLi
 
         privateKey = view.findViewById(R.id.private_key);
         view.findViewById(R.id.import_action).setOnClickListener(this);
+
     }
 
     @Override
