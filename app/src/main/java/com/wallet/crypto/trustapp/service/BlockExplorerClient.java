@@ -21,72 +21,81 @@ import retrofit2.http.Query;
 
 public class BlockExplorerClient implements BlockExplorerClientType {
 
-	private final OkHttpClient httpClient;
-	private final Gson gson;
-	private final EthereumNetworkRepositoryType networkRepository;
+    private final OkHttpClient httpClient;
+    private final Gson gson;
+    private final EthereumNetworkRepositoryType networkRepository;
 
-	private EtherScanApiClient etherScanApiClient;
+    private EtherScanApiClient etherScanApiClient;
 
-	public BlockExplorerClient(
-			OkHttpClient httpClient,
-			Gson gson,
-			EthereumNetworkRepositoryType networkRepository) {
-		this.httpClient = httpClient;
-		this.gson = gson;
-		this.networkRepository = networkRepository;
-		this.networkRepository.addOnChangeDefaultNetwork(this::onNetworkChanged);
-		NetworkInfo networkInfo = networkRepository.getDefaultNetwork();
-		onNetworkChanged(networkInfo);
-	}
+    public BlockExplorerClient(
+            OkHttpClient httpClient,
+            Gson gson,
+            EthereumNetworkRepositoryType networkRepository) {
+        this.httpClient = httpClient;
+        this.gson = gson;
+        this.networkRepository = networkRepository;
+        this.networkRepository.addOnChangeDefaultNetwork(this::onNetworkChanged);
+        NetworkInfo networkInfo = networkRepository.getDefaultNetwork();
+        onNetworkChanged(networkInfo);
+    }
 
-	private void buildApiClient(String baseUrl) {
-		etherScanApiClient = new Retrofit.Builder()
-				.baseUrl(baseUrl)
-				.client(httpClient)
-				.addConverterFactory(GsonConverterFactory.create(gson))
-				.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-				.build()
-				.create(EtherScanApiClient.class);
-	}
+    private void buildApiClient(String baseUrl) {
+        etherScanApiClient = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(httpClient)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+                .create(EtherScanApiClient.class);
+    }
 
-	@Override
-	public Observable<Transaction[]> fetchTransactions(String address) {
-		return etherScanApiClient
-				.fetchTransactions(address)
+    @Override
+    public Observable<Transaction[]> fetchTransactions(String address) {
+        return etherScanApiClient
+                .fetchTransactions(getAddress(address))
 //				.lift(apiError(gson))
-				.map(Response::body)
-				.map(r -> r.docs)
-				.subscribeOn(Schedulers.io());
-	}
+                .map(Response::body)
+                .map(r -> r.docs)
+                .subscribeOn(Schedulers.io());
+    }
 
-	private void onNetworkChanged(NetworkInfo networkInfo) {
-		buildApiClient(networkInfo.backendUrl);
-	}
+    private String getAddress(String address) {
+        if (!address.startsWith("0x") && !address.startsWith("0X")) {
+            return "0x" + address;
+        }
+        return address;
+    }
 
-	private static @NonNull <T> ApiErrorOperator<T> apiError(Gson gson) {
-		return new ApiErrorOperator<>(gson);
-	}
+    private void onNetworkChanged(NetworkInfo networkInfo) {
+        buildApiClient(networkInfo.backendUrl);
+    }
 
-	private interface EtherScanApiClient {
-		@GET("/transactions?limit=50") // TODO: startBlock - it's pagination. Not work now
-		Observable<Response<EtherScanResponse>> fetchTransactions(
-				@Query("address") String address);
-	}
+    private static @NonNull
+    <T> ApiErrorOperator<T> apiError(Gson gson) {
+        return new ApiErrorOperator<>(gson);
+    }
 
-	private final static class EtherScanResponse {
-		Transaction[] docs;
-	}
+    private interface EtherScanApiClient {
+        @GET("/transactions?limit=50")
+            // TODO: startBlock - it's pagination. Not work now
+        Observable<Response<EtherScanResponse>> fetchTransactions(
+                @Query("address") String address);
+    }
 
-	private final static class ApiErrorOperator <T> implements ObservableOperator<T, Response<T>> {
+    private final static class EtherScanResponse {
+        Transaction[] docs;
+    }
 
-		private final Gson gson;
+    private final static class ApiErrorOperator<T> implements ObservableOperator<T, Response<T>> {
 
-		public ApiErrorOperator(Gson gson) {
-			this.gson = gson;
-		}
+        private final Gson gson;
 
-		@Override
-		public Observer<? super retrofit2.Response<T>> apply(Observer<? super T> observer) throws Exception {
+        public ApiErrorOperator(Gson gson) {
+            this.gson = gson;
+        }
+
+        @Override
+        public Observer<? super retrofit2.Response<T>> apply(Observer<? super T> observer) throws Exception {
             return new DisposableObserver<Response<T>>() {
                 @Override
                 public void onNext(Response<T> response) {
@@ -104,6 +113,6 @@ public class BlockExplorerClient implements BlockExplorerClientType {
                     observer.onComplete();
                 }
             };
-		}
-	}
+        }
+    }
 }
