@@ -77,27 +77,28 @@ public class TokenRepository implements TokenRepositoryType {
 
             updateTokenInfoCache(defaultNetwork, wallet);
             tokens = tokenLocalSource.fetch(defaultNetwork, wallet)
-                        .map(items -> {
-                            int len = items.length;
-                            Token[] result = new Token[len];
-                            for (int i = 0; i < len; i++) {
-                                BigDecimal balance = null;
-                                try {
-                                    balance = getBalance(wallet, items[i]);
-                                } catch (Exception e1) {
-                                    Log.d("TOKEN", "Err", e1);
-                                    /* Quietly */
-                                }
-                                result[i] = new Token(items[i], balance);
+                    .map(items -> {
+                        int len = items.length;
+                        Token[] result = new Token[len];
+                        for (int i = 0; i < len; i++) {
+                            BigDecimal balance = null;
+                            try {
+                                balance = getBalance(wallet, items[i]);
+                            } catch (Exception e1) {
+                                Log.d("TOKEN", "Err", e1);
+                                /* Quietly */
                             }
-                            return result;
-                        }).blockingGet();
+                            result[i] = new Token(items[i], balance);
+                        }
+                        return result;
+                    }).blockingGet();
             e.onNext(tokens);
         });
     }
 
     @Override
     public Completable addToken(Wallet wallet, String address, String symbol, int decimals) {
+        Log.e("aaron", "wallet:" + wallet + "address:" + address + "symbol:" + symbol + "decimals:" + decimals);
         return tokenLocalSource.put(
                 ethereumNetworkRepository.getDefaultNetwork(),
                 wallet,
@@ -141,13 +142,15 @@ public class TokenRepository implements TokenRepositoryType {
         return new org.web3j.abi.datatypes.Function(
                 "balanceOf",
                 Collections.singletonList(new Address(owner)),
-                Collections.singletonList(new TypeReference<Uint256>() {}));
+                Collections.singletonList(new TypeReference<Uint256>() {
+                }));
     }
 
     private String callSmartContractFunction(
             org.web3j.abi.datatypes.Function function, String contractAddress, Wallet wallet) throws Exception {
         String encodedFunction = FunctionEncoder.encode(function);
 
+        Log.d("aaron", "address:" + wallet.getAddress());
         org.web3j.protocol.core.methods.response.EthCall response = web3j.ethCall(
                 Transaction.createEthCallTransaction(wallet.getAddress(), contractAddress, encodedFunction),
                 DefaultBlockParameterName.LATEST)

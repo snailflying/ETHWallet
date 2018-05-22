@@ -1,5 +1,7 @@
 package com.wallet.crypto.trustapp.repository;
 
+import android.util.Log;
+
 import com.wallet.crypto.trustapp.entity.Wallet;
 import com.wallet.crypto.trustapp.service.AccountKeystoreService;
 
@@ -90,6 +92,8 @@ public class WalletRepository implements WalletRepositoryType {
 
 	@Override
 	public Single<BigInteger> balanceInWei(Wallet wallet) {
+		Log.d("aaron","address:"+wallet.getAddress());
+
 		return Single.fromCallable(() -> Web3jFactory
 					.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl, httpClient, false))
 					.ethGetBalance(wallet.getAddress(), DefaultBlockParameterName.LATEST)

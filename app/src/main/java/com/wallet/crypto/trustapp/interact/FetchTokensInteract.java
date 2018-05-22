@@ -1,5 +1,7 @@
 package com.wallet.crypto.trustapp.interact;
 
+import android.util.Log;
+
 import com.wallet.crypto.trustapp.entity.Token;
 import com.wallet.crypto.trustapp.entity.Wallet;
 import com.wallet.crypto.trustapp.repository.TokenRepositoryType;
@@ -18,6 +20,8 @@ public class FetchTokensInteract {
     }
 
     public Observable<Token[]> fetch(Wallet wallet) {
+        Log.d("aaron","FetchTokensInteract address:"+wallet.getAddress());
+
         return tokenRepository.fetch(wallet.getAddress())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());

@@ -202,9 +202,10 @@ class WalletStorage private constructor() {
      * @param address String
      */
     fun deleteWallet(address: String) {
+        Log.e("aaron", "delete address:" + address)
         var position = -1
         for (i in accountsDb.indices) {
-            if (accountsDb[i].address.equals(address, true)) {
+            if (accountsDb[i].address.equals(getAddress(address), true)) {
                 position = i
                 break
             }

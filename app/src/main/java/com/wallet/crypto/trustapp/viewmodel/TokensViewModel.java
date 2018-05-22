@@ -3,6 +3,7 @@ package com.wallet.crypto.trustapp.viewmodel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
+import android.util.Log;
 
 import com.wallet.crypto.trustapp.entity.NetworkInfo;
 import com.wallet.crypto.trustapp.entity.Token;
@@ -71,6 +72,8 @@ public class TokensViewModel extends BaseViewModel {
         if (defaultNetwork.getValue() == null) {
             findDefaultNetwork();
         }
+        Log.d("aaron","fetchTokens address:"+wallet.getValue().getAddress());
+
         disposable = fetchTokensInteract
                 .fetch(wallet.getValue())
                 .subscribe(this::onTokens, this::onError);
