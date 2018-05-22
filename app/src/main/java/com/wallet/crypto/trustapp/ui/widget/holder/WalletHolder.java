@@ -51,7 +51,7 @@ public class WalletHolder extends BinderViewHolder<Wallet> implements View.OnCli
 			return;
 		}
 		this.wallet = data;
-		address.setText(wallet.address);
+		address.setText(wallet.getAddress());
 		defaultAction.setChecked(addition.getBoolean(IS_DEFAULT_ADDITION, false));
 		defaultAction.setEnabled(true);
 		deleteAction.setVisibility(

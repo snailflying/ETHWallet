@@ -57,7 +57,7 @@ public class WalletRepoTest {
 		subscription.awaitTerminalEvent();
 		subscription.assertComplete();
 		assertEquals(subscription.valueCount(), 1);
-		deleteAccount(subscription.values().get(0).address, PASS_1);
+		deleteAccount(subscription.values().get(0).getAddress(), PASS_1);
 	}
 
 	@Test
@@ -71,7 +71,7 @@ public class WalletRepoTest {
 		subscriber.assertNoErrors();
 
 		Assert.assertEquals(subscriber.valueCount(), 1);
-		Assert.assertEquals(subscriber.values().get(0).address, ADDRESS_1);
+		Assert.assertEquals(subscriber.values().get(0).getAddress(), ADDRESS_1);
 		Assert.assertTrue(subscriber.values().get(0).sameAddress(ADDRESS_1));
 		deleteAccount(ADDRESS_1, PASS_1);
 	}
@@ -128,10 +128,10 @@ public class WalletRepoTest {
 		Wallet[] wallets = subscriber.values().get(0);
 
 		for (int i = 0; i < 100; i++) {
-			Assert.assertTrue(createdWallets.get(i).sameAddress(wallets[i].address));
+			Assert.assertTrue(createdWallets.get(i).sameAddress(wallets[i].getAddress()));
 		}
 		for (Wallet wallet : createdWallets) {
-			deleteAccount(wallet.address, PASS_1);
+			deleteAccount(wallet.getAddress(), PASS_1);
 		}
 	}
 
@@ -162,7 +162,7 @@ public class WalletRepoTest {
 		defaultSubscriber.awaitTerminalEvent();
 		defaultSubscriber.assertComplete();
 		assertEquals(defaultSubscriber.valueCount(), 1);
-		assertTrue(defaultSubscriber.values().get(0).sameAddress(wallet.address));
+		assertTrue(defaultSubscriber.values().get(0).sameAddress(wallet.getAddress()));
 		deleteAccount(ADDRESS_1, PASS_1);
 	}
 

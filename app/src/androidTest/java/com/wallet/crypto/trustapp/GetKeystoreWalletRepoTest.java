@@ -56,7 +56,7 @@ public class GetKeystoreWalletRepoTest {
 		subscriber.assertNoErrors();
 
 		assertEquals(subscriber.valueCount(), 1);
-		deleteAccountStore(subscriber.values().get(0).address, "1234");
+		deleteAccountStore(subscriber.values().get(0).getAddress(), "1234");
 	}
 
 	@Test
@@ -71,7 +71,7 @@ public class GetKeystoreWalletRepoTest {
 
 		subscriber.assertOf(accountTestObserver -> {
 			assertEquals(accountTestObserver.valueCount(), 1);
-			assertEquals(accountTestObserver.values().get(0).address, ADDRESS_1);
+			assertEquals(accountTestObserver.values().get(0).getAddress(), ADDRESS_1);
 			assertTrue(accountTestObserver.values().get(0).sameAddress(ADDRESS_1));
 		});
 		deleteAccountStore(ADDRESS_1, PASS_1);
@@ -109,10 +109,10 @@ public class GetKeystoreWalletRepoTest {
 		Wallet[] wallets = subscriber.values().get(0);
 
 		for (int i = 0; i < 100; i++) {
-			assertTrue(createdWallets.get(i).sameAddress(wallets[i].address));
+			assertTrue(createdWallets.get(i).sameAddress(wallets[i].getAddress()));
 		}
 		for (Wallet wallet : createdWallets) {
-			deleteAccountStore(wallet.address, PASS_1);
+			deleteAccountStore(wallet.getAddress(), PASS_1);
 		}
 	}
 

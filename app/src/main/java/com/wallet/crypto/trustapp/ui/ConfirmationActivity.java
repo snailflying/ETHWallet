@@ -160,7 +160,7 @@ public class ConfirmationActivity extends BaseActivity {
     }
 
     private void onDefaultWallet(Wallet wallet) {
-        fromAddressText.setText(wallet.address);
+        fromAddressText.setText(wallet.getAddress());
     }
 
     private void onTransaction(String hash) {

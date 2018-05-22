@@ -73,7 +73,7 @@ public class TransactionDetailActivity extends BaseActivity implements View.OnCl
     }
 
     private void onDefaultWallet(Wallet wallet) {
-        boolean isSent = transaction.from.toLowerCase().equals(wallet.address);
+        boolean isSent = transaction.from.toLowerCase().equals(wallet.getAddress());
         String rawValue;
         String symbol;
         long decimals = 18;

@@ -72,16 +72,16 @@ public class DepositView extends FrameLayout implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.action_shapeshift: {
                 uri = shapeshiftUri.buildUpon()
-                        .appendQueryParameter("destination", wallet.address).build();
+                        .appendQueryParameter("destination", wallet.getAddress()).build();
             } break;
             case R.id.action_changelly: {
                 uri = changellyteUri.buildUpon()
-                        .appendQueryParameter("address", wallet.address).build();
+                        .appendQueryParameter("address", wallet.getAddress()).build();
             } break;
             default:
             case R.id.action_coinbase: {
                 uri = coinbaseri.buildUpon()
-                        .appendQueryParameter("address", wallet.address).build();
+                        .appendQueryParameter("address", wallet.getAddress()).build();
             } break;
         }
         if (onDepositClickListener != null) {

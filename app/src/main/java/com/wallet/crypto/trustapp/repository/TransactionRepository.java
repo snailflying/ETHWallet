@@ -50,7 +50,7 @@ public class TransactionRepository implements TransactionRepositoryType {
             if (transactions != null && transactions.length > 0) {
                 e.onNext(transactions);
             }
-            transactions = blockExplorerClient.fetchTransactions(wallet.address).blockingFirst();
+            transactions = blockExplorerClient.fetchTransactions(wallet.getAddress()).blockingFirst();
             transactionLocalSource.clear();
             transactionLocalSource.putTransactions(wallet, transactions);
             e.onNext(transactions);
@@ -78,7 +78,7 @@ public class TransactionRepository implements TransactionRepositoryType {
 
 		return Single.fromCallable(() -> {
 			EthGetTransactionCount ethGetTransactionCount = web3j
-					.ethGetTransactionCount(from.address, DefaultBlockParameterName.LATEST)
+					.ethGetTransactionCount(from.getAddress(), DefaultBlockParameterName.LATEST)
 					.send();
 			return ethGetTransactionCount.getTransactionCount();
 		})

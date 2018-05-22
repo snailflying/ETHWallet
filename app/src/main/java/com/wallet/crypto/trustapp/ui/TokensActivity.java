@@ -14,14 +14,13 @@ import android.view.View;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.entity.ErrorEnvelope;
 import com.wallet.crypto.trustapp.entity.Token;
+import com.wallet.crypto.trustapp.entity.Wallet;
 import com.wallet.crypto.trustapp.ui.widget.adapter.TokensAdapter;
 import com.wallet.crypto.trustapp.viewmodel.TokensViewModel;
 import com.wallet.crypto.trustapp.viewmodel.TokensViewModelFactory;
 import com.wallet.crypto.trustapp.widget.SystemView;
 
 import javax.inject.Inject;
-
-import dagger.android.AndroidInjection;
 
 import static com.wallet.crypto.trustapp.C.Key.WALLET;
 
@@ -60,7 +59,7 @@ public class TokensActivity extends BaseActivity implements View.OnClickListener
         viewModel.progress().observe(this, systemView::showProgress);
         viewModel.error().observe(this, this::onError);
         viewModel.tokens().observe(this, this::onTokens);
-        viewModel.wallet().setValue(getIntent().getParcelableExtra(WALLET));
+        viewModel.wallet().setValue((Wallet) getIntent().getSerializableExtra(WALLET));
 
         refreshLayout.setOnRefreshListener(viewModel::fetchTokens);
     }
@@ -76,7 +75,8 @@ public class TokensActivity extends BaseActivity implements View.OnClickListener
         switch (item.getItemId()) {
             case R.id.action_add: {
                 viewModel.showAddToken(this);
-            } break;
+            }
+            break;
             case android.R.id.home: {
                 viewModel.showTransactions(this, true);
             }
@@ -117,7 +117,8 @@ public class TokensActivity extends BaseActivity implements View.OnClickListener
         switch (view.getId()) {
             case R.id.try_again: {
                 viewModel.fetchTokens();
-            } break;
+            }
+            break;
         }
     }
 }

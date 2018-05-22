@@ -85,7 +85,7 @@ public class TransactionsAdapter extends RecyclerView.Adapter<BinderViewHolder> 
     @Override
     public void onBindViewHolder(BinderViewHolder holder, int position) {
         Bundle addition = new Bundle();
-        addition.putString(TransactionHolder.DEFAULT_ADDRESS_ADDITIONAL, wallet.address);
+        addition.putString(TransactionHolder.DEFAULT_ADDRESS_ADDITIONAL, wallet.getAddress());
         addition.putString(TransactionHolder.DEFAULT_SYMBOL_ADDITIONAL, network.symbol);
         holder.bind(items.get(position).value, addition);
     }

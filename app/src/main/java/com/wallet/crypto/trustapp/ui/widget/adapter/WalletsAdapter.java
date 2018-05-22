@@ -51,7 +51,7 @@ public class WalletsAdapter extends RecyclerView.Adapter<BinderViewHolder> {
 				Bundle bundle = new Bundle();
 				bundle.putBoolean(
 						WalletHolder.IS_DEFAULT_ADDITION,
-						defaultWallet != null && defaultWallet.sameAddress(wallet.address));
+						defaultWallet != null && defaultWallet.sameAddress(wallet.getAddress()));
 				bundle.putBoolean(WalletHolder.IS_LAST_ITEM, getItemCount() == 1);
 				holder.bind(wallet, bundle);
 			} break;

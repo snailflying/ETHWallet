@@ -79,7 +79,7 @@ public class WalletRepository implements WalletRepositoryType {
 
 	@Override
 	public Completable setDefaultWallet(Wallet wallet) {
-		return Completable.fromAction(() -> preferenceRepositoryType.setCurrentWalletAddress(wallet.address));
+		return Completable.fromAction(() -> preferenceRepositoryType.setCurrentWalletAddress(wallet.getAddress()));
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class WalletRepository implements WalletRepositoryType {
 	public Single<BigInteger> balanceInWei(Wallet wallet) {
 		return Single.fromCallable(() -> Web3jFactory
 					.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl, httpClient, false))
-					.ethGetBalance(wallet.address, DefaultBlockParameterName.LATEST)
+					.ethGetBalance(wallet.getAddress(), DefaultBlockParameterName.LATEST)
 					.send()
 					.getBalance())
                 .subscribeOn(Schedulers.io());

@@ -51,7 +51,7 @@ public class RealmTokenSource implements TokenLocalSource {
 
     private Realm getRealmInstance(NetworkInfo networkInfo, Wallet wallet) {
         RealmConfiguration config = new RealmConfiguration.Builder()
-                .name(wallet.address + "-" + networkInfo.name + ".realm")
+                .name(wallet.getAddress() + "-" + networkInfo.name + ".realm")
                 .schemaVersion(1)
                 .build();
         return Realm.getInstance(config);

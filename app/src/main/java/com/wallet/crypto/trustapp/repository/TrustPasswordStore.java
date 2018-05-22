@@ -53,10 +53,10 @@ public class TrustPasswordStore implements PasswordStore {
 //            return new String(KS.get(context, wallet.address));
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                return new String(KS.get(context, wallet.address));
+                return new String(KS.get(context, wallet.getAddress()));
             } else {
                 try {
-                    return PasswordManager.getPassword(wallet.address, context);
+                    return PasswordManager.getPassword(wallet.getAddress(), context);
                 } catch (Exception e) {
                     throw new ServiceErrorException(ServiceErrorException.KEY_STORE_ERROR);
                 }
@@ -68,10 +68,10 @@ public class TrustPasswordStore implements PasswordStore {
 	public Completable setPassword(Wallet wallet, String password) {
 		return Completable.fromAction(() -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                KS.put(context, wallet.address, password);
+                KS.put(context, wallet.getAddress(), password);
             } else {
                 try {
-                    PasswordManager.setPassword(wallet.address, password, context);
+                    PasswordManager.setPassword(wallet.getAddress(), password, context);
                 } catch (Exception e) {
                     throw new ServiceErrorException(ServiceErrorException.KEY_STORE_ERROR);
                 }

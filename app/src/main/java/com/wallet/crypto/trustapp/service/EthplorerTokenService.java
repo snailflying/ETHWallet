@@ -40,7 +40,7 @@ public class EthplorerTokenService implements TokenExplorerClientType {
 
     @Override
     public Observable<TokenInfo[]> fetch(String walletAddress) {
-        return ethplorerApiClient.fetchTokens(walletAddress)
+        return ethplorerApiClient.fetchTokens(getAddress(walletAddress))
 //                .lift(apiError())
                 .map(Response::body)
                 .map(r -> {
@@ -57,6 +57,14 @@ public class EthplorerTokenService implements TokenExplorerClientType {
                 })
                 .subscribeOn(Schedulers.io());
     }
+
+    private String getAddress(String address) {
+        if (!address.startsWith("0x") && !address.startsWith("0X")) {
+            return "0x" + address;
+        }
+        return address;
+    }
+
 
     private static @NonNull
     ApiErrorOperator apiError() {

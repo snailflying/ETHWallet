@@ -109,7 +109,7 @@ public class TokenRepository implements TokenRepositoryType {
             return;
         }
         tokenNetworkService
-                .fetch(wallet.address)
+                .fetch(wallet.getAddress())
                 .flatMapCompletable(items -> Completable.fromAction(() -> {
                     for (TokenInfo tokenInfo : items) {
                         try {
@@ -125,7 +125,7 @@ public class TokenRepository implements TokenRepositoryType {
     }
 
     private BigDecimal getBalance(Wallet wallet, TokenInfo tokenInfo) throws Exception {
-        org.web3j.abi.datatypes.Function function = balanceOf(wallet.address);
+        org.web3j.abi.datatypes.Function function = balanceOf(wallet.getAddress());
         String responseValue = callSmartContractFunction(function, tokenInfo.address, wallet);
 
         List<Type> response = FunctionReturnDecoder.decode(
@@ -149,7 +149,7 @@ public class TokenRepository implements TokenRepositoryType {
         String encodedFunction = FunctionEncoder.encode(function);
 
         org.web3j.protocol.core.methods.response.EthCall response = web3j.ethCall(
-                Transaction.createEthCallTransaction(wallet.address, contractAddress, encodedFunction),
+                Transaction.createEthCallTransaction(wallet.getAddress(), contractAddress, encodedFunction),
                 DefaultBlockParameterName.LATEST)
                 .sendAsync().get();
 

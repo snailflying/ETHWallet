@@ -79,13 +79,18 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
 
             for (i in 0 until len) {
                 val gethAccount = accounts.get(i)
-                result[i] = Wallet(gethAccount.address.toLowerCase())
+                result[i] = Wallet(generateAddress(gethAccount.address.toLowerCase()))
             }
             result
         }
                 .subscribeOn(Schedulers.io())
     }
 
+    private fun generateAddress(address: String): String {
+        return if (!address.startsWith("0x") && !address.startsWith("0X")) {
+            "0x$address"
+        } else address
+    }
 
     companion object {
         private val PRIVATE_KEY_RADIX = 16

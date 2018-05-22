@@ -52,9 +52,9 @@ public class SettingsFragment extends PreferenceFragment
                     PreferenceManager
                             .getDefaultSharedPreferences(getActivity())
                             .edit()
-                            .putString("pref_wallet", wallet.address)
+                            .putString("pref_wallet", wallet.getAddress())
                             .apply();
-                    wallets.setSummary(wallet.address);
+                    wallets.setSummary(wallet.getAddress());
                 });
 
         final ListPreference listPreference = (ListPreference) findPreference("pref_rpcServer");

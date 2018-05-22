@@ -18,11 +18,11 @@ public class TransactionInMemorySource implements TransactionLocalSource {
 	@Override
 	public Single<Transaction[]> fetchTransaction(Wallet wallet) {
 		return Single.fromCallable(() -> {
-			CacheUnit unit = cache.get(wallet.address);
+			CacheUnit unit = cache.get(wallet.getAddress());
 			Transaction[] transactions = new Transaction[0];
 			if (unit != null) {
 				if (System.currentTimeMillis() - unit.create > MAX_TIME_OUT) {
-					cache.remove(wallet.address);
+					cache.remove(wallet.getAddress());
 				} else {
 					transactions = unit.transactions;
 				}
@@ -34,7 +34,7 @@ public class TransactionInMemorySource implements TransactionLocalSource {
 
 	@Override
 	public void putTransactions(Wallet wallet, Transaction[] transactions) {
-		cache.put(wallet.address, new CacheUnit(wallet.address, System.currentTimeMillis(), transactions));
+		cache.put(wallet.getAddress(), new CacheUnit(wallet.getAddress(), System.currentTimeMillis(), transactions));
 	}
 
     @Override
