@@ -99,19 +99,19 @@ public class TransactionsViewModel extends BaseViewModel {
     }
 
     public void prepare() {
-        progress.postValue(true);
-        disposable = findDefaultNetworkInteract
+        getProgress().postValue(true);
+        setDisposable(findDefaultNetworkInteract
                 .find()
-                .subscribe(this::onDefaultNetwork, this::onError);
+                .subscribe(this::onDefaultNetwork, this::onError));
     }
 
     public void fetchTransactions() {
-        progress.postValue(true);
+        getProgress().postValue(true);
         transactionDisposable = Observable.interval(0, FETCH_TRANSACTIONS_INTERVAL, TimeUnit.SECONDS)
             .doOnNext(l ->
-                disposable = fetchTransactionsInteract
-                        .fetch(defaultWallet.getValue()/*new Wallet("0x60f7a1cbc59470b74b1df20b133700ec381f15d3")*/)
-                        .subscribe(this::onTransactions, this::onError))
+                    setDisposable(fetchTransactionsInteract
+                            .fetch(defaultWallet.getValue()/*new Wallet("0x60f7a1cbc59470b74b1df20b133700ec381f15d3")*/)
+                            .subscribe(this::onTransactions, this::onError)))
             .subscribe();
     }
 
@@ -125,9 +125,9 @@ public class TransactionsViewModel extends BaseViewModel {
 
     private void onDefaultNetwork(NetworkInfo networkInfo) {
         defaultNetwork.postValue(networkInfo);
-        disposable = findDefaultWalletInteract
+        setDisposable(findDefaultWalletInteract
                 .find()
-                .subscribe(this::onDefaultWallet, this::onError);
+                .subscribe(this::onDefaultWallet, this::onError));
     }
 
     private void onDefaultWallet(Wallet wallet) {
@@ -137,7 +137,7 @@ public class TransactionsViewModel extends BaseViewModel {
     }
 
     private void onTransactions(Transaction[] transactions) {
-        progress.postValue(false);
+        getProgress().postValue(false);
         this.transactions.postValue(transactions);
     }
 

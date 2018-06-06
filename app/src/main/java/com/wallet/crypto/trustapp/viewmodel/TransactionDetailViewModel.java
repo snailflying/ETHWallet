@@ -36,10 +36,10 @@ public class TransactionDetailViewModel extends BaseViewModel {
                 .find()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(defaultNetwork::postValue);
-        disposable = findDefaultWalletInteract
+        setDisposable(findDefaultWalletInteract
                 .find()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(defaultWallet::postValue);
+                .subscribe(defaultWallet::postValue));
     }
 
 

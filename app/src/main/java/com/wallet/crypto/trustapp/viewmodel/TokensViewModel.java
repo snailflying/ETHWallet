@@ -40,14 +40,14 @@ public class TokensViewModel extends BaseViewModel {
     }
 
     public void prepare() {
-        progress.postValue(true);
+        getProgress().postValue(true);
         findDefaultNetwork();
     }
 
     private void findDefaultNetwork() {
-        disposable = findDefaultNetworkInteract
+        setDisposable(findDefaultNetworkInteract
                 .find()
-                .subscribe(this::onDefaultNetwork, this::onError);
+                .subscribe(this::onDefaultNetwork, this::onError));
     }
 
     private void onDefaultNetwork(NetworkInfo networkInfo) {
@@ -68,19 +68,19 @@ public class TokensViewModel extends BaseViewModel {
     }
 
     public void fetchTokens() {
-        progress.postValue(true);
+        getProgress().postValue(true);
         if (defaultNetwork.getValue() == null) {
             findDefaultNetwork();
         }
         Log.d("aaron","fetchTokens address:"+wallet.getValue().getAddress());
 
-        disposable = fetchTokensInteract
+        setDisposable(fetchTokensInteract
                 .fetch(wallet.getValue())
-                .subscribe(this::onTokens, this::onError);
+                .subscribe(this::onTokens, this::onError));
     }
 
     private void onTokens(Token[] tokens) {
-        progress.postValue(false);
+        getProgress().postValue(false);
         this.tokens.postValue(tokens);
     }
 

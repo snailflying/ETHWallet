@@ -19,7 +19,7 @@ public class ImportWalletViewModel extends BaseViewModel implements OnImportKeys
 
     @Override
     public void onKeystore(String keystore, String password) {
-        progress.postValue(true);
+        getProgress().postValue(true);
         importWalletInteract
                 .importKeystore(keystore, password)
                 .subscribe(this::onWallet, this::onError);
@@ -27,7 +27,7 @@ public class ImportWalletViewModel extends BaseViewModel implements OnImportKeys
 
     @Override
     public void onPrivateKey(String key) {
-        progress.postValue(true);
+        getProgress().postValue(true);
         importWalletInteract
                 .importPrivateKey(key)
                 .subscribe(this::onWallet, this::onError);
@@ -38,7 +38,7 @@ public class ImportWalletViewModel extends BaseViewModel implements OnImportKeys
     }
 
     private void onWallet(Wallet wallet) {
-        progress.postValue(false);
+        getProgress().postValue(false);
         this.wallet.postValue(wallet);
     }
 }

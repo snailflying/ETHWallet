@@ -41,18 +41,18 @@ public class ConfirmationViewModel extends BaseViewModel {
     }
 
     public void createTransaction(String from, String to, BigInteger amount, BigInteger gasPrice, BigInteger gasLimit) {
-        progress.postValue(true);
-        disposable = createTransactionInteract
+        getProgress().postValue(true);
+        setDisposable(createTransactionInteract
                 .create(new Wallet(from), to, amount, gasPrice, gasLimit, null)
-                .subscribe(this::onCreateTransaction, this::onError);
+                .subscribe(this::onCreateTransaction, this::onError));
     }
 
     public void createTokenTransfer(String from, String to, String contractAddress, BigInteger amount, BigInteger gasPrice, BigInteger gasLimit) {
-        progress.postValue(true);
+        getProgress().postValue(true);
         final byte[] data = TokenRepository.createTokenTransferData(to, amount);
-        disposable = createTransactionInteract
+        setDisposable(createTransactionInteract
                 .create(new Wallet(from), contractAddress, BigInteger.valueOf(0), gasPrice, gasLimit, data)
-                .subscribe(this::onCreateTransaction, this::onError);
+                .subscribe(this::onCreateTransaction, this::onError));
     }
 
     public LiveData<Wallet> defaultWallet() {
@@ -67,13 +67,13 @@ public class ConfirmationViewModel extends BaseViewModel {
 
     public void prepare(boolean confirmationForTokenTransfer) {
         this.confirmationForTokenTransfer = confirmationForTokenTransfer;
-        disposable = findDefaultWalletInteract
+        setDisposable(findDefaultWalletInteract
                 .find()
-                .subscribe(this::onDefaultWallet, this::onError);
+                .subscribe(this::onDefaultWallet, this::onError));
     }
 
     private void onCreateTransaction(String transaction) {
-        progress.postValue(false);
+        getProgress().postValue(false);
         newTransaction.postValue(transaction);
     }
 

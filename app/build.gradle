@@ -8,10 +8,11 @@ buildscript {
 //    }
 }
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
+
 //repositories {
 //    maven { url 'https://maven.fabric.io/public' }
 //}
@@ -22,7 +23,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.wallet.crypto.trustapp"
-        minSdkVersion 18
+        minSdkVersion 15
         targetSdkVersion 26
         versionCode 37
         versionName "1.4.2"
@@ -64,8 +65,9 @@ project.ext {
     gethVersion = "1.7.0"
     gsonVersion = "2.8.2"
     rxJavaVersion = "2.1.6"
-    rxAndroidVersion = "2.0.1"
-    daggerVersion = "2.11"
+    rxAndroidVersion = "2.0.2"
+    daggerVersion = "2.15"
+    room_version = "1.1.0" // or, for latest rc, use "1.1.1-rc1"
 }
 
 dependencies {
@@ -126,6 +128,13 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(":tn")
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+//    Room
+    implementation "android.arch.persistence.room:runtime:$project.room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$project.room_version"
+
+    // optional - RxJava support for Room
+    implementation "android.arch.persistence.room:rxjava2:$project.room_version"
 }
 repositories {
     mavenCentral()
