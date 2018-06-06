@@ -23,7 +23,10 @@ import com.wallet.crypto.trustapp.util.QRURLParser;
 import com.wallet.crypto.trustapp.viewmodel.SendViewModel;
 import com.wallet.crypto.trustapp.viewmodel.SendViewModelFactory;
 
-import org.ethereum.geth.Address;
+//import org.ethereum.geth.Address;
+
+import org.web3j.abi.datatypes.Address;
+import org.web3j.crypto.WalletUtils;
 
 import java.math.BigInteger;
 
@@ -158,12 +161,7 @@ public class SendActivity extends BaseActivity {
     }
 
     boolean isAddressValid(String address) {
-        try {
-            new Address(address);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        return WalletUtils.isValidAddress(address);
     }
 
     boolean isValidAmount(String eth) {
