@@ -21,7 +21,7 @@ import retrofit2.http.Path;
 
 import static com.wallet.crypto.trustapp.C.ErrorCode.UNKNOWN;
 
-public class EthplorerTokenService implements TokenExplorerClientType {
+public class EthplorerTokenService{
     private static final String ETHPLORER_API_URL = "https://api.ethplorer.io";
 
     private EthplorerApiClient ethplorerApiClient;
@@ -38,7 +38,6 @@ public class EthplorerTokenService implements TokenExplorerClientType {
                 .create(EthplorerApiClient.class);
     }
 
-    @Override
     public Observable<TokenInfo[]> fetch(String walletAddress) {
         return ethplorerApiClient.fetchTokens(getAddress(walletAddress))
 //                .lift(apiError())

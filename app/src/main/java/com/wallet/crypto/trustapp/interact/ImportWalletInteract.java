@@ -2,18 +2,18 @@ package com.wallet.crypto.trustapp.interact;
 
 import com.wallet.crypto.trustapp.entity.Wallet;
 import com.wallet.crypto.trustapp.interact.rx.operator.Operators;
-import com.wallet.crypto.trustapp.repository.PasswordStore;
-import com.wallet.crypto.trustapp.repository.WalletRepositoryType;
+import com.wallet.crypto.trustapp.repository.TrustPasswordStore;
+import com.wallet.crypto.trustapp.repository.WalletRepository;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class ImportWalletInteract {
 
-    private final WalletRepositoryType walletRepository;
-    private final PasswordStore passwordStore;
+    private final WalletRepository walletRepository;
+    private final TrustPasswordStore passwordStore;
 
-    public ImportWalletInteract(WalletRepositoryType walletRepository, PasswordStore passwordStore) {
+    public ImportWalletInteract(WalletRepository walletRepository, TrustPasswordStore passwordStore) {
         this.walletRepository = walletRepository;
         this.passwordStore = passwordStore;
     }

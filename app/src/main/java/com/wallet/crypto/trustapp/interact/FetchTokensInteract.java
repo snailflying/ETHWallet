@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.wallet.crypto.trustapp.entity.Token;
 import com.wallet.crypto.trustapp.entity.Wallet;
-import com.wallet.crypto.trustapp.repository.TokenRepositoryType;
+import com.wallet.crypto.trustapp.repository.TokenRepository;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -13,9 +13,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class FetchTokensInteract {
 
-    private final TokenRepositoryType tokenRepository;
+    private final TokenRepository tokenRepository;
 
-    public FetchTokensInteract(TokenRepositoryType tokenRepository) {
+    public FetchTokensInteract(TokenRepository tokenRepository) {
         this.tokenRepository = tokenRepository;
     }
 

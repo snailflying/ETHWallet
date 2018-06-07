@@ -2,9 +2,9 @@ package com.wallet.crypto.trustapp.interact;
 
 
 import com.wallet.crypto.trustapp.entity.Wallet;
-import com.wallet.crypto.trustapp.repository.PasswordStore;
+import com.wallet.crypto.trustapp.repository.TrustPasswordStore;
 import com.wallet.crypto.trustapp.repository.TokenRepository;
-import com.wallet.crypto.trustapp.repository.TransactionRepositoryType;
+import com.wallet.crypto.trustapp.repository.TransactionRepository;
 
 import java.math.BigInteger;
 
@@ -12,10 +12,10 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class CreateTransactionInteract {
-    private final TransactionRepositoryType transactionRepository;
-    private final PasswordStore passwordStore;
+    private final TransactionRepository transactionRepository;
+    private final TrustPasswordStore passwordStore;
 
-    public CreateTransactionInteract(TransactionRepositoryType transactionRepository, PasswordStore passwordStore) {
+    public CreateTransactionInteract(TransactionRepository transactionRepository, TrustPasswordStore passwordStore) {
         this.transactionRepository = transactionRepository;
         this.passwordStore = passwordStore;
     }

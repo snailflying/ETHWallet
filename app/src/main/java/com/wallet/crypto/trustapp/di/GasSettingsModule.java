@@ -2,7 +2,7 @@ package com.wallet.crypto.trustapp.di;
 
 
 import com.wallet.crypto.trustapp.interact.FindDefaultNetworkInteract;
-import com.wallet.crypto.trustapp.repository.EthereumNetworkRepositoryType;
+import com.wallet.crypto.trustapp.repository.EthereumNetworkRepository;
 import com.wallet.crypto.trustapp.viewmodel.GasSettingsViewModelFactory;
 
 import dagger.Module;
@@ -18,7 +18,7 @@ public class GasSettingsModule {
 
     @Provides
     FindDefaultNetworkInteract provideFindDefaultNetworkInteract(
-            EthereumNetworkRepositoryType ethereumNetworkRepositoryType) {
+            EthereumNetworkRepository ethereumNetworkRepositoryType) {
         return new FindDefaultNetworkInteract(ethereumNetworkRepositoryType);
     }
 }

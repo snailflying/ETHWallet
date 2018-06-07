@@ -6,7 +6,7 @@ import com.wallet.crypto.trustapp.entity.NetworkInfo;
 import com.wallet.crypto.trustapp.entity.Token;
 import com.wallet.crypto.trustapp.entity.TokenInfo;
 import com.wallet.crypto.trustapp.entity.Wallet;
-import com.wallet.crypto.trustapp.service.TokenExplorerClientType;
+import com.wallet.crypto.trustapp.service.EthplorerTokenService;
 
 import org.web3j.abi.FunctionEncoder;
 import org.web3j.abi.FunctionReturnDecoder;
@@ -33,19 +33,19 @@ import io.reactivex.Completable;
 import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
 
-public class TokenRepository implements TokenRepositoryType {
+public class TokenRepository {
 
-    private final TokenExplorerClientType tokenNetworkService;
-    private final TokenLocalSource tokenLocalSource;
+    private final EthplorerTokenService tokenNetworkService;
+    private final RealmTokenSource tokenLocalSource;
     private final OkHttpClient httpClient;
-    private final EthereumNetworkRepositoryType ethereumNetworkRepository;
+    private final EthereumNetworkRepository ethereumNetworkRepository;
     private Web3j web3j;
 
     public TokenRepository(
             OkHttpClient okHttpClient,
-            EthereumNetworkRepositoryType ethereumNetworkRepository,
-            TokenExplorerClientType tokenNetworkService,
-            TokenLocalSource tokenLocalSource) {
+            EthereumNetworkRepository ethereumNetworkRepository,
+            EthplorerTokenService tokenNetworkService,
+            RealmTokenSource tokenLocalSource) {
         this.httpClient = okHttpClient;
         this.ethereumNetworkRepository = ethereumNetworkRepository;
         this.tokenNetworkService = tokenNetworkService;
@@ -58,7 +58,6 @@ public class TokenRepository implements TokenRepositoryType {
         web3j = Web3jFactory.build(new HttpService(defaultNetwork.rpcServerUrl, httpClient, false));
     }
 
-    @Override
     public Observable<Token[]> fetch(String walletAddress) {
         return Observable.create(e -> {
             NetworkInfo defaultNetwork = ethereumNetworkRepository.getDefaultNetwork();
@@ -96,7 +95,6 @@ public class TokenRepository implements TokenRepositoryType {
         });
     }
 
-    @Override
     public Completable addToken(Wallet wallet, String address, String symbol, int decimals) {
         Log.e("aaron", "wallet:" + wallet + "address:" + address + "symbol:" + symbol + "decimals:" + decimals);
         return tokenLocalSource.put(

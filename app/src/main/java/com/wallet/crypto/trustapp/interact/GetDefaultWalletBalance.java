@@ -1,8 +1,8 @@
 package com.wallet.crypto.trustapp.interact;
 
 import com.wallet.crypto.trustapp.entity.Wallet;
-import com.wallet.crypto.trustapp.repository.EthereumNetworkRepositoryType;
-import com.wallet.crypto.trustapp.repository.WalletRepositoryType;
+import com.wallet.crypto.trustapp.repository.EthereumNetworkRepository;
+import com.wallet.crypto.trustapp.repository.WalletRepository;
 import com.wallet.crypto.trustapp.util.BalanceUtils;
 
 import java.util.HashMap;
@@ -17,12 +17,12 @@ import static com.wallet.crypto.trustapp.util.BalanceUtils.weiToEth;
 
 public class GetDefaultWalletBalance {
 
-    private final WalletRepositoryType walletRepository;
-    private final EthereumNetworkRepositoryType ethereumNetworkRepository;
+    private final WalletRepository walletRepository;
+    private final EthereumNetworkRepository ethereumNetworkRepository;
 
     public GetDefaultWalletBalance(
-            WalletRepositoryType walletRepository,
-            EthereumNetworkRepositoryType ethereumNetworkRepository) {
+            WalletRepository walletRepository,
+            EthereumNetworkRepository ethereumNetworkRepository) {
         this.walletRepository = walletRepository;
         this.ethereumNetworkRepository = ethereumNetworkRepository;
     }

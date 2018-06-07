@@ -3,7 +3,7 @@ package com.wallet.crypto.trustapp.service;
 import com.google.gson.Gson;
 import com.wallet.crypto.trustapp.entity.NetworkInfo;
 import com.wallet.crypto.trustapp.entity.Transaction;
-import com.wallet.crypto.trustapp.repository.EthereumNetworkRepositoryType;
+import com.wallet.crypto.trustapp.repository.EthereumNetworkRepository;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableOperator;
@@ -19,18 +19,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public class BlockExplorerClient implements BlockExplorerClientType {
+public class BlockExplorerClient {
 
     private final OkHttpClient httpClient;
     private final Gson gson;
-    private final EthereumNetworkRepositoryType networkRepository;
+    private final EthereumNetworkRepository networkRepository;
 
     private EtherScanApiClient etherScanApiClient;
 
     public BlockExplorerClient(
             OkHttpClient httpClient,
             Gson gson,
-            EthereumNetworkRepositoryType networkRepository) {
+            EthereumNetworkRepository networkRepository) {
         this.httpClient = httpClient;
         this.gson = gson;
         this.networkRepository = networkRepository;
@@ -49,7 +49,6 @@ public class BlockExplorerClient implements BlockExplorerClientType {
                 .create(EtherScanApiClient.class);
     }
 
-    @Override
     public Observable<Transaction[]> fetchTransactions(String address) {
         return etherScanApiClient
                 .fetchTransactions(getAddress(address))

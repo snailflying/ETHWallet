@@ -4,10 +4,10 @@ package com.wallet.crypto.trustapp.di;
 import com.wallet.crypto.trustapp.interact.CreateTransactionInteract;
 import com.wallet.crypto.trustapp.interact.FetchGasSettingsInteract;
 import com.wallet.crypto.trustapp.interact.FindDefaultWalletInteract;
-import com.wallet.crypto.trustapp.repository.PasswordStore;
-import com.wallet.crypto.trustapp.repository.PreferenceRepositoryType;
-import com.wallet.crypto.trustapp.repository.TransactionRepositoryType;
-import com.wallet.crypto.trustapp.repository.WalletRepositoryType;
+import com.wallet.crypto.trustapp.repository.TrustPasswordStore;
+import com.wallet.crypto.trustapp.repository.SharedPreferenceRepository;
+import com.wallet.crypto.trustapp.repository.TransactionRepository;
+import com.wallet.crypto.trustapp.repository.WalletRepository;
 import com.wallet.crypto.trustapp.router.GasSettingsRouter;
 import com.wallet.crypto.trustapp.viewmodel.ConfirmationViewModelFactory;
 
@@ -27,17 +27,17 @@ public class ConfirmationModule {
     }
 
     @Provides
-    FindDefaultWalletInteract provideFindDefaultWalletInteract(WalletRepositoryType walletRepository) {
+    FindDefaultWalletInteract provideFindDefaultWalletInteract(WalletRepository walletRepository) {
         return new FindDefaultWalletInteract(walletRepository);
     }
 
     @Provides
-    FetchGasSettingsInteract provideFetchGasSettingsInteract(PreferenceRepositoryType preferenceRepositoryType) {
+    FetchGasSettingsInteract provideFetchGasSettingsInteract(SharedPreferenceRepository preferenceRepositoryType) {
         return new FetchGasSettingsInteract(preferenceRepositoryType);
     }
 
     @Provides
-    CreateTransactionInteract provideCreateTransactionInteract(TransactionRepositoryType transactionRepository, PasswordStore passwordStore) {
+    CreateTransactionInteract provideCreateTransactionInteract(TransactionRepository transactionRepository, TrustPasswordStore passwordStore) {
         return new CreateTransactionInteract(transactionRepository, passwordStore);
     }
 

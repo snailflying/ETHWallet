@@ -11,6 +11,8 @@ import java.util.Set;
 
 import io.reactivex.Single;
 
+import static com.wallet.crypto.trustapp.C.CLASSIC_NETWORK_NAME;
+import static com.wallet.crypto.trustapp.C.ETC_SYMBOL;
 import static com.wallet.crypto.trustapp.C.ETHEREUM_NETWORK_NAME;
 import static com.wallet.crypto.trustapp.C.ETH_SYMBOL;
 import static com.wallet.crypto.trustapp.C.KOVAN_NETWORK_NAME;
@@ -18,88 +20,81 @@ import static com.wallet.crypto.trustapp.C.POA_NETWORK_NAME;
 import static com.wallet.crypto.trustapp.C.POA_SYMBOL;
 import static com.wallet.crypto.trustapp.C.RINKEBY_NETWORK_NAME;
 import static com.wallet.crypto.trustapp.C.ROPSTEN_NETWORK_NAME;
-import static com.wallet.crypto.trustapp.C.CLASSIC_NETWORK_NAME;
-import static com.wallet.crypto.trustapp.C.ETC_SYMBOL;
 
-public class EthereumNetworkRepository implements EthereumNetworkRepositoryType {
+public class EthereumNetworkRepository {
 
-	private final NetworkInfo[] NETWORKS = new NetworkInfo[] {
-			new NetworkInfo(ETHEREUM_NETWORK_NAME, ETH_SYMBOL,
+    private final NetworkInfo[] NETWORKS = new NetworkInfo[]{
+            new NetworkInfo(ETHEREUM_NETWORK_NAME, ETH_SYMBOL,
                     "https://mainnet.infura.io/llyrtzQ3YhkdESt2Fzrk",
                     "https://api.trustwalletapp.com/",
-                    "https://etherscan.io/",1, true),
+                    "https://etherscan.io/", 1, true),
             new NetworkInfo(CLASSIC_NETWORK_NAME, ETC_SYMBOL,
                     "https://mewapi.epool.io/",
                     "https://classic.trustwalletapp.com",
-                    "https://gastracker.io",61, true),
+                    "https://gastracker.io", 61, true),
             new NetworkInfo(POA_NETWORK_NAME, POA_SYMBOL,
                     "https://core.poa.network",
-                    "https://poa.trustwalletapp.com","poa", 99, false),
-			new NetworkInfo(KOVAN_NETWORK_NAME, ETH_SYMBOL,
+                    "https://poa.trustwalletapp.com", "poa", 99, false),
+            new NetworkInfo(KOVAN_NETWORK_NAME, ETH_SYMBOL,
                     "https://kovan.infura.io/llyrtzQ3YhkdESt2Fzrk",
                     "https://kovan.trustwalletapp.com/",
                     "https://kovan.etherscan.io", 42, false),
-			new NetworkInfo(ROPSTEN_NETWORK_NAME, ETH_SYMBOL,
+            new NetworkInfo(ROPSTEN_NETWORK_NAME, ETH_SYMBOL,
                     "https://ropsten.infura.io/llyrtzQ3YhkdESt2Fzrk",
                     "https://ropsten.trustwalletapp.com/",
-                    "https://ropsten.etherscan.io",3, false),
-			new NetworkInfo(RINKEBY_NETWORK_NAME, ETH_SYMBOL,
-					"https://rinkeby.infura.io/llyrtzQ3YhkdESt2Fzrk",
-					"https://rinkeby.trustwalletapp.com/",
-					"https://rinkeby.etherscan.io",4, false)
-	};
+                    "https://ropsten.etherscan.io", 3, false),
+            new NetworkInfo(RINKEBY_NETWORK_NAME, ETH_SYMBOL,
+                    "https://rinkeby.infura.io/llyrtzQ3YhkdESt2Fzrk",
+                    "https://rinkeby.trustwalletapp.com/",
+                    "https://rinkeby.etherscan.io", 4, false)
+    };
 
-	private final PreferenceRepositoryType preferences;
+    private final SharedPreferenceRepository preferences;
     private final TickerService tickerService;
     private NetworkInfo defaultNetwork;
     private final Set<OnNetworkChangeListener> onNetworkChangedListeners = new HashSet<>();
 
-    public EthereumNetworkRepository(PreferenceRepositoryType preferenceRepository, TickerService tickerService) {
-		this.preferences = preferenceRepository;
-		this.tickerService = tickerService;
-		defaultNetwork = getByName(preferences.getDefaultNetwork());
-		if (defaultNetwork == null) {
-			defaultNetwork = NETWORKS[0];
-		}
-	}
-
-	private NetworkInfo getByName(String name) {
-		if (!TextUtils.isEmpty(name)) {
-			for (NetworkInfo NETWORK : NETWORKS) {
-				if (name.equals(NETWORK.name)) {
-					return NETWORK;
-				}
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public NetworkInfo getDefaultNetwork() {
-		return defaultNetwork;
-	}
-
-	@Override
-	public void setDefaultNetworkInfo(NetworkInfo networkInfo) {
-		defaultNetwork = networkInfo;
-		preferences.setDefaultNetwork(defaultNetwork.name);
-
-		for (OnNetworkChangeListener listener : onNetworkChangedListeners) {
-		    listener.onNetworkChanged(networkInfo);
+    public EthereumNetworkRepository(SharedPreferenceRepository preferenceRepository, TickerService tickerService) {
+        this.preferences = preferenceRepository;
+        this.tickerService = tickerService;
+        defaultNetwork = getByName(preferences.getDefaultNetwork());
+        if (defaultNetwork == null) {
+            defaultNetwork = NETWORKS[0];
         }
-	}
+    }
 
-	@Override
-	public NetworkInfo[] getAvailableNetworkList() {
-		return NETWORKS;
-	}
+    private NetworkInfo getByName(String name) {
+        if (!TextUtils.isEmpty(name)) {
+            for (NetworkInfo NETWORK : NETWORKS) {
+                if (name.equals(NETWORK.name)) {
+                    return NETWORK;
+                }
+            }
+        }
+        return null;
+    }
 
-	@Override
-	public void addOnChangeDefaultNetwork(OnNetworkChangeListener onNetworkChanged) {
+    public NetworkInfo getDefaultNetwork() {
+        return defaultNetwork;
+    }
+
+    public void setDefaultNetworkInfo(NetworkInfo networkInfo) {
+        defaultNetwork = networkInfo;
+        preferences.setDefaultNetwork(defaultNetwork.name);
+
+        for (OnNetworkChangeListener listener : onNetworkChangedListeners) {
+            listener.onNetworkChanged(networkInfo);
+        }
+    }
+
+    public NetworkInfo[] getAvailableNetworkList() {
+        return NETWORKS;
+    }
+
+    public void addOnChangeDefaultNetwork(OnNetworkChangeListener onNetworkChanged) {
         onNetworkChangedListeners.add(onNetworkChanged);
-	}
+    }
 
-    @Override
     public Single<Ticker> getTicker() {
         return Single.fromObservable(tickerService
                 .fetchTickerPrice(getDefaultNetwork().symbol));

@@ -19,7 +19,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.entity.NetworkInfo;
 import com.wallet.crypto.trustapp.entity.Wallet;
-import com.wallet.crypto.trustapp.repository.EthereumNetworkRepositoryType;
+import com.wallet.crypto.trustapp.repository.EthereumNetworkRepository;
 
 import javax.inject.Inject;
 
@@ -31,7 +31,7 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
     public static final String KEY_ADDRESS = "key_address";
 
     @Inject
-    protected EthereumNetworkRepositoryType ethereumNetworkRepository;
+    protected EthereumNetworkRepository ethereumNetworkRepository;
 
     private Wallet wallet;
 

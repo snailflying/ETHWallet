@@ -16,7 +16,7 @@ import com.wallet.crypto.trustapp.C;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.entity.NetworkInfo;
 import com.wallet.crypto.trustapp.interact.FindDefaultWalletInteract;
-import com.wallet.crypto.trustapp.repository.EthereumNetworkRepositoryType;
+import com.wallet.crypto.trustapp.repository.EthereumNetworkRepository;
 import com.wallet.crypto.trustapp.router.ManageWalletsRouter;
 
 import javax.inject.Inject;
@@ -26,7 +26,7 @@ import dagger.android.AndroidInjection;
 public class SettingsFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
     @Inject
-    EthereumNetworkRepositoryType ethereumNetworkRepository;
+    EthereumNetworkRepository ethereumNetworkRepository;
     @Inject
     FindDefaultWalletInteract findDefaultWalletInteract;
     @Inject

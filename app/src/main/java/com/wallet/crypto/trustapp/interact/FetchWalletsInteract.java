@@ -1,16 +1,16 @@
 package com.wallet.crypto.trustapp.interact;
 
 import com.wallet.crypto.trustapp.entity.Wallet;
-import com.wallet.crypto.trustapp.repository.WalletRepositoryType;
+import com.wallet.crypto.trustapp.repository.WalletRepository;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class FetchWalletsInteract {
 
-	private final WalletRepositoryType accountRepository;
+	private final WalletRepository accountRepository;
 
-	public FetchWalletsInteract(WalletRepositoryType accountRepository) {
+	public FetchWalletsInteract(WalletRepository accountRepository) {
 		this.accountRepository = accountRepository;
 	}
 

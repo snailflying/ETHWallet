@@ -4,9 +4,9 @@ import com.wallet.crypto.trustapp.interact.FetchTransactionsInteract;
 import com.wallet.crypto.trustapp.interact.FindDefaultNetworkInteract;
 import com.wallet.crypto.trustapp.interact.FindDefaultWalletInteract;
 import com.wallet.crypto.trustapp.interact.GetDefaultWalletBalance;
-import com.wallet.crypto.trustapp.repository.EthereumNetworkRepositoryType;
-import com.wallet.crypto.trustapp.repository.TransactionRepositoryType;
-import com.wallet.crypto.trustapp.repository.WalletRepositoryType;
+import com.wallet.crypto.trustapp.repository.EthereumNetworkRepository;
+import com.wallet.crypto.trustapp.repository.TransactionRepository;
+import com.wallet.crypto.trustapp.repository.WalletRepository;
 import com.wallet.crypto.trustapp.router.ExternalBrowserRouter;
 import com.wallet.crypto.trustapp.router.ManageWalletsRouter;
 import com.wallet.crypto.trustapp.router.MyAddressRouter;
@@ -50,23 +50,23 @@ class TransactionsModule {
 
     @Provides
     FindDefaultNetworkInteract provideFindDefaultNetworkInteract(
-            EthereumNetworkRepositoryType ethereumNetworkRepositoryType) {
+            EthereumNetworkRepository ethereumNetworkRepositoryType) {
         return new FindDefaultNetworkInteract(ethereumNetworkRepositoryType);
     }
 
     @Provides
-    FindDefaultWalletInteract provideFindDefaultWalletInteract(WalletRepositoryType walletRepository) {
+    FindDefaultWalletInteract provideFindDefaultWalletInteract(WalletRepository walletRepository) {
         return new FindDefaultWalletInteract(walletRepository);
     }
 
     @Provides
-    FetchTransactionsInteract provideFetchTransactionsInteract(TransactionRepositoryType transactionRepository) {
+    FetchTransactionsInteract provideFetchTransactionsInteract(TransactionRepository transactionRepository) {
         return new FetchTransactionsInteract(transactionRepository);
     }
 
     @Provides
     GetDefaultWalletBalance provideGetDefaultWalletBalance(
-            WalletRepositoryType walletRepository, EthereumNetworkRepositoryType ethereumNetworkRepository) {
+            WalletRepository walletRepository, EthereumNetworkRepository ethereumNetworkRepository) {
         return new GetDefaultWalletBalance(walletRepository, ethereumNetworkRepository);
     }
 
@@ -81,7 +81,9 @@ class TransactionsModule {
     }
 
     @Provides
-    SendRouter provideSendRouter() { return new SendRouter(); }
+    SendRouter provideSendRouter() {
+        return new SendRouter();
+    }
 
     @Provides
     TransactionDetailRouter provideTransactionDetailRouter() {

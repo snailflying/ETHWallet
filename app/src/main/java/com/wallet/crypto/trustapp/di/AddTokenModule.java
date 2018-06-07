@@ -2,8 +2,8 @@ package com.wallet.crypto.trustapp.di;
 
 import com.wallet.crypto.trustapp.interact.AddTokenInteract;
 import com.wallet.crypto.trustapp.interact.FindDefaultWalletInteract;
-import com.wallet.crypto.trustapp.repository.TokenRepositoryType;
-import com.wallet.crypto.trustapp.repository.WalletRepositoryType;
+import com.wallet.crypto.trustapp.repository.TokenRepository;
+import com.wallet.crypto.trustapp.repository.WalletRepository;
 import com.wallet.crypto.trustapp.router.MyTokensRouter;
 import com.wallet.crypto.trustapp.viewmodel.AddTokenViewModelFactory;
 
@@ -24,13 +24,13 @@ public class AddTokenModule {
 
     @Provides
     AddTokenInteract provideAddTokenInteract(
-            TokenRepositoryType tokenRepository,
-            WalletRepositoryType walletRepository) {
+            TokenRepository tokenRepository,
+            WalletRepository walletRepository) {
         return new AddTokenInteract(walletRepository, tokenRepository);
     }
 
     @Provides
-    FindDefaultWalletInteract provideFindDefaultWalletInteract(WalletRepositoryType walletRepository) {
+    FindDefaultWalletInteract provideFindDefaultWalletInteract(WalletRepository walletRepository) {
         return new FindDefaultWalletInteract(walletRepository);
     }
 

@@ -17,7 +17,7 @@ import java.util.Map;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
-public class TrustPasswordStore implements PasswordStore {
+public class TrustPasswordStore {
 
 	private final Context context;
 
@@ -47,7 +47,6 @@ public class TrustPasswordStore implements PasswordStore {
         }
     }
 
-    @Override
 	public Single<String> getPassword(Wallet wallet) {
 		return Single.fromCallable(() -> {
 //            return new String(KS.get(context, wallet.address));
@@ -64,7 +63,6 @@ public class TrustPasswordStore implements PasswordStore {
         });
 	}
 
-	@Override
 	public Completable setPassword(Wallet wallet, String password) {
 		return Completable.fromAction(() -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -79,7 +77,6 @@ public class TrustPasswordStore implements PasswordStore {
         });
 	}
 
-	@Override
 	public Single<String> generatePassword() {
 		return Single.fromCallable(() -> {
             byte bytes[] = new byte[256];

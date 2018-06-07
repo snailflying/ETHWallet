@@ -1,8 +1,8 @@
 package com.wallet.crypto.trustapp.interact;
 
 import com.wallet.crypto.trustapp.entity.Wallet;
-import com.wallet.crypto.trustapp.repository.PasswordStore;
-import com.wallet.crypto.trustapp.repository.WalletRepositoryType;
+import com.wallet.crypto.trustapp.repository.TrustPasswordStore;
+import com.wallet.crypto.trustapp.repository.WalletRepository;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -11,10 +11,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
  * Delete and fetch wallets
  */
 public class DeleteWalletInteract {
-	private final WalletRepositoryType walletRepository;
-	private final PasswordStore passwordStore;
+	private final WalletRepository walletRepository;
+	private final TrustPasswordStore passwordStore;
 
-	public DeleteWalletInteract(WalletRepositoryType walletRepository, PasswordStore passwordStore) {
+	public DeleteWalletInteract(WalletRepository walletRepository, TrustPasswordStore passwordStore) {
 		this.walletRepository = walletRepository;
 		this.passwordStore = passwordStore;
 	}

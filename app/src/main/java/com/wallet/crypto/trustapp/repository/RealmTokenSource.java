@@ -12,14 +12,12 @@ import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import io.realm.Sort;
 
-public class RealmTokenSource implements TokenLocalSource {
+public class RealmTokenSource{
 
-    @Override
     public Completable put(NetworkInfo networkInfo, Wallet wallet, TokenInfo tokenInfo) {
         return Completable.fromAction(() -> putInNeed(networkInfo, wallet, tokenInfo));
     }
 
-    @Override
     public Single<TokenInfo[]> fetch(NetworkInfo networkInfo, Wallet wallet) {
         return Single.fromCallable(() -> {
             Realm realm = null;

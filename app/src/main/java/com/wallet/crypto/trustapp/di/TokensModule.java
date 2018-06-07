@@ -2,8 +2,8 @@ package com.wallet.crypto.trustapp.di;
 
 import com.wallet.crypto.trustapp.interact.FetchTokensInteract;
 import com.wallet.crypto.trustapp.interact.FindDefaultNetworkInteract;
-import com.wallet.crypto.trustapp.repository.EthereumNetworkRepositoryType;
-import com.wallet.crypto.trustapp.repository.TokenRepositoryType;
+import com.wallet.crypto.trustapp.repository.EthereumNetworkRepository;
+import com.wallet.crypto.trustapp.repository.TokenRepository;
 import com.wallet.crypto.trustapp.router.AddTokenRouter;
 import com.wallet.crypto.trustapp.router.SendTokenRouter;
 import com.wallet.crypto.trustapp.router.TransactionsRouter;
@@ -32,12 +32,12 @@ class TokensModule {
 
     @Provides
     FindDefaultNetworkInteract provideFindDefaultNetworkInteract(
-            EthereumNetworkRepositoryType networkRepository) {
+            EthereumNetworkRepository networkRepository) {
         return new FindDefaultNetworkInteract(networkRepository);
     }
 
     @Provides
-    FetchTokensInteract provideFetchTokensInteract(TokenRepositoryType tokenRepository) {
+    FetchTokensInteract provideFetchTokensInteract(TokenRepository tokenRepository) {
         return new FetchTokensInteract(tokenRepository);
     }
 

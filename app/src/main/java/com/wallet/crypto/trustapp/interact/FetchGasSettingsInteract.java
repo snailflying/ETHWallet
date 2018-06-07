@@ -2,12 +2,12 @@ package com.wallet.crypto.trustapp.interact;
 
 
 import com.wallet.crypto.trustapp.entity.GasSettings;
-import com.wallet.crypto.trustapp.repository.PreferenceRepositoryType;
+import com.wallet.crypto.trustapp.repository.SharedPreferenceRepository;
 
 public class FetchGasSettingsInteract {
-    private final PreferenceRepositoryType repository;
+    private final SharedPreferenceRepository repository;
 
-    public FetchGasSettingsInteract(PreferenceRepositoryType repository) {
+    public FetchGasSettingsInteract(SharedPreferenceRepository repository) {
         this.repository = repository;
     }
 

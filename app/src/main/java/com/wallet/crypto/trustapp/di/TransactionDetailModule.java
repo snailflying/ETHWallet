@@ -2,8 +2,8 @@ package com.wallet.crypto.trustapp.di;
 
 import com.wallet.crypto.trustapp.interact.FindDefaultNetworkInteract;
 import com.wallet.crypto.trustapp.interact.FindDefaultWalletInteract;
-import com.wallet.crypto.trustapp.repository.EthereumNetworkRepositoryType;
-import com.wallet.crypto.trustapp.repository.WalletRepositoryType;
+import com.wallet.crypto.trustapp.repository.EthereumNetworkRepository;
+import com.wallet.crypto.trustapp.repository.WalletRepository;
 import com.wallet.crypto.trustapp.router.ExternalBrowserRouter;
 import com.wallet.crypto.trustapp.viewmodel.TransactionDetailViewModelFactory;
 
@@ -24,7 +24,7 @@ public class TransactionDetailModule {
 
     @Provides
     FindDefaultNetworkInteract provideFindDefaultNetworkInteract(
-            EthereumNetworkRepositoryType ethereumNetworkRepository) {
+            EthereumNetworkRepository ethereumNetworkRepository) {
         return new FindDefaultNetworkInteract(ethereumNetworkRepository);
     }
 
@@ -34,7 +34,7 @@ public class TransactionDetailModule {
     }
 
     @Provides
-    FindDefaultWalletInteract findDefaultWalletInteract(WalletRepositoryType walletRepository) {
+    FindDefaultWalletInteract findDefaultWalletInteract(WalletRepository walletRepository) {
         return new FindDefaultWalletInteract(walletRepository);
     }
 }
