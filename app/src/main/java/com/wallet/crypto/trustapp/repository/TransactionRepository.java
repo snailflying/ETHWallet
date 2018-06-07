@@ -79,15 +79,18 @@ public class TransactionRepository {
                     .send();
             return ethGetTransactionCount.getTransactionCount();
         })
-                .flatMap(nonce -> accountKeystoreService.signTransaction(from, password, toAddress, subunitAmount, gasPrice, gasLimit, nonce.longValue(), data, networkRepository.getDefaultNetwork().chainId))
-                .flatMap(signedMessage -> Single.fromCallable(() -> {
-                    EthSendTransaction raw = web3j
-                            .ethSendRawTransaction(Numeric.toHexString(signedMessage))
-                            .send();
-                    if (raw.hasError()) {
-                        throw new ServiceException(raw.getError().getMessage());
-                    }
-                    return raw.getTransactionHash();
+                .flatMap(
+                        nonce -> accountKeystoreService.signTransaction(from, password, toAddress, subunitAmount, gasPrice, gasLimit, nonce.longValue(), data, networkRepository.getDefaultNetwork().chainId))
+                .flatMap(
+                        signedMessage -> Single.fromCallable(() -> {
+                            EthSendTransaction raw = web3j
+                                    .ethSendRawTransaction(Numeric.toHexString(signedMessage))
+                                    .send();
+                            if (raw.hasError()) {
+                                throw new ServiceException(raw.getError().getMessage());
+                            }
+                            return raw.getTransactionHash();
+
                 })).subscribeOn(Schedulers.io());
     }
 
