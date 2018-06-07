@@ -2,7 +2,6 @@ package com.wallet.crypto.trustapp.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -28,9 +27,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
-
-import static com.wallet.crypto.trustapp.C.Key.TRANSACTION;
+import static com.wallet.crypto.trustapp.TrustConstants.Key.TRANSACTION;
 
 public class TransactionDetailActivity extends BaseActivity implements View.OnClickListener {
 

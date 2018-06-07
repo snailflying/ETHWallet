@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.wallet.crypto.trustapp.entity.Wallet;
 import com.wallet.crypto.trustapp.ui.MyAddressActivity;
 
-import static com.wallet.crypto.trustapp.C.Key.WALLET;
+import static com.wallet.crypto.trustapp.TrustConstants.Key.WALLET;
 
 public class MyAddressRouter {
 

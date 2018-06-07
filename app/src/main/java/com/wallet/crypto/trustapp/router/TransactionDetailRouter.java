@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.wallet.crypto.trustapp.entity.Transaction;
 import com.wallet.crypto.trustapp.ui.TransactionDetailActivity;
 
-import static com.wallet.crypto.trustapp.C.Key.TRANSACTION;
+import static com.wallet.crypto.trustapp.TrustConstants.Key.TRANSACTION;
 
 public class TransactionDetailRouter {
 

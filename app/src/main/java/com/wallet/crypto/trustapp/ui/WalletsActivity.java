@@ -30,10 +30,8 @@ import com.wallet.crypto.trustapp.widget.SystemView;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
-
-import static com.wallet.crypto.trustapp.C.IMPORT_REQUEST_CODE;
-import static com.wallet.crypto.trustapp.C.SHARE_REQUEST_CODE;
+import static com.wallet.crypto.trustapp.TrustConstants.IMPORT_REQUEST_CODE;
+import static com.wallet.crypto.trustapp.TrustConstants.SHARE_REQUEST_CODE;
 
 public class WalletsActivity extends BaseActivity implements
 		View.OnClickListener,

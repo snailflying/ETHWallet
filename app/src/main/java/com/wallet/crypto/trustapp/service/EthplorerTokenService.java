@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-import static com.wallet.crypto.trustapp.C.ErrorCode.UNKNOWN;
+import static com.wallet.crypto.trustapp.TrustConstants.ErrorCode.UNKNOWN;
 
 public class EthplorerTokenService{
     private static final String ETHPLORER_API_URL = "https://api.ethplorer.io";

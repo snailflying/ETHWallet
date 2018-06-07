@@ -12,7 +12,7 @@ import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.widget.ProgressBar;
 
-import com.wallet.crypto.trustapp.C;
+import com.wallet.crypto.trustapp.TrustConstants;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.entity.ErrorEnvelope;
 import com.wallet.crypto.trustapp.entity.Wallet;
@@ -24,8 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-
-import dagger.android.AndroidInjection;
 
 public class ImportWalletActivity extends BaseActivity {
 
@@ -81,7 +79,7 @@ public class ImportWalletActivity extends BaseActivity {
 
     private void onWallet(Wallet wallet) {
         Intent result = new Intent();
-        result.putExtra(C.Key.WALLET, wallet);
+        result.putExtra(TrustConstants.Key.WALLET, wallet);
         setResult(RESULT_OK, result);
         finish();
     }

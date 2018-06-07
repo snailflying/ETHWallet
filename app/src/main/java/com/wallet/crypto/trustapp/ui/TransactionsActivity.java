@@ -20,7 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.wallet.crypto.trustapp.C;
+import com.wallet.crypto.trustapp.TrustConstants;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.entity.ErrorEnvelope;
 import com.wallet.crypto.trustapp.entity.NetworkInfo;
@@ -39,10 +39,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
-
-import static com.wallet.crypto.trustapp.C.ETHEREUM_NETWORK_NAME;
-import static com.wallet.crypto.trustapp.C.ETH_SYMBOL;
+import static com.wallet.crypto.trustapp.TrustConstants.ETHEREUM_NETWORK_NAME;
 
 public class TransactionsActivity extends BaseNavigationActivity implements View.OnClickListener {
 
@@ -177,11 +174,11 @@ public class TransactionsActivity extends BaseNavigationActivity implements View
         if (actionBar == null || networkInfo == null || wallet == null) {
             return;
         }
-        if (TextUtils.isEmpty(balance.get(C.USD_SYMBOL))) {
+        if (TextUtils.isEmpty(balance.get(TrustConstants.USD_SYMBOL))) {
             actionBar.setTitle(balance.get(networkInfo.symbol) + " " + networkInfo.symbol);
             actionBar.setSubtitle("");
         } else {
-            actionBar.setTitle("$" + balance.get(C.USD_SYMBOL));
+            actionBar.setTitle("$" + balance.get(TrustConstants.USD_SYMBOL));
             actionBar.setSubtitle(balance.get(networkInfo.symbol) + " " + networkInfo.symbol);
         }
     }

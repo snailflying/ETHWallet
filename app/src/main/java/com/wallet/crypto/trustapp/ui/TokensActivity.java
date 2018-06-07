@@ -22,7 +22,7 @@ import com.wallet.crypto.trustapp.widget.SystemView;
 
 import javax.inject.Inject;
 
-import static com.wallet.crypto.trustapp.C.Key.WALLET;
+import static com.wallet.crypto.trustapp.TrustConstants.Key.WALLET;
 
 public class TokensActivity extends BaseActivity implements View.OnClickListener {
     @Inject

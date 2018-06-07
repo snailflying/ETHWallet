@@ -1,6 +1,6 @@
 package com.wallet.crypto.trustapp;
 
-public abstract class C {
+public abstract class TrustConstants {
 
     public static final int IMPORT_REQUEST_CODE = 1001;
     public static final int EXPORT_REQUEST_CODE = 1002;
@@ -46,6 +46,7 @@ public abstract class C {
     public static final long GAS_PRICE_MIN = 1000000000L;
     public static final long NETWORK_FEE_MAX = 20000000000000000L;
     public static final int ETHER_DECIMALS = 18;
+    public static final String DB_NAME = "db_turst_app";
 
     public interface ErrorCode {
 

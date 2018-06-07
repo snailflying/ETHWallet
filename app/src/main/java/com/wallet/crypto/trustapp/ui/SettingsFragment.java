@@ -12,7 +12,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 
-import com.wallet.crypto.trustapp.C;
+import com.wallet.crypto.trustapp.TrustConstants;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.entity.NetworkInfo;
 import com.wallet.crypto.trustapp.interact.FindDefaultWalletInteract;
@@ -103,7 +103,7 @@ public class SettingsFragment extends PreferenceFragment
         final Preference donate = findPreference("pref_donate");
         donate.setOnPreferenceClickListener(preference -> {
             Intent intent = new Intent(getActivity(), SendActivity.class);
-            intent.putExtra(C.EXTRA_ADDRESS, C.DONATION_ADDRESS);
+            intent.putExtra(TrustConstants.EXTRA_ADDRESS, TrustConstants.DONATION_ADDRESS);
             startActivity(intent);
             return true;
         });

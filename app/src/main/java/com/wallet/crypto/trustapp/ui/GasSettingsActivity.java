@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.wallet.crypto.trustapp.C;
+import com.wallet.crypto.trustapp.TrustConstants;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.entity.NetworkInfo;
 import com.wallet.crypto.trustapp.util.BalanceUtils;
@@ -21,8 +21,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import javax.inject.Inject;
-
-import dagger.android.AndroidInjection;
 
 public class GasSettingsActivity extends BaseActivity {
 
@@ -59,12 +57,12 @@ public class GasSettingsActivity extends BaseActivity {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(GasSettingsViewModel.class);
 
-        BigInteger gasPrice = new BigInteger(getIntent().getStringExtra(C.EXTRA_GAS_PRICE));
-        BigInteger gasLimit = new BigInteger(getIntent().getStringExtra(C.EXTRA_GAS_LIMIT));
-        BigInteger gasLimitMin = BigInteger.valueOf(C.GAS_LIMIT_MIN);
-        BigInteger gasLimitMax = BigInteger.valueOf(C.GAS_LIMIT_MAX);
-        BigInteger gasPriceMin = BigInteger.valueOf(C.GAS_PRICE_MIN);
-        BigInteger networkFeeMax = BigInteger.valueOf(C.NETWORK_FEE_MAX);
+        BigInteger gasPrice = new BigInteger(getIntent().getStringExtra(TrustConstants.EXTRA_GAS_PRICE));
+        BigInteger gasLimit = new BigInteger(getIntent().getStringExtra(TrustConstants.EXTRA_GAS_LIMIT));
+        BigInteger gasLimitMin = BigInteger.valueOf(TrustConstants.GAS_LIMIT_MIN);
+        BigInteger gasLimitMax = BigInteger.valueOf(TrustConstants.GAS_LIMIT_MAX);
+        BigInteger gasPriceMin = BigInteger.valueOf(TrustConstants.GAS_PRICE_MIN);
+        BigInteger networkFeeMax = BigInteger.valueOf(TrustConstants.NETWORK_FEE_MAX);
 
         final int gasPriceMinGwei = BalanceUtils.weiToGweiBI(gasPriceMin).intValue();
         gasPriceSlider.setMax(BalanceUtils
@@ -131,12 +129,12 @@ public class GasSettingsActivity extends BaseActivity {
     }
 
     private void onDefaultNetwork(NetworkInfo network) {
-        gasPriceInfoText.setText(getString(R.string.info_gas_price).replace(C.ETHEREUM_NETWORK_NAME, network.name));
-        gasLimitInfoText.setText(getString(R.string.info_gas_limit).replace(C.ETHEREUM_NETWORK_NAME, network.symbol));
+        gasPriceInfoText.setText(getString(R.string.info_gas_price).replace(TrustConstants.ETHEREUM_NETWORK_NAME, network.name));
+        gasLimitInfoText.setText(getString(R.string.info_gas_limit).replace(TrustConstants.ETHEREUM_NETWORK_NAME, network.symbol));
     }
 
     private void onGasPrice(BigInteger price) {
-        String priceStr = BalanceUtils.weiToGwei(price) + " " + C.GWEI_UNIT;
+        String priceStr = BalanceUtils.weiToGwei(price) + " " + TrustConstants.GWEI_UNIT;
         gasPriceText.setText(priceStr);
 
         updateNetworkFee();
@@ -149,7 +147,7 @@ public class GasSettingsActivity extends BaseActivity {
     }
 
     private void updateNetworkFee() {
-        String fee = BalanceUtils.weiToEth(viewModel.networkFee()).toPlainString() + " " + C.ETH_SYMBOL;
+        String fee = BalanceUtils.weiToEth(viewModel.networkFee()).toPlainString() + " " + TrustConstants.ETH_SYMBOL;
         networkFeeText.setText(fee);
     }
 
@@ -165,8 +163,8 @@ public class GasSettingsActivity extends BaseActivity {
         switch (item.getItemId()) {
             case R.id.action_save: {
                 Intent intent = new Intent();
-                intent.putExtra(C.EXTRA_GAS_PRICE, viewModel.gasPrice().getValue().toString());
-                intent.putExtra(C.EXTRA_GAS_LIMIT, viewModel.gasLimit().getValue().toString());
+                intent.putExtra(TrustConstants.EXTRA_GAS_PRICE, viewModel.gasPrice().getValue().toString());
+                intent.putExtra(TrustConstants.EXTRA_GAS_LIMIT, viewModel.gasLimit().getValue().toString());
                 setResult(RESULT_OK, intent);
                 finish();
             }

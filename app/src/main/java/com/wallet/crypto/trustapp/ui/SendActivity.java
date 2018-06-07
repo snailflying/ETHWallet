@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
-import com.wallet.crypto.trustapp.C;
+import com.wallet.crypto.trustapp.TrustConstants;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.ui.barcode.BarcodeCaptureActivity;
 import com.wallet.crypto.trustapp.util.BalanceUtils;
@@ -25,14 +25,11 @@ import com.wallet.crypto.trustapp.viewmodel.SendViewModelFactory;
 
 //import org.ethereum.geth.Address;
 
-import org.web3j.abi.datatypes.Address;
 import org.web3j.crypto.WalletUtils;
 
 import java.math.BigInteger;
 
 import javax.inject.Inject;
-
-import dagger.android.AndroidInjection;
 
 public class SendActivity extends BaseActivity {
 
@@ -70,17 +67,17 @@ public class SendActivity extends BaseActivity {
         amountInputLayout = findViewById(R.id.amount_input_layout);
         amountText = findViewById(R.id.send_amount);
 
-        contractAddress = getIntent().getStringExtra(C.EXTRA_CONTRACT_ADDRESS);
-        decimals = getIntent().getIntExtra(C.EXTRA_DECIMALS, C.ETHER_DECIMALS);
-        symbol = getIntent().getStringExtra(C.EXTRA_SYMBOL);
-        symbol = symbol == null ? C.ETH_SYMBOL : symbol;
-        sendingTokens = getIntent().getBooleanExtra(C.EXTRA_SENDING_TOKENS, false);
+        contractAddress = getIntent().getStringExtra(TrustConstants.EXTRA_CONTRACT_ADDRESS);
+        decimals = getIntent().getIntExtra(TrustConstants.EXTRA_DECIMALS, TrustConstants.ETHER_DECIMALS);
+        symbol = getIntent().getStringExtra(TrustConstants.EXTRA_SYMBOL);
+        symbol = symbol == null ? TrustConstants.ETH_SYMBOL : symbol;
+        sendingTokens = getIntent().getBooleanExtra(TrustConstants.EXTRA_SENDING_TOKENS, false);
 
         setTitle(getString(R.string.title_send) + " " + symbol);
         amountInputLayout.setHint(getString(R.string.hint_amount) + " " + symbol);
 
         // Populate to address if it has been passed forward
-        String toAddress = getIntent().getStringExtra(C.EXTRA_ADDRESS);
+        String toAddress = getIntent().getStringExtra(TrustConstants.EXTRA_ADDRESS);
         if (toAddress != null) {
             toAddressText.setText(toAddress);
         }

@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.wallet.crypto.trustapp.C;
+import com.wallet.crypto.trustapp.TrustConstants;
 import com.wallet.crypto.trustapp.R;
 import com.wallet.crypto.trustapp.entity.ErrorEnvelope;
 import com.wallet.crypto.trustapp.entity.GasSettings;
@@ -28,8 +28,6 @@ import com.wallet.crypto.trustapp.viewmodel.GasSettingsViewModel;
 import java.math.BigInteger;
 
 import javax.inject.Inject;
-
-import dagger.android.AndroidInjection;
 
 public class ConfirmationActivity extends BaseActivity {
     AlertDialog dialog;
@@ -70,12 +68,12 @@ public class ConfirmationActivity extends BaseActivity {
 
         sendButton.setOnClickListener(view -> onSend());
 
-        String toAddress = getIntent().getStringExtra(C.EXTRA_TO_ADDRESS);
-        contractAddress = getIntent().getStringExtra(C.EXTRA_CONTRACT_ADDRESS);
-        amount = new BigInteger(getIntent().getStringExtra(C.EXTRA_AMOUNT));
-        decimals = getIntent().getIntExtra(C.EXTRA_DECIMALS, -1);
-        String symbol = getIntent().getStringExtra(C.EXTRA_SYMBOL);
-        symbol = symbol == null ? C.ETH_SYMBOL : symbol;
+        String toAddress = getIntent().getStringExtra(TrustConstants.EXTRA_TO_ADDRESS);
+        contractAddress = getIntent().getStringExtra(TrustConstants.EXTRA_CONTRACT_ADDRESS);
+        amount = new BigInteger(getIntent().getStringExtra(TrustConstants.EXTRA_AMOUNT));
+        decimals = getIntent().getIntExtra(TrustConstants.EXTRA_DECIMALS, -1);
+        String symbol = getIntent().getStringExtra(TrustConstants.EXTRA_SYMBOL);
+        symbol = symbol == null ? TrustConstants.ETH_SYMBOL : symbol;
 
         confirmationForTokenTransfer = contractAddress != null;
 
@@ -182,12 +180,12 @@ public class ConfirmationActivity extends BaseActivity {
     }
 
     private void onGasSettings(GasSettings gasSettings) {
-        String gasPrice = BalanceUtils.weiToGwei(gasSettings.gasPrice) + " " + C.GWEI_UNIT;
+        String gasPrice = BalanceUtils.weiToGwei(gasSettings.gasPrice) + " " + TrustConstants.GWEI_UNIT;
         gasPriceText.setText(gasPrice);
         gasLimitText.setText(gasSettings.gasLimit.toString());
 
         String networkFee = BalanceUtils.weiToEth(gasSettings
-                .gasPrice.multiply(gasSettings.gasLimit)).toPlainString() + " " + C.ETH_SYMBOL;
+                .gasPrice.multiply(gasSettings.gasLimit)).toPlainString() + " " + TrustConstants.ETH_SYMBOL;
         networkFeeText.setText(networkFee);
     }
 
@@ -207,8 +205,8 @@ public class ConfirmationActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == GasSettingsViewModel.SET_GAS_SETTINGS) {
             if (resultCode == RESULT_OK) {
-                BigInteger gasPrice = new BigInteger(intent.getStringExtra(C.EXTRA_GAS_PRICE));
-                BigInteger gasLimit = new BigInteger(intent.getStringExtra(C.EXTRA_GAS_LIMIT));
+                BigInteger gasPrice = new BigInteger(intent.getStringExtra(TrustConstants.EXTRA_GAS_PRICE));
+                BigInteger gasLimit = new BigInteger(intent.getStringExtra(TrustConstants.EXTRA_GAS_LIMIT));
                 GasSettings settings = new GasSettings(gasPrice, gasLimit);
                 viewModel.gasSettings().postValue(settings);
             }

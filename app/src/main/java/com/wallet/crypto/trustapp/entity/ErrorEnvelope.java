@@ -2,7 +2,7 @@ package com.wallet.crypto.trustapp.entity;
 
 import android.support.annotation.Nullable;
 
-import com.wallet.crypto.trustapp.C;
+import com.wallet.crypto.trustapp.TrustConstants;
 
 public class ErrorEnvelope {
     public final int code;
@@ -12,7 +12,7 @@ public class ErrorEnvelope {
     private final Throwable throwable;
 
     public ErrorEnvelope(@Nullable String message) {
-        this(C.ErrorCode.UNKNOWN, message);
+        this(TrustConstants.ErrorCode.UNKNOWN, message);
     }
 
     public ErrorEnvelope(int code, @Nullable String message) {

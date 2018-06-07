@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 
-import com.wallet.crypto.trustapp.C;
+import com.wallet.crypto.trustapp.TrustConstants;
 import com.wallet.crypto.trustapp.entity.ErrorEnvelope;
 import com.wallet.crypto.trustapp.entity.Wallet;
 import com.wallet.crypto.trustapp.interact.CreateWalletInteract;
@@ -17,7 +17,7 @@ import com.wallet.crypto.trustapp.interact.SetDefaultWalletInteract;
 import com.wallet.crypto.trustapp.router.ImportWalletRouter;
 import com.wallet.crypto.trustapp.router.TransactionsRouter;
 
-import static com.wallet.crypto.trustapp.C.IMPORT_REQUEST_CODE;
+import static com.wallet.crypto.trustapp.TrustConstants.IMPORT_REQUEST_CODE;
 
 public class WalletsViewModel extends BaseViewModel {
 
@@ -125,11 +125,11 @@ public class WalletsViewModel extends BaseViewModel {
     }
 
     private void onExportError(Throwable throwable) {
-        exportWalletError.postValue(new ErrorEnvelope(C.ErrorCode.UNKNOWN, null));
+        exportWalletError.postValue(new ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, null));
     }
 
     private void onCreateWalletError(Throwable throwable) {
-        createWalletError.postValue(new ErrorEnvelope(C.ErrorCode.UNKNOWN, null));
+        createWalletError.postValue(new ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, null));
 	}
 
 	public void importWallet(Activity activity) {

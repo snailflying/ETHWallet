@@ -5,7 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
 
-import com.wallet.crypto.trustapp.C
+import com.wallet.crypto.trustapp.TrustConstants
 import com.wallet.crypto.trustapp.entity.ErrorEnvelope
 import com.wallet.crypto.trustapp.entity.ServiceException
 
@@ -40,7 +40,7 @@ open class BaseViewModel : ViewModel() {
         if (throwable is ServiceException) {
             error.postValue(throwable.error)
         } else {
-            error.postValue(ErrorEnvelope(C.ErrorCode.UNKNOWN, null, throwable))
+            error.postValue(ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, null, throwable))
             // TODO: Add dialog with offer send error log to developers: notify about error.
             Log.d("SESSION", "Err", throwable)
         }
