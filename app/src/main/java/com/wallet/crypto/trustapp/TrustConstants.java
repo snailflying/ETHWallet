@@ -46,7 +46,7 @@ public abstract class TrustConstants {
     public static final long GAS_PRICE_MIN = 1000000000L;
     public static final long NETWORK_FEE_MAX = 20000000000000000L;
     public static final int ETHER_DECIMALS = 18;
-    public static final String DB_NAME = "db_turst_app";
+    public static final String DB_NAME = "db_trust_app";
 
     public interface ErrorCode {
 

@@ -19,13 +19,13 @@ import io.reactivex.Single;
 
 public class TrustPasswordStore {
 
-	private final Context context;
+    private final Context context;
 
-	public TrustPasswordStore(Context context) {
-		this.context = context;
+    public TrustPasswordStore(Context context) {
+        this.context = context;
 
-		migrate();
-	}
+        migrate();
+    }
 
     private void migrate() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -47,8 +47,8 @@ public class TrustPasswordStore {
         }
     }
 
-	public Single<String> getPassword(Wallet wallet) {
-		return Single.fromCallable(() -> {
+    public Single<String> getPassword(Wallet wallet) {
+        return Single.fromCallable(() -> {
 //            return new String(KS.get(context, wallet.address));
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -61,10 +61,10 @@ public class TrustPasswordStore {
                 }
             }
         });
-	}
+    }
 
-	public Completable setPassword(Wallet wallet, String password) {
-		return Completable.fromAction(() -> {
+    public Completable setPassword(Wallet wallet, String password) {
+        return Completable.fromAction(() -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 KS.put(context, wallet.getAddress(), password);
             } else {
@@ -75,14 +75,15 @@ public class TrustPasswordStore {
                 }
             }
         });
-	}
+    }
 
-	public Single<String> generatePassword() {
-		return Single.fromCallable(() -> {
+    public Single<String> generatePassword() {
+        return Single.fromCallable(() -> {
             byte bytes[] = new byte[256];
             SecureRandom random = new SecureRandom();
             random.nextBytes(bytes);
-            return new String(bytes);
+//            return new String(bytes);
+            return "abcd1234";
         });
-	}
+    }
 }

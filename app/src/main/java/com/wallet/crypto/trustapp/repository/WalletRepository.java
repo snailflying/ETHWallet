@@ -52,7 +52,7 @@ public class WalletRepository {
 
     public Single<Wallet> createWallet(String password) {
         return accountKeystoreService
-                .createAccount("abcd1234");
+                .createAccount(password);
     }
 
     public Single<Wallet> importKeystoreToWallet(String store, String password, String newPassword) {

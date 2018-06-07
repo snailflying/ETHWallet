@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--enabled属性必须必须前面-->
+    <item android:color="@color/secondary_text" android:state_enabled="false"/>
+
+    <item android:color="@color/white" android:state_focused="true"/> <!-- focused -->
+    <item android:color="@color/white" android:state_pressed="false"/>
+    <item android:color="@color/white" android:state_pressed="true"/>
+    <item android:color="@color/white"/>
+</selector>

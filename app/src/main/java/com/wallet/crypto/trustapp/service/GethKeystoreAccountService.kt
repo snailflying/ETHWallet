@@ -16,13 +16,13 @@ import java.math.BigInteger
 
 class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletStorage.getInstance()) {
 
-     fun createAccount(password: String): Single<Wallet> {
+    fun createAccount(password: String): Single<Wallet> {
         return Single.fromCallable {
             Wallet(keyStore.generateWalletFile(password).address.toLowerCase())
         }.subscribeOn(Schedulers.io())
     }
 
-     fun importKeystore(store: String, password: String, newPassword: String): Single<Wallet> {
+    fun importKeystore(store: String, password: String, newPassword: String): Single<Wallet> {
         return Single.fromCallable {
             val account = keyStore
                     .importWalletByKeystore(store, password)
@@ -31,7 +31,7 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
                 .subscribeOn(Schedulers.io())
     }
 
-     fun importPrivateKey(privateKey: String, newPassword: String): Single<Wallet> {
+    fun importPrivateKey(privateKey: String, newPassword: String): Single<Wallet> {
         return Single.fromCallable {
             val key = BigInteger(privateKey, PRIVATE_KEY_RADIX)
             val keypair = ECKeyPair.create(key)
@@ -40,18 +40,18 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
         }.compose { upstream -> importKeystore(upstream.blockingGet(), newPassword, newPassword) }
     }
 
-     fun exportAccount(wallet: Wallet, password: String, newPassword: String): Single<String> {
+    fun exportAccount(wallet: Wallet, password: String, newPassword: String): Single<String> {
         return Single
                 .fromCallable<String> { keyStore.exportKeystore(wallet.address)!! }
                 .subscribeOn(Schedulers.io())
     }
 
-     fun deleteAccount(address: String, password: String): Completable {
+    fun deleteAccount(address: String, password: String): Completable {
         return Completable.fromCallable { keyStore.deleteWallet(address) }
                 .subscribeOn(Schedulers.io())
     }
 
-     fun signTransaction(signer: Wallet, signerPassword: String, toAddress: String, amount: BigInteger, gasPrice: BigInteger, gasLimit: BigInteger, nonce: Long, data: ByteArray, chainId: Long): Single<ByteArray> {
+    fun signTransaction(signer: Wallet, signerPassword: String, toAddress: String, amount: BigInteger, gasPrice: BigInteger, gasLimit: BigInteger, nonce: Long, data: ByteArray?, chainId: Long): Single<ByteArray> {
         return Single.fromCallable {
             val keys = keyStore.getWalletCredentials(signerPassword, signer.address)
 
@@ -67,11 +67,11 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
         }.subscribeOn(Schedulers.io())
     }
 
-     fun hasAccount(address: String): Boolean {
+    fun hasAccount(address: String): Boolean {
         return keyStore.hasAddress(address)
     }
 
-     fun fetchAccounts(): Single<Array<Wallet?>> {
+    fun fetchAccounts(): Single<Array<Wallet?>> {
         return Single.fromCallable<Array<Wallet?>> {
             val accounts = keyStore.getAccounts()
             val len = accounts.size

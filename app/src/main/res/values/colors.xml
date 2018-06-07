@@ -23,4 +23,25 @@
 	<color name="QRCodeWhiteColor">#FFFFFFFF</color>
 
     <color name="item_icon_tint">#89000000</color>
+
+	<color name="gray_tran">#11B8B8B8</color>
+	<!--规范设计Start-->
+	<color name="bottom_tab_selected">#4949DD</color>
+	<color name="bottom_tab_normal">#DBDBDB</color>
+	<color name="bg_start">#604A95</color>
+	<color name="bg_end">#253E6E</color>
+	<color name="btn_start">#9361F8</color>
+	<color name="btn_end">#6B65E1</color>
+	<color name="btn_pressed_start">#9361F8</color>
+	<color name="btn_pressed_end">#6B65E1</color>
+	<color name="btn_disable_start">#7D9361F8</color>
+	<color name="btn_disable_end">#7D6B65E1</color>
+	<color name="edit_bg">#A4A4EE</color>
+	<color name="toast_bg">#B25A4991</color>
+	<color name="toast_text">#6B36AB</color>
+	<color name="text_gray">#FF4A4A4A</color>
+	<color name="text_light_gray">#9B9B9B</color>
+	<color name="text_blue">#4949DD</color>
+	<color name="text_white">#FFFFFF</color>
+	<!--规范设计End-->
 </resources>
