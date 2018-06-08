@@ -25,7 +25,7 @@ public class EthereumNetworkRepository {
 
     private final NetworkInfo[] NETWORKS = new NetworkInfo[]{
             new NetworkInfo(ETHEREUM_NETWORK_NAME, ETH_SYMBOL,
-                    "https://mainnet.infura.io/llyrtzQ3YhkdESt2Fzrk",
+                    "https://mainnet.infura.io/hFFqayIX3GgnYc6B569b",
                     "https://api.trustwalletapp.com/",
                     "https://etherscan.io/", 1, true),
             new NetworkInfo(CLASSIC_NETWORK_NAME, ETC_SYMBOL,
@@ -36,15 +36,15 @@ public class EthereumNetworkRepository {
                     "https://core.poa.network",
                     "https://poa.trustwalletapp.com", "poa", 99, false),
             new NetworkInfo(KOVAN_NETWORK_NAME, ETH_SYMBOL,
-                    "https://kovan.infura.io/llyrtzQ3YhkdESt2Fzrk",
+                    "https://kovan.infura.io/hFFqayIX3GgnYc6B569b",
                     "https://kovan.trustwalletapp.com/",
                     "https://kovan.etherscan.io", 42, false),
             new NetworkInfo(ROPSTEN_NETWORK_NAME, ETH_SYMBOL,
-                    "https://ropsten.infura.io/llyrtzQ3YhkdESt2Fzrk",
+                    "https://ropsten.infura.io/hFFqayIX3GgnYc6B569b",
                     "https://ropsten.trustwalletapp.com/",
                     "https://ropsten.etherscan.io", 3, false),
             new NetworkInfo(RINKEBY_NETWORK_NAME, ETH_SYMBOL,
-                    "https://rinkeby.infura.io/llyrtzQ3YhkdESt2Fzrk",
+                    "https://rinkeby.infura.io/hFFqayIX3GgnYc6B569b",
                     "https://rinkeby.trustwalletapp.com/",
                     "https://rinkeby.etherscan.io", 4, false)
     };
