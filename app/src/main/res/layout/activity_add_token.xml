@@ -64,7 +64,7 @@
             style="@style/Widget.AppCompat.Button.Colored"
             />
     </LinearLayout>
-    <com.wallet.crypto.trustapp.widget.SystemView
+    <com.wallet.crypto.widget.SystemView
         android:id="@+id/system_view"
         android:background="@color/white"
         android:layout_marginTop="?actionBarSize"

@@ -1,12 +1,12 @@
-package com.wallet.crypto.trustapp;
+package com.wallet.crypto;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.wallet.crypto.trustapp.repository.EthereumNetworkRepository;
-import com.wallet.crypto.trustapp.repository.SharedPreferenceRepository;
-import com.wallet.crypto.trustapp.repository.SharedPreferenceRepository;
+import com.wallet.crypto.repository.EthereumNetworkRepository;
+import com.wallet.crypto.repository.SharedPreferenceRepository;
+import com.wallet.crypto.repository.SharedPreferenceRepository;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;

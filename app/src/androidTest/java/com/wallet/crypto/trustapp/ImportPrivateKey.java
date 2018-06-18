@@ -1,9 +1,9 @@
-package com.wallet.crypto.trustapp;
+package com.wallet.crypto;
 
 import android.support.test.runner.AndroidJUnit4;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wallet.crypto.trustapp.controller.EtherStoreUtils;
+import com.wallet.crypto.controller.EtherStoreUtils;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

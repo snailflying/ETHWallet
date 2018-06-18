@@ -1,4 +1,4 @@
-package com.wallet.crypto.trustapp;
+package com.wallet.crypto;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

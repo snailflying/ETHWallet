@@ -1,6 +1,6 @@
-package com.wallet.crypto.trustapp;
+package com.wallet.crypto;
 
-import com.wallet.crypto.trustapp.util.QRURLParser;
+import com.wallet.crypto.util.QRURLParser;
 
 import org.junit.Test;
 

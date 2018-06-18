@@ -1,12 +1,12 @@
-package com.wallet.crypto.trustapp;
+package com.wallet.crypto;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
-import com.wallet.crypto.trustapp.entity.Wallet;
-import com.wallet.crypto.trustapp.service.GethKeystoreAccountService;
+import com.wallet.crypto.entity.Wallet;
+import com.wallet.crypto.service.GethKeystoreAccountService;
 
 import org.json.JSONObject;
 import org.junit.Before;
