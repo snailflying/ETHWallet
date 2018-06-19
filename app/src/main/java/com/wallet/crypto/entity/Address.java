@@ -2,6 +2,8 @@ package com.wallet.crypto.entity;
 
 import android.text.TextUtils;
 
+import org.web3j.crypto.WalletUtils;
+
 import java.util.regex.Pattern;
 
 public class Address {
@@ -17,6 +19,6 @@ public class Address {
     }
 
     public static boolean isAddress(String address) {
-        return !(TextUtils.isEmpty(address) || !ignoreCaseAddrPattern.matcher(address).find());
+        return WalletUtils.isValidAddress(address);
     }
 }
