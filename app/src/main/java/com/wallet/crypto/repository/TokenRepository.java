@@ -165,6 +165,7 @@ public class TokenRepository {
 
         Function function = new Function("transfer", params, returnTypes);
         String encodedFunction = FunctionEncoder.encode(function);
+        //Numeric.hexStringToByteArray(Numeric.cleanHexPrefix(encodedFunction))
         return encodedFunction;
     }
 }
