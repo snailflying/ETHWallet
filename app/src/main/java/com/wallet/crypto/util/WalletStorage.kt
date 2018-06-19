@@ -270,7 +270,7 @@ class WalletStorage private constructor() {
     }
 
     companion object {
-        private var instance: WalletStorage? = null
+        private var _instance: WalletStorage? = null
         private val objectMapper = ObjectMapperFactory.getObjectMapper()
 
         /**
@@ -294,10 +294,10 @@ class WalletStorage private constructor() {
         private val P = 1
 
         fun getInstance(): WalletStorage {
-            if (instance == null) {
-                instance = WalletStorage()
+            if (_instance == null) {
+                _instance = WalletStorage()
             }
-            return instance!!
+            return _instance!!
         }
     }
 

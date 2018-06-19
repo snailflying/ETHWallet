@@ -62,7 +62,7 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
                     toAddress,
 //                    BigDecimal(amount).multiply(ExchangeCalculator.ONE_ETHER).toBigInteger(),
                     BigDecimal(amount).toBigInteger(),
-                    data
+                    data.toString()
             )
             TransactionEncoder.signMessage(tx, chainId.toByte(), keys)
         }.subscribeOn(Schedulers.io())
