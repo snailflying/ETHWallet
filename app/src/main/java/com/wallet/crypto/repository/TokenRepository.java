@@ -157,7 +157,7 @@ public class TokenRepository {
         return response.getValue();
     }
 
-    public static byte[] createTokenTransferData(String to, BigInteger tokenAmount) {
+    public static String createTokenTransferData(String to, BigInteger tokenAmount) {
         List<Type> params = Arrays.<Type>asList(new Address(to), new Uint256(tokenAmount));
 
         List<TypeReference<?>> returnTypes = Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {
@@ -165,6 +165,6 @@ public class TokenRepository {
 
         Function function = new Function("transfer", params, returnTypes);
         String encodedFunction = FunctionEncoder.encode(function);
-        return Numeric.hexStringToByteArray(Numeric.cleanHexPrefix(encodedFunction));
+        return encodedFunction;
     }
 }

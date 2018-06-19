@@ -51,7 +51,7 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
                 .subscribeOn(Schedulers.io())
     }
 
-    fun signTransaction(signer: Wallet, signerPassword: String, toAddress: String, amount: BigInteger, gasPrice: BigInteger, gasLimit: BigInteger, nonce: Long, data: ByteArray?, chainId: Long): Single<ByteArray> {
+    fun signTransaction(signer: Wallet, signerPassword: String, toAddress: String, amount: BigInteger, gasPrice: BigInteger, gasLimit: BigInteger, nonce: Long, data: String?, chainId: Long): Single<ByteArray> {
         return Single.fromCallable {
             val keys = keyStore.getWalletCredentials(signerPassword, signer.address)
 
@@ -62,7 +62,7 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
                     toAddress,
 //                    BigDecimal(amount).multiply(ExchangeCalculator.ONE_ETHER).toBigInteger(),
                     BigDecimal(amount).toBigInteger(),
-                    data.toString()
+                    data
             )
             TransactionEncoder.signMessage(tx, chainId.toByte(), keys)
         }.subscribeOn(Schedulers.io())

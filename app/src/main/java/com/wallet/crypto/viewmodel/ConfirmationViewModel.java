@@ -49,7 +49,7 @@ public class ConfirmationViewModel extends BaseViewModel {
 
     public void createTokenTransfer(String from, String to, String contractAddress, BigInteger amount, BigInteger gasPrice, BigInteger gasLimit) {
         getProgress().postValue(true);
-        final byte[] data = TokenRepository.createTokenTransferData(to, amount);
+        final String data = TokenRepository.createTokenTransferData(to, amount);
         setDisposable(createTransactionInteract
                 .create(new Wallet(from), contractAddress, BigInteger.valueOf(0), gasPrice, gasLimit, data)
                 .subscribe(this::onCreateTransaction, this::onError));
