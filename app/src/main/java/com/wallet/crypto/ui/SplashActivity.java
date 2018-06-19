@@ -35,9 +35,9 @@ public class SplashActivity extends BaseActivity {
     private void onWallets(Wallet[] wallets) {
         // Start home activity
         if (wallets.length == 0) {
-            new ManageWalletsRouter().open(this, true);
+            new ManageWalletsRouter().open(this, false);
         } else {
-            new TransactionsRouter().open(this, true);
+            new TransactionsRouter().open(this, false);
         }
         finish();
     }

@@ -17,7 +17,6 @@ public class Address {
     }
 
     public static boolean isAddress(String address) {
-        return !(TextUtils.isEmpty(address) || !ignoreCaseAddrPattern.matcher(address).find())
-                && (lowerCaseAddrPattern.matcher(address).find() || upperCaseAddrPattern.matcher(address).find());
+        return !(TextUtils.isEmpty(address) || !ignoreCaseAddrPattern.matcher(address).find());
     }
 }
