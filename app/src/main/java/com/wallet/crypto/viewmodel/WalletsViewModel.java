@@ -139,4 +139,8 @@ public class WalletsViewModel extends BaseViewModel {
     public void showTransactions(Context context) {
         transactionsRouter.open(context, true);
     }
+
+	public void createdPwd(String pwd) {
+		createWalletInteract.createdPwd(pwd);
+	}
 }

@@ -11,7 +11,6 @@ import com.wallet.crypto.entity.Wallet;
 import com.wallet.crypto.util.KS;
 import com.wallet.pwd.trustapp.PasswordManager;
 
-import java.security.SecureRandom;
 import java.util.Map;
 
 import io.reactivex.Completable;
@@ -20,6 +19,7 @@ import io.reactivex.Single;
 public class TrustPasswordStore {
 
     private final Context context;
+    private String pwd;
 
     public TrustPasswordStore(Context context) {
         this.context = context;
@@ -78,12 +78,10 @@ public class TrustPasswordStore {
     }
 
     public Single<String> generatePassword() {
-        return Single.fromCallable(() -> {
-            byte bytes[] = new byte[256];
-            SecureRandom random = new SecureRandom();
-            random.nextBytes(bytes);
-//            return new String(bytes);
-            return "abcd1234";
-        });
+        return Single.fromCallable(() -> pwd);
+    }
+
+    public void createdPwd(String pwd) {
+        this.pwd = pwd;
     }
 }

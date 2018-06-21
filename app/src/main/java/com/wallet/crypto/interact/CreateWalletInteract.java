@@ -42,4 +42,8 @@ public class CreateWalletInteract {
                         .lift(completableErrorProxy(throwable))
                         .toSingle(() -> wallet));
 	}
+
+	public void createdPwd(String pwd) {
+		passwordStore.createdPwd(pwd);
+	}
 }

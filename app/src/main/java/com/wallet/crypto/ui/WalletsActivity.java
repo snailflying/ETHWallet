@@ -19,6 +19,8 @@ import android.view.View;
 import com.wallet.crypto.R;
 import com.wallet.crypto.entity.ErrorEnvelope;
 import com.wallet.crypto.entity.Wallet;
+import com.wallet.crypto.ui.dialog.CreatePwdDialog;
+import com.wallet.crypto.ui.dialog.interfaces.IPositiveButtonDialogListener;
 import com.wallet.crypto.ui.widget.adapter.WalletsAdapter;
 import com.wallet.crypto.util.KeyboardUtils;
 import com.wallet.crypto.viewmodel.WalletsViewModel;
@@ -28,13 +30,17 @@ import com.wallet.crypto.widget.BackupView;
 import com.wallet.crypto.widget.BackupWarningView;
 import com.wallet.crypto.widget.SystemView;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.inject.Inject;
 
 import static com.wallet.crypto.TrustConstants.IMPORT_REQUEST_CODE;
 import static com.wallet.crypto.TrustConstants.SHARE_REQUEST_CODE;
+import static com.wallet.crypto.ui.dialog.DialogManagerKt.showCusDialog;
 
 public class WalletsActivity extends BaseActivity implements
 		View.OnClickListener,
+		IPositiveButtonDialogListener,
         AddWalletView.OnNewWalletClickListener,
         AddWalletView.OnImportWalletClickListener {
 
@@ -191,8 +197,9 @@ public class WalletsActivity extends BaseActivity implements
 	 */
 	@Override
 	public void onNewWallet(View view) {
+		showCusDialog(this, new CreatePwdDialog());
 		hideDialog();
-		viewModel.newWallet();
+//		viewModel.newWallet();
 	}
 
 	/**
@@ -336,5 +343,11 @@ public class WalletsActivity extends BaseActivity implements
 			dialog.dismiss();
 			dialog = null;
 		}
+	}
+
+	@Override
+	public void onPositiveButtonClicked(int requestCode, @NotNull Object any) {
+		viewModel.createdPwd((String)any);
+		viewModel.newWallet();
 	}
 }
