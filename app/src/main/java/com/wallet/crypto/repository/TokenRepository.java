@@ -158,14 +158,13 @@ public class TokenRepository {
     }
 
     public static String createTokenTransferData(String to, BigInteger tokenAmount) {
-        List<Type> params = Arrays.<Type>asList(new Address(to), new Uint256(tokenAmount));
+        List<Type> params = Arrays.asList(new Address(to), new Uint256(tokenAmount));
 
-        List<TypeReference<?>> returnTypes = Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {
+        List<TypeReference<?>> returnTypes = Collections.singletonList(new TypeReference<Bool>() {
         });
 
         Function function = new Function("transfer", params, returnTypes);
-        String encodedFunction = FunctionEncoder.encode(function);
         //Numeric.hexStringToByteArray(Numeric.cleanHexPrefix(encodedFunction))
-        return encodedFunction;
+        return FunctionEncoder.encode(function);
     }
 }

@@ -102,9 +102,10 @@ class WalletStorage private constructor() {
      *
      * @param keystore 原json文件
      * @param pwd      json文件密码
+     * @param newPwd      json文件新密码
      * @return
      */
-    fun importWalletByKeystore(keystore: String, pwd: String): Account? {
+    fun importWalletByKeystore(keystore: String, pwd: String, newPwd: String? = null): Account? {
         var credentials: Credentials? = null
         try {
             var walletFile: WalletFile? = null
@@ -120,9 +121,8 @@ class WalletStorage private constructor() {
             //            ToastUtils.showToast(R.string.load_wallet_by_official_wallet_keystore_input_tip);
             e.printStackTrace()
         }
-
         return if (credentials != null) {
-            generateWalletFile(pwd, ecKeyPair = credentials.ecKeyPair)
+            generateWalletFile(newPwd ?: pwd, ecKeyPair = credentials.ecKeyPair)
         } else null
     }
 
