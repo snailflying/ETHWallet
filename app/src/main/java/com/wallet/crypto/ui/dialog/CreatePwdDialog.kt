@@ -5,6 +5,7 @@ import cn.magicwindow.core.config.Config
 import com.wallet.crypto.R
 import com.wallet.crypto.ext.click
 import com.wallet.crypto.ext.setTextChangeListener
+import com.wallet.crypto.ext.toast
 import com.wallet.crypto.util.KeyboardUtils
 import kotlinx.android.synthetic.main.layout_dialog_create_pwd.*
 import kotlinx.android.synthetic.main.layout_dialog_create_pwd.view.*
@@ -24,6 +25,7 @@ class CreatePwdDialog : BaseDialogFragment() {
         view.password.setTextChangeListener { text = it }
         view.btn_cancel.click { dismiss() }
         view.btn_ok.click {
+            if (text.isEmpty()) return@click toast("请输入密码").show()
             positiveListeners?.onPositiveButtonClicked(Config.DIALOG_CREATE_PWD_REQUEST_CODE, text)
             KeyboardUtils.hideKeyboard(password)
             dismiss()
