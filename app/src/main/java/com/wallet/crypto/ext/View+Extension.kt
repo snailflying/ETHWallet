@@ -72,16 +72,39 @@ private fun <T : View> T.clickEnable(): Boolean {
     return flag
 }
 
-fun EditText.setTextChangeListener(body: (key: String) -> Unit) {
-    addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {
-        }
+fun EditText.setTextChangeListener(init: MyTextWatcher.() -> Unit) {
+    val textWatcher = MyTextWatcher()
+    textWatcher.init()
+    addTextChangedListener(textWatcher)
+}
 
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        }
+class MyTextWatcher : TextWatcher {
 
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            body(s.toString())
-        }
-    })
+    private var onTextChanged: ((s: CharSequence?, start: Int, before: Int, count: Int) -> Unit)? = null
+    private var beforeTextChanged: ((s: CharSequence?, start: Int, count: Int, after: Int) -> Unit)? = null
+    private var afterTextChanged: ((s: Editable?) -> Unit)? = null
+
+    fun beforeTextChanged(listener: (s: CharSequence?, start: Int, before: Int, count: Int) -> Unit) {
+        beforeTextChanged = listener
+    }
+
+    fun afterTextChanged(listener: (s: Editable?) -> Unit) {
+        afterTextChanged = listener
+    }
+
+    fun onTextChanged(listener: (s: CharSequence?, start: Int, before: Int, count: Int) -> Unit) {
+        onTextChanged = listener
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+        afterTextChanged?.let { it(s) }
+    }
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        beforeTextChanged?.let { it(s, start, count, after) }
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        onTextChanged?.let { it(s, start, before, count) }
+    }
 }

@@ -22,7 +22,11 @@ class CreatePwdDialog : BaseDialogFragment() {
     var text = ""
     override fun build(initialBuilder: Builder): Builder {
         val view = LayoutInflater.from(context).inflate(R.layout.layout_dialog_create_pwd, null)
-        view.password.setTextChangeListener { text = it }
+        view.password.setTextChangeListener {
+            beforeTextChanged { s, start, before, count -> }
+            onTextChanged { s, start, before, count -> }
+            afterTextChanged { text = it.toString() }
+        }
         view.btn_cancel.click { dismiss() }
         view.btn_ok.click {
             if (text.isEmpty()) return@click toast("请输入密码").show()
