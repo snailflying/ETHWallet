@@ -3,6 +3,7 @@ package com.wallet.crypto.util
 import android.util.Log
 import com.google.gson.Gson
 import com.wallet.crypto.entity.Account
+import com.wallet.crypto.entity.ServiceException
 import com.wallet.crypto.entity.StorableAccounts
 import org.json.JSONException
 import org.web3j.crypto.*
@@ -170,17 +171,20 @@ class WalletStorage private constructor() {
      * @param pwd
      * @return
      */
-    fun exportKeystore(address: String): String? {
-        var keystore: String? = null
+    fun exportKeystore(address: String, password: String): String? {
         val walletFile: WalletFile
         try {
             walletFile = objectMapper.readValue<WalletFile>(File(FileUtils.WALLET_DIR, getAddress(address)), WalletFile::class.java)
-            keystore = objectMapper.writeValueAsString(walletFile)
+            val decrypt = Wallet.decrypt(password, walletFile)
+                return objectMapper.writeValueAsString(walletFile)
         } catch (e: IOException) {
             e.printStackTrace()
+        } catch (e: CipherException) {
+            e.printStackTrace()
+            throw ServiceException(e.message)
         }
 
-        return keystore
+        return null
     }
 
     /**

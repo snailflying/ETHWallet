@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
         android:gravity="center_horizontal"
-        android:text="@string/dialog_message"
+        android:text="@string/dialog_message_decrypt"
         android:textSize="16sp"/>
 
     <com.wallet.crypto.widget.HelperTextInputLayout
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:errorEnabled="true"
-        app:helperText="@string/suggestion_empty_password_available"
+        app:helperText="@string/dialog_message_decrypt"
         app:hintEnabled="false"
         app:passwordToggleEnabled="true">
         <EditText

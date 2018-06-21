@@ -39,9 +39,9 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
         }.compose { upstream -> importKeystore(upstream.blockingGet(), newPassword, newPassword) }
     }
 
-    fun exportAccount(wallet: Wallet, password: String, newPassword: String): Single<String> {
+    fun exportAccount(wallet: Wallet, password: String): Single<String> {
         return Single
-                .fromCallable<String> { keyStore.exportKeystore(wallet.address)!! }
+                .fromCallable<String> { keyStore.exportKeystore(wallet.address,password)!! }
                 .subscribeOn(Schedulers.io())
     }
 

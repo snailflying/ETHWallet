@@ -35,7 +35,7 @@ public class CreateWalletInteract {
             return passwordStore
                 .getPassword(wallet)
                 .flatMap(password -> walletRepository
-                        .exportWallet(wallet, password, password)
+                        .exportWallet(wallet, password)
                         .flatMap(keyStore -> walletRepository.findWallet(wallet.getAddress())))
                 .onErrorResumeNext(throwable -> walletRepository
                         .deleteWallet(wallet.getAddress(), masterPassword)

@@ -36,7 +36,6 @@ public class WalletsViewModel extends BaseViewModel {
 	private final MutableLiveData<Wallet> createdWallet = new MutableLiveData<>();
 	private final MutableLiveData<ErrorEnvelope> createWalletError = new MutableLiveData<>();
 	private final MutableLiveData<String> exportedStore = new MutableLiveData<>();
-	private final MutableLiveData<ErrorEnvelope> exportWalletError = new MutableLiveData<>();
 
     WalletsViewModel(
             CreateWalletInteract createWalletInteract,
@@ -74,6 +73,7 @@ public class WalletsViewModel extends BaseViewModel {
     public LiveData<String> exportedStore() {
         return exportedStore;
     }
+
 
 	public void setDefaultWallet(Wallet wallet) {
 		setDisposable(setDefaultWalletInteract
@@ -118,18 +118,18 @@ public class WalletsViewModel extends BaseViewModel {
 				}, this::onCreateWalletError);
 	}
 
-    public void exportWallet(Wallet wallet, String storePassword) {
+    public void exportWallet(Wallet wallet, String oldPassword) {
         exportWalletInteract
-                .export(wallet, storePassword)
+                .export(wallet, oldPassword)
                 .subscribe(exportedStore::postValue, this::onExportError);
     }
 
     private void onExportError(Throwable throwable) {
-        exportWalletError.postValue(new ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, null));
+        getError().postValue(new ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, throwable.getMessage()));
     }
 
     private void onCreateWalletError(Throwable throwable) {
-        createWalletError.postValue(new ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, null));
+        createWalletError.postValue(new ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, throwable.getMessage()));
 	}
 
 	public void importWallet(Activity activity) {
