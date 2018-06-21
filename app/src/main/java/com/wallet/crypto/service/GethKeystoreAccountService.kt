@@ -2,7 +2,6 @@ package com.wallet.crypto.service
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.wallet.crypto.entity.Wallet
-import com.wallet.crypto.util.ExchangeCalculator
 import com.wallet.crypto.util.WalletStorage
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -25,7 +24,7 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
     fun importKeystore(store: String, password: String, newPassword: String): Single<Wallet> {
         return Single.fromCallable {
             val account = keyStore
-                    .importWalletByKeystore(store, password)
+                    .importWalletByKeystore(store, password, newPassword)
             Wallet(account!!.address.toLowerCase())
         }
                 .subscribeOn(Schedulers.io())
