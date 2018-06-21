@@ -185,12 +185,20 @@ public class WalletsActivity extends BaseActivity implements
 		}
 	}
 
+	/**
+	 * 创建钱包
+	 * @param view
+	 */
 	@Override
 	public void onNewWallet(View view) {
 		hideDialog();
 		viewModel.newWallet();
 	}
 
+	/**
+	 * 导入钱包
+	 * @param view
+	 */
 	@Override
 	public void onImportWallet(View view) {
 		hideDialog();
@@ -259,7 +267,12 @@ public class WalletsActivity extends BaseActivity implements
         dialog.show();
     }
 
-    private void showBackupDialog(Wallet wallet, boolean isNew) {
+	/**
+	 * 设置密码对话框
+	 * @param wallet
+	 * @param isNew
+	 */
+	private void showBackupDialog(Wallet wallet, boolean isNew) {
 	    BackupView view = new BackupView(this);
         dialog = buildDialog()
                 .setView(view)

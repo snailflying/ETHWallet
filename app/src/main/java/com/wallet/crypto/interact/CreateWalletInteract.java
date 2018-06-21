@@ -19,6 +19,10 @@ public class CreateWalletInteract {
 		this.passwordStore = passwordStore;
 	}
 
+	/**
+	 * 创建钱包
+	 * @return
+	 */
 	public Single<Wallet> create() {
 	    return passwordStore.generatePassword()
 		.flatMap(masterPassword -> walletRepository
