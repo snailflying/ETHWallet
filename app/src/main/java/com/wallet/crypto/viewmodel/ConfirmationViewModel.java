@@ -27,8 +27,13 @@ public class ConfirmationViewModel extends BaseViewModel {
     private final CreateTransactionInteract createTransactionInteract;
 
     private final GasSettingsRouter gasSettingsRouter;
+    private final MutableLiveData<String> password = new MutableLiveData<>();
 
     boolean confirmationForTokenTransfer = false;
+    public MutableLiveData<String> getPassword() {
+        return password;
+    }
+
 
     public ConfirmationViewModel(FindDefaultWalletInteract findDefaultWalletInteract,
                                  FetchGasSettingsInteract fetchGasSettingsInteract,
@@ -43,7 +48,7 @@ public class ConfirmationViewModel extends BaseViewModel {
     public void createTransaction(String from, String to, BigInteger amount, BigInteger gasPrice, BigInteger gasLimit) {
         getProgress().postValue(true);
         setDisposable(createTransactionInteract
-                .create(new Wallet(from), to, amount, gasPrice, gasLimit, null)
+                .create(password.getValue(),new Wallet(from), to, amount, gasPrice, gasLimit, null)
                 .subscribe(this::onCreateTransaction, this::onError));
     }
 
@@ -51,7 +56,7 @@ public class ConfirmationViewModel extends BaseViewModel {
         getProgress().postValue(true);
         final String data = TokenRepository.createTokenTransferData(to, amount);
         setDisposable(createTransactionInteract
-                .create(new Wallet(from), contractAddress, BigInteger.valueOf(0), gasPrice, gasLimit, data)
+                .create(password.getValue(),new Wallet(from), contractAddress, BigInteger.valueOf(0), gasPrice, gasLimit, data)
                 .subscribe(this::onCreateTransaction, this::onError));
     }
 

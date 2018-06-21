@@ -15,15 +15,17 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.wallet.crypto.TrustConstants;
 import com.wallet.crypto.R;
+import com.wallet.crypto.TrustConstants;
 import com.wallet.crypto.entity.ErrorEnvelope;
 import com.wallet.crypto.entity.GasSettings;
 import com.wallet.crypto.entity.Wallet;
 import com.wallet.crypto.util.BalanceUtils;
+import com.wallet.crypto.util.KeyboardUtils;
 import com.wallet.crypto.viewmodel.ConfirmationViewModel;
 import com.wallet.crypto.viewmodel.ConfirmationViewModelFactory;
 import com.wallet.crypto.viewmodel.GasSettingsViewModel;
+import com.wallet.crypto.widget.PasswordView;
 
 import java.math.BigInteger;
 
@@ -137,6 +139,25 @@ public class ConfirmationActivity extends BaseActivity {
     }
 
     private void onSend() {
+         // 输入密码对话框
+        PasswordView view = new PasswordView(this);
+        hideDialog();
+        dialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .setPositiveButton(R.string.ok,
+                        (dialogInterface, i) -> {
+                            viewModel.getPassword().setValue(view.getPassword());
+                            transfer();
+                        })
+                .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
+                    KeyboardUtils.hideKeyboard(view.findViewById(R.id.password));
+                })
+                .setOnDismissListener(dialog -> KeyboardUtils.hideKeyboard(view.findViewById(R.id.password)))
+                .create();
+        dialog.show();
+    }
+
+    private void transfer() {
         GasSettings gasSettings = viewModel.gasSettings().getValue();
 
         if (!confirmationForTokenTransfer) {
