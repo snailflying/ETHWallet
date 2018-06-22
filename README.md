@@ -19,6 +19,7 @@
 * 支持中文
 * 密码重置
 * 支持只读钱包
+* 支持助记词
 
 
 根据[Trust](https://github.com/TrustWallet/trust-wallet-android-source)修改优化
@@ -26,6 +27,7 @@
 ## Dependencies:
 * [Web3j](https://github.com/web3j/web3j)
 * [zxing](https://github.com/zxing/zxing)
+
 ...
 
 
