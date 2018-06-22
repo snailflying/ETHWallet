@@ -315,7 +315,6 @@ public class WalletsActivity extends BaseActivity implements
 
 	@Override
 	public void onPositiveButtonClicked(int requestCode, @NotNull Object any) {
-		viewModel.createdPwd((String)any);
-		viewModel.newWallet();
+		viewModel.newWallet((String)any);
 	}
 }

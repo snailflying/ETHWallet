@@ -1,7 +1,6 @@
 package com.wallet.crypto.interact.rx.operator;
 
 import com.wallet.crypto.entity.Wallet;
-import com.wallet.crypto.repository.TrustPasswordStore;
 import com.wallet.crypto.repository.WalletRepository;
 
 import io.reactivex.Single;
@@ -10,14 +9,9 @@ import io.reactivex.SingleTransformer;
 
 public class SavePasswordOperator implements SingleTransformer<Wallet, Wallet> {
 
-    private final TrustPasswordStore passwordStore;
-    private final String password;
     private final WalletRepository walletRepository;
 
-    public SavePasswordOperator(
-            TrustPasswordStore passwordStore, WalletRepository walletRepository, String password) {
-        this.passwordStore = passwordStore;
-        this.password = password;
+    public SavePasswordOperator(WalletRepository walletRepository) {
         this.walletRepository = walletRepository;
     }
 

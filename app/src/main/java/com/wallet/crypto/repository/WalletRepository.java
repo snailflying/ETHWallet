@@ -55,12 +55,12 @@ public class WalletRepository {
                 .createAccount(password);
     }
 
-    public Single<Wallet> importKeystoreToWallet(String store, String password, String newPassword) {
-        return accountKeystoreService.importKeystore(store, password, newPassword);
+    public Single<Wallet> importKeystoreToWallet(String store, String password) {
+        return accountKeystoreService.importKeystore(store, password);
     }
 
-    public Single<Wallet> importPrivateKeyToWallet(String privateKey, String newPassword) {
-        return accountKeystoreService.importPrivateKey(privateKey, newPassword);
+    public Single<Wallet> importPrivateKeyToWallet(String privateKey) {
+        return accountKeystoreService.importPrivateKey(privateKey);
     }
 
     public Single<String> exportWallet(Wallet wallet) {

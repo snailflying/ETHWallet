@@ -4,7 +4,6 @@ package com.wallet.crypto.di;
 import com.wallet.crypto.interact.CreateTransactionInteract;
 import com.wallet.crypto.interact.FetchGasSettingsInteract;
 import com.wallet.crypto.interact.FindDefaultWalletInteract;
-import com.wallet.crypto.repository.TrustPasswordStore;
 import com.wallet.crypto.repository.SharedPreferenceRepository;
 import com.wallet.crypto.repository.TransactionRepository;
 import com.wallet.crypto.repository.WalletRepository;
@@ -37,8 +36,8 @@ public class ConfirmationModule {
     }
 
     @Provides
-    CreateTransactionInteract provideCreateTransactionInteract(TransactionRepository transactionRepository, TrustPasswordStore passwordStore) {
-        return new CreateTransactionInteract(transactionRepository, passwordStore);
+    CreateTransactionInteract provideCreateTransactionInteract(TransactionRepository transactionRepository) {
+        return new CreateTransactionInteract(transactionRepository);
     }
 
     @Provides

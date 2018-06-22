@@ -106,7 +106,7 @@ class WalletStorage private constructor() {
      * @param newPwd      json文件新密码
      * @return
      */
-    fun importWalletByKeystore(keystore: String, pwd: String, newPwd: String? = null): Account? {
+    fun importWalletByKeystore(keystore: String, pwd: String): Account? {
         var credentials: Credentials? = null
         try {
             var walletFile: WalletFile? = null
@@ -123,7 +123,7 @@ class WalletStorage private constructor() {
             e.printStackTrace()
         }
         return if (credentials != null) {
-            generateWalletFile(newPwd ?: pwd, ecKeyPair = credentials.ecKeyPair)
+            generateWalletFile(pwd, ecKeyPair = credentials.ecKeyPair)
         } else null
     }
 
@@ -175,7 +175,7 @@ class WalletStorage private constructor() {
         val walletFile: WalletFile
         try {
             walletFile = objectMapper.readValue<WalletFile>(File(FileUtils.WALLET_DIR, getAddress(address)), WalletFile::class.java)
-                return objectMapper.writeValueAsString(walletFile)
+            return objectMapper.writeValueAsString(walletFile)
         } catch (e: IOException) {
             e.printStackTrace()
         } catch (e: CipherException) {

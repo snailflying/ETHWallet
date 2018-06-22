@@ -108,10 +108,10 @@ public class WalletsViewModel extends BaseViewModel {
                 .subscribe(this::onFetchWallets, this::onError));
 	}
 
-	public void newWallet() {
+	public void newWallet(String pwd) {
 		getProgress().setValue(true);
 		createWalletInteract
-				.create()
+				.create(pwd)
 				.subscribe(account -> {
 					fetchWallets();
 					createdWallet.postValue(account);
@@ -140,7 +140,4 @@ public class WalletsViewModel extends BaseViewModel {
         transactionsRouter.open(context, true);
     }
 
-	public void createdPwd(String pwd) {
-		createWalletInteract.createdPwd(pwd);
-	}
 }

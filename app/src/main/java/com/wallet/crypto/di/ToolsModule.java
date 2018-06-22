@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.wallet.crypto.App;
-import com.wallet.crypto.repository.TrustPasswordStore;
-import com.wallet.crypto.repository.TrustPasswordStore;
 import com.wallet.crypto.util.LogInterceptor;
 
 import javax.inject.Singleton;
@@ -33,11 +31,5 @@ class ToolsModule {
 		return new OkHttpClient.Builder()
                 .addInterceptor(new LogInterceptor())
                 .build();
-	}
-
-	@Singleton
-	@Provides
-	TrustPasswordStore passwordStore(Context context) {
-		return new TrustPasswordStore(context);
 	}
 }

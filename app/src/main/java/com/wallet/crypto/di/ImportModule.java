@@ -1,7 +1,6 @@
 package com.wallet.crypto.di;
 
 import com.wallet.crypto.interact.ImportWalletInteract;
-import com.wallet.crypto.repository.TrustPasswordStore;
 import com.wallet.crypto.repository.WalletRepository;
 import com.wallet.crypto.viewmodel.ImportWalletViewModelFactory;
 
@@ -17,8 +16,7 @@ class ImportModule {
     }
 
     @Provides
-    ImportWalletInteract provideImportWalletInteract(
-            WalletRepository walletRepository, TrustPasswordStore passwordStore) {
-        return new ImportWalletInteract(walletRepository, passwordStore);
+    ImportWalletInteract provideImportWalletInteract(WalletRepository walletRepository) {
+        return new ImportWalletInteract(walletRepository);
     }
 }

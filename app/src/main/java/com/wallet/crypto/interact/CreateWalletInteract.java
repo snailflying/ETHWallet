@@ -2,7 +2,6 @@ package com.wallet.crypto.interact;
 
 import com.wallet.crypto.entity.Wallet;
 import com.wallet.crypto.interact.rx.operator.Operators;
-import com.wallet.crypto.repository.TrustPasswordStore;
 import com.wallet.crypto.repository.WalletRepository;
 
 import io.reactivex.Single;
@@ -12,24 +11,22 @@ import static com.wallet.crypto.interact.rx.operator.Operators.completableErrorP
 public class CreateWalletInteract {
 
     private final WalletRepository walletRepository;
-    private final TrustPasswordStore passwordStore;
 
-    public CreateWalletInteract(WalletRepository walletRepository, TrustPasswordStore passwordStore) {
+    public CreateWalletInteract(WalletRepository walletRepository) {
         this.walletRepository = walletRepository;
-        this.passwordStore = passwordStore;
     }
 
     /**
      * 创建钱包
      *
      * @return
+     * @param pwd
      */
-    public Single<Wallet> create() {
-        return passwordStore.generatePassword()
-                .flatMap(masterPassword -> walletRepository
-                        .createWallet(masterPassword)
-                        .compose(Operators.savePassword(passwordStore, walletRepository, masterPassword))
-                        .flatMap(this::passwordVerification));
+    public Single<Wallet> create(String pwd) {
+        return walletRepository
+                .createWallet(pwd)
+                .compose(Operators.savePassword(walletRepository))
+                .flatMap(this::passwordVerification);
     }
 
     private Single<Wallet> passwordVerification(Wallet wallet) {
@@ -40,9 +37,5 @@ public class CreateWalletInteract {
                         .deleteWallet(wallet.getAddress())
                         .lift(completableErrorProxy(throwable))
                         .toSingle(() -> wallet));
-    }
-
-    public void createdPwd(String pwd) {
-        passwordStore.createdPwd(pwd);
     }
 }

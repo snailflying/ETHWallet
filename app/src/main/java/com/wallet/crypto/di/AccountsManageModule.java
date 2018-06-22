@@ -6,7 +6,6 @@ import com.wallet.crypto.interact.ExportWalletInteract;
 import com.wallet.crypto.interact.FetchWalletsInteract;
 import com.wallet.crypto.interact.FindDefaultWalletInteract;
 import com.wallet.crypto.interact.SetDefaultWalletInteract;
-import com.wallet.crypto.repository.TrustPasswordStore;
 import com.wallet.crypto.repository.WalletRepository;
 import com.wallet.crypto.router.ImportWalletRouter;
 import com.wallet.crypto.router.TransactionsRouter;
@@ -39,9 +38,8 @@ class AccountsManageModule {
 	}
 
 	@Provides
-    CreateWalletInteract provideCreateAccountInteract(
-            WalletRepository accountRepository, TrustPasswordStore passwordStore) {
-		return new CreateWalletInteract(accountRepository, passwordStore);
+    CreateWalletInteract provideCreateAccountInteract(WalletRepository accountRepository) {
+		return new CreateWalletInteract(accountRepository);
 	}
 
 	@Provides
@@ -50,9 +48,8 @@ class AccountsManageModule {
 	}
 
 	@Provides
-    DeleteWalletInteract provideDeleteAccountInteract(
-            WalletRepository accountRepository, TrustPasswordStore store) {
-		return new DeleteWalletInteract(accountRepository, store);
+    DeleteWalletInteract provideDeleteAccountInteract(WalletRepository accountRepository) {
+		return new DeleteWalletInteract(accountRepository);
 	}
 
 	@Provides
@@ -66,9 +63,8 @@ class AccountsManageModule {
 	}
 
 	@Provides
-    ExportWalletInteract provideExportWalletInteract(
-            WalletRepository walletRepository, TrustPasswordStore passwordStore) {
-	    return new ExportWalletInteract(walletRepository, passwordStore);
+    ExportWalletInteract provideExportWalletInteract(WalletRepository walletRepository) {
+	    return new ExportWalletInteract(walletRepository);
     }
 
 	@Provides

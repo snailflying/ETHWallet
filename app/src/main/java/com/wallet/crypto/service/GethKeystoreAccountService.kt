@@ -21,22 +21,24 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
         }.subscribeOn(Schedulers.io())
     }
 
-    fun importKeystore(store: String, password: String, newPassword: String): Single<Wallet> {
+    fun importKeystore(store: String, password: String): Single<Wallet> {
         return Single.fromCallable {
             val account = keyStore
-                    .importWalletByKeystore(store, password, newPassword)
+                    .importWalletByKeystore(store, password)
             Wallet(account!!.address.toLowerCase())
         }
                 .subscribeOn(Schedulers.io())
     }
 
-    fun importPrivateKey(privateKey: String, newPassword: String): Single<Wallet> {
+    //TODO:导入密码增加输入密码输入框,目前为空
+    fun importPrivateKey(privateKey: String): Single<Wallet> {
+        val newPassword = ""
         return Single.fromCallable {
             val key = BigInteger(privateKey, PRIVATE_KEY_RADIX)
             val keypair = ECKeyPair.create(key)
             val walletFile = create(newPassword, keypair, N, P)
             ObjectMapper().writeValueAsString(walletFile)
-        }.compose { upstream -> importKeystore(upstream.blockingGet(), newPassword, newPassword) }
+        }.compose { upstream -> importKeystore(upstream.blockingGet(), newPassword) }
     }
 
     fun exportAccount(wallet: Wallet): Single<String> {
