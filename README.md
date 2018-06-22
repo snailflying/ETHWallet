@@ -1,8 +1,7 @@
 # Trust - Ethereum Wallet for Android
-
-[<img src="resources/android_cover.png">]
-
-
+<div align="center">
+<img src="resources/android_cover.png">
+</div>
 
 ## Features
 * 支持多钱包
@@ -15,7 +14,7 @@
 * 支持ERC-67和ICAP
 * 支持英语
 
-##后续计划
+## 后续计划
 * 指纹/密码保护
 * 支持中文
 * 密码重置
@@ -27,6 +26,6 @@
 ## Dependencies:
 * [Web3j](https://github.com/web3j/web3j)
 * [zxing](https://github.com/zxing/zxing)
-等等
+...
 
 
