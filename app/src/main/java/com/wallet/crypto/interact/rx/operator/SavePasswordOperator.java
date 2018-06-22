@@ -7,7 +7,6 @@ import com.wallet.crypto.repository.WalletRepository;
 import io.reactivex.Single;
 import io.reactivex.SingleSource;
 import io.reactivex.SingleTransformer;
-import io.reactivex.observers.DisposableCompletableObserver;
 
 public class SavePasswordOperator implements SingleTransformer<Wallet, Wallet> {
 
@@ -25,20 +24,21 @@ public class SavePasswordOperator implements SingleTransformer<Wallet, Wallet> {
     @Override
     public SingleSource<Wallet> apply(Single<Wallet> upstream) {
         Wallet wallet = upstream.blockingGet();
-        return passwordStore
-                .setPassword(wallet, password)
-                .onErrorResumeNext(err -> walletRepository.deleteWallet(wallet.getAddress())
-                        .lift(observer -> new DisposableCompletableObserver() {
-                            @Override
-                            public void onComplete() {
-                                observer.onError(err);
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                observer.onError(e);
-                            }
-                        }))
-                .toSingle(() -> wallet);
+        return Single.fromCallable(() -> wallet);
+//        return passwordStore
+//                .setPassword(wallet, password)
+//                .onErrorResumeNext(err -> walletRepository.deleteWallet(wallet.getAddress())
+//                        .lift(observer -> new DisposableCompletableObserver() {
+//                            @Override
+//                            public void onComplete() {
+//                                observer.onError(err);
+//                            }
+//
+//                            @Override
+//                            public void onError(Throwable e) {
+//                                observer.onError(e);
+//                            }
+//                        }))
+//                .toSingle(() -> wallet);
     }
 }

@@ -11,39 +11,38 @@ import static com.wallet.crypto.interact.rx.operator.Operators.completableErrorP
 
 public class CreateWalletInteract {
 
-	private final WalletRepository walletRepository;
-	private final TrustPasswordStore passwordStore;
+    private final WalletRepository walletRepository;
+    private final TrustPasswordStore passwordStore;
 
-	public CreateWalletInteract(WalletRepository walletRepository, TrustPasswordStore passwordStore) {
-		this.walletRepository = walletRepository;
-		this.passwordStore = passwordStore;
-	}
+    public CreateWalletInteract(WalletRepository walletRepository, TrustPasswordStore passwordStore) {
+        this.walletRepository = walletRepository;
+        this.passwordStore = passwordStore;
+    }
 
-	/**
-	 * 创建钱包
-	 * @return
-	 */
-	public Single<Wallet> create() {
-	    return passwordStore.generatePassword()
-		.flatMap(masterPassword -> walletRepository
-			.createWallet(masterPassword)
-			.compose(Operators.savePassword(passwordStore, walletRepository, masterPassword))
-                       	.flatMap(this::passwordVerification));
-	}
-	
-	private Single<Wallet> passwordVerification(Wallet wallet) {
-            return passwordStore
-                .getPassword(wallet)
-                .flatMap(password -> walletRepository
-                        .exportWallet(wallet)
-                        .flatMap(keyStore -> walletRepository.findWallet(wallet.getAddress())))
+    /**
+     * 创建钱包
+     *
+     * @return
+     */
+    public Single<Wallet> create() {
+        return passwordStore.generatePassword()
+                .flatMap(masterPassword -> walletRepository
+                        .createWallet(masterPassword)
+                        .compose(Operators.savePassword(passwordStore, walletRepository, masterPassword))
+                        .flatMap(this::passwordVerification));
+    }
+
+    private Single<Wallet> passwordVerification(Wallet wallet) {
+        return walletRepository
+                .exportWallet(wallet)
+                .flatMap(keyStore -> walletRepository.findWallet(wallet.getAddress()))
                 .onErrorResumeNext(throwable -> walletRepository
                         .deleteWallet(wallet.getAddress())
                         .lift(completableErrorProxy(throwable))
                         .toSingle(() -> wallet));
-	}
+    }
 
-	public void createdPwd(String pwd) {
-		passwordStore.createdPwd(pwd);
-	}
+    public void createdPwd(String pwd) {
+        passwordStore.createdPwd(pwd);
+    }
 }

@@ -18,13 +18,8 @@ public class ExportWalletInteract {
     }
 
     public Single<String> export(Wallet wallet) {
-        return
-                passwordStore
-                .getPassword(wallet)
-                .flatMap(password ->
-                        walletRepository
-                    .exportWallet(wallet)
-                )
+        return walletRepository
+                .exportWallet(wallet)
                 .observeOn(AndroidSchedulers.mainThread());
     }
 }

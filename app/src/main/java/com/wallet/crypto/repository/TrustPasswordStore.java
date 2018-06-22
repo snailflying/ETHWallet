@@ -6,14 +6,11 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.wallet.crypto.entity.ServiceErrorException;
-import com.wallet.crypto.entity.Wallet;
 import com.wallet.crypto.util.KS;
 import com.wallet.pwd.trustapp.PasswordManager;
 
 import java.util.Map;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 
 public class TrustPasswordStore {
@@ -45,36 +42,6 @@ public class TrustPasswordStore {
                 }
             }
         }
-    }
-
-    public Single<String> getPassword(Wallet wallet) {
-        return Single.fromCallable(() -> {
-//            return new String(KS.get(context, wallet.address));
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                return new String(KS.get(context, wallet.getAddress()));
-            } else {
-                try {
-                    return PasswordManager.getPassword(wallet.getAddress(), context);
-                } catch (Exception e) {
-                    throw new ServiceErrorException(ServiceErrorException.KEY_STORE_ERROR);
-                }
-            }
-        });
-    }
-
-    public Completable setPassword(Wallet wallet, String password) {
-        return Completable.fromAction(() -> {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                KS.put(context, wallet.getAddress(), password);
-            } else {
-                try {
-                    PasswordManager.setPassword(wallet.getAddress(), password, context);
-                } catch (Exception e) {
-                    throw new ServiceErrorException(ServiceErrorException.KEY_STORE_ERROR);
-                }
-            }
-        });
     }
 
     public Single<String> generatePassword() {
