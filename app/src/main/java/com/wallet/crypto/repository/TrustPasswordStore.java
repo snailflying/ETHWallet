@@ -19,7 +19,7 @@ import io.reactivex.Single;
 public class TrustPasswordStore {
 
     private final Context context;
-    private String pwd;
+    private String pwd = "";
 
     public TrustPasswordStore(Context context) {
         this.context = context;
