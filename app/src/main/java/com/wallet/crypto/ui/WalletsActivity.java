@@ -22,11 +22,9 @@ import com.wallet.crypto.entity.Wallet;
 import com.wallet.crypto.ui.dialog.CreatePwdDialog;
 import com.wallet.crypto.ui.dialog.interfaces.IPositiveButtonDialogListener;
 import com.wallet.crypto.ui.widget.adapter.WalletsAdapter;
-import com.wallet.crypto.util.KeyboardUtils;
 import com.wallet.crypto.viewmodel.WalletsViewModel;
 import com.wallet.crypto.viewmodel.WalletsViewModelFactory;
 import com.wallet.crypto.widget.AddWalletView;
-import com.wallet.crypto.widget.BackupView;
 import com.wallet.crypto.widget.BackupWarningView;
 import com.wallet.crypto.widget.SystemView;
 
@@ -93,7 +91,7 @@ public class WalletsActivity extends BaseActivity implements
 	}
 
     private void onExportWallet(Wallet wallet) {
-        showBackupDialog(wallet, false);
+		viewModel.exportWallet(wallet);
     }
 
     @Override
@@ -199,7 +197,6 @@ public class WalletsActivity extends BaseActivity implements
 	public void onNewWallet(View view) {
 		showCusDialog(this, new CreatePwdDialog());
 		hideDialog();
-//		viewModel.newWallet();
 	}
 
 	/**
@@ -257,7 +254,7 @@ public class WalletsActivity extends BaseActivity implements
     }
 
     private void onNowBackup(View view, Wallet wallet) {
-        showBackupDialog(wallet, true);
+		viewModel.exportWallet(wallet);
     }
 
     private void showNoBackupWarning(Wallet wallet) {
@@ -272,35 +269,6 @@ public class WalletsActivity extends BaseActivity implements
                 .setNegativeButton(android.R.string.cancel, null) //(dialog, whichButton) -> showBackupDialog(wallet, true)
                 .create();
         dialog.show();
-    }
-
-	/**
-	 * 设置密码对话框
-	 * @param wallet
-	 * @param isNew
-	 */
-	private void showBackupDialog(Wallet wallet, boolean isNew) {
-	    BackupView view = new BackupView(this);
-        dialog = buildDialog()
-                .setView(view)
-                .setPositiveButton(R.string.ok,
-                        (dialogInterface, i) -> {
-                            viewModel.exportWallet(wallet, view.getPassword());
-                            KeyboardUtils.hideKeyboard(view.findViewById(R.id.password));
-                        })
-                .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
-                    if (isNew) {
-                        onCreatedWallet(wallet);
-                    }
-                    KeyboardUtils.hideKeyboard(view.findViewById(R.id.password));
-                })
-                .setOnDismissListener(dialog -> KeyboardUtils.hideKeyboard(view.findViewById(R.id.password)))
-                .create();
-        dialog.show();
-        handler.postDelayed(() -> {
-            KeyboardUtils.showKeyboard(view.findViewById(R.id.password));
-        }, 500);
-
     }
 
     private void openShareDialog(String jsonData) {

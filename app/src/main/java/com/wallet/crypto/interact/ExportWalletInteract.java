@@ -17,13 +17,13 @@ public class ExportWalletInteract {
         this.passwordStore = passwordStore;
     }
 
-    public Single<String> export(Wallet wallet, String oldPassword) {
+    public Single<String> export(Wallet wallet) {
         return
                 passwordStore
                 .getPassword(wallet)
                 .flatMap(password ->
                         walletRepository
-                    .exportWallet(wallet, oldPassword)
+                    .exportWallet(wallet)
                 )
                 .observeOn(AndroidSchedulers.mainThread());
     }

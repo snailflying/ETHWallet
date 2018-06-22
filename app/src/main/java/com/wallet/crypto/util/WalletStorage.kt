@@ -171,11 +171,10 @@ class WalletStorage private constructor() {
      * @param pwd
      * @return
      */
-    fun exportKeystore(address: String, password: String): String? {
+    fun exportKeystore(address: String): String? {
         val walletFile: WalletFile
         try {
             walletFile = objectMapper.readValue<WalletFile>(File(FileUtils.WALLET_DIR, getAddress(address)), WalletFile::class.java)
-            val decrypt = Wallet.decrypt(password, walletFile)
                 return objectMapper.writeValueAsString(walletFile)
         } catch (e: IOException) {
             e.printStackTrace()

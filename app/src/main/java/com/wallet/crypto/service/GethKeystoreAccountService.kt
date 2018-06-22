@@ -39,13 +39,13 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
         }.compose { upstream -> importKeystore(upstream.blockingGet(), newPassword, newPassword) }
     }
 
-    fun exportAccount(wallet: Wallet, password: String): Single<String> {
+    fun exportAccount(wallet: Wallet): Single<String> {
         return Single
-                .fromCallable<String> { keyStore.exportKeystore(wallet.address,password)!! }
+                .fromCallable<String> { keyStore.exportKeystore(wallet.address)!! }
                 .subscribeOn(Schedulers.io())
     }
 
-    fun deleteAccount(address: String, password: String): Completable {
+    fun deleteAccount(address: String): Completable {
         return Completable.fromCallable { keyStore.deleteWallet(address) }
                 .subscribeOn(Schedulers.io())
     }

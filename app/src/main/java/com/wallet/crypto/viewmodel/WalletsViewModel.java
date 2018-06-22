@@ -118,9 +118,9 @@ public class WalletsViewModel extends BaseViewModel {
 				}, this::onCreateWalletError);
 	}
 
-    public void exportWallet(Wallet wallet, String oldPassword) {
+    public void exportWallet(Wallet wallet) {
         exportWalletInteract
-                .export(wallet, oldPassword)
+                .export(wallet)
                 .subscribe(exportedStore::postValue, this::onExportError);
     }
 

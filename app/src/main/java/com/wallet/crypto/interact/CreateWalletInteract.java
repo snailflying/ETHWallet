@@ -28,17 +28,17 @@ public class CreateWalletInteract {
 		.flatMap(masterPassword -> walletRepository
 			.createWallet(masterPassword)
 			.compose(Operators.savePassword(passwordStore, walletRepository, masterPassword))
-                       	.flatMap(wallet -> passwordVerification(wallet, masterPassword)));
+                       	.flatMap(this::passwordVerification));
 	}
 	
-	private Single<Wallet> passwordVerification(Wallet wallet, String masterPassword) {
+	private Single<Wallet> passwordVerification(Wallet wallet) {
             return passwordStore
                 .getPassword(wallet)
                 .flatMap(password -> walletRepository
-                        .exportWallet(wallet, password)
+                        .exportWallet(wallet)
                         .flatMap(keyStore -> walletRepository.findWallet(wallet.getAddress())))
                 .onErrorResumeNext(throwable -> walletRepository
-                        .deleteWallet(wallet.getAddress(), masterPassword)
+                        .deleteWallet(wallet.getAddress())
                         .lift(completableErrorProxy(throwable))
                         .toSingle(() -> wallet));
 	}

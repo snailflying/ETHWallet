@@ -27,7 +27,7 @@ public class SavePasswordOperator implements SingleTransformer<Wallet, Wallet> {
         Wallet wallet = upstream.blockingGet();
         return passwordStore
                 .setPassword(wallet, password)
-                .onErrorResumeNext(err -> walletRepository.deleteWallet(wallet.getAddress(), password)
+                .onErrorResumeNext(err -> walletRepository.deleteWallet(wallet.getAddress())
                         .lift(observer -> new DisposableCompletableObserver() {
                             @Override
                             public void onComplete() {
