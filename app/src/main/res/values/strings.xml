@@ -86,7 +86,7 @@
     </string>
     <string name="message_no_backup">No backup, no Ethereum.</string>
     <string name="error_deleting_account">Error deleting wallet</string>
-	<string name="error_deleting_account_with_details">Error deleting wallet %s</string>
+    <string name="error_deleting_account_with_details">Error deleting wallet %s</string>
     <string name="error_passwords_must_match">Passwords must match.</string>
     <string name="label_confirm_new_password">Confirm new password</string>
     <string name="label_new_password">New password</string>
@@ -120,15 +120,15 @@
     <string name="transfer">Transfer %s</string>
     <string name="action_buy">Buy</string>
     <string name="title_deposit">How would you like to buy?</string>
-	<string name="empty"/>
-	<string name="try_again">Try again</string>
-	<string name="already_have_account">Already have a wallet?</string>
-	<string name="title_add_account">Add wallet</string>
-	<string name="action_create_new_account">Create new wallet</string>
-	<string name="unknown_error">An error has occurred.</string>
-	<string name="action_backup_wallet">Backup Wallet</string>
-	<string name="action_backup_later">Do it later</string>
-	<string name="set_account_default">Do want to make a new wallet the main one?</string>
+    <string name="empty" />
+    <string name="try_again">Try again</string>
+    <string name="already_have_account">Already have a wallet?</string>
+    <string name="title_add_account">Add wallet</string>
+    <string name="action_create_new_account">Create new wallet</string>
+    <string name="unknown_error">An error has occurred.</string>
+    <string name="action_backup_wallet">Backup Wallet</string>
+    <string name="action_backup_later">Do it later</string>
+    <string name="set_account_default">Do want to make a new wallet the main one?</string>
     <string name="no_tokens">No tokens found.</string>
     <string name="title_email">Email us</string>
     <!-- Titles -->
@@ -242,5 +242,8 @@
     <string name="dialog_write_down_pw_text">Mercury will encrypt your Wallet with the password your provided to keep your ether safe. Your password is literally the only way to unlock your wallet and spend your ether, so make sure you dont forget it! We suggest to write it down on a piece of paper.</string>
     <string name="dialog_back_button">Cancel</string>
     <string name="setting_show_ad">Display Ads</string>
+
+    <string name="qr_scan_permission">Scan QR code, please turn on camera permissions</string><!-- 扫描二维码，请打开相机权限 -->
+    <string name="wallet_added_fatal">Address is non-ERC20 protocol wallet, please reenter</string><!-- 输入的钱包地址非ERC20协议钱包，请重新输入 -->
 
 </resources>

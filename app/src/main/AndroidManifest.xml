@@ -66,7 +66,7 @@
             />
 
         <activity
-            android:name=".ui.barcode.BarcodeCaptureActivity"
+            android:name=".ui.barcode.QRScanActivity"
             android:label="@string/title_activity_barcode" />
 
         <activity

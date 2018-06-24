@@ -124,6 +124,10 @@ dependencies {
 //    compile('com.crashlytics.sdk.android:answers:1.4.1@aar') {
 //        transitive = true;
 //    }
+
+    api('me.dm7.barcodescanner:zxing:1.9.8', {
+        exclude group: 'com.android.support'
+    })
     // PW
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(":tn")
