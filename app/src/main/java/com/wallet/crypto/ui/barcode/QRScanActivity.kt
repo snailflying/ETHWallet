@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.widget.FrameLayout
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.Result
@@ -25,7 +26,7 @@ import java.util.*
  * @date 08/03/2018 17:51
  * @description
  */
-class QRScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
+open class QRScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
     private var type: Byte = 0
 
@@ -34,6 +35,7 @@ class QRScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qrscan)
+        toolbar()
 
         type = intent.getByteExtra(EXTRA_TYPE, SCAN_ONLY)
 
@@ -45,6 +47,21 @@ class QRScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
             initQRScan(bar_code)
         else
             askForPermissionRead(this)
+    }
+
+    protected fun toolbar(): Toolbar? {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        if (toolbar != null) {
+            setSupportActionBar(toolbar)
+            toolbar.title = title
+        }
+        enableDisplayHomeAsUp()
+        return toolbar
+    }
+
+    private fun enableDisplayHomeAsUp() {
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onSupportNavigateUp(): Boolean {
