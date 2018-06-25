@@ -1,6 +1,9 @@
 # Trust - Ethereum Wallet for Android
 <div align="center">
-<img src="resources/android_cover.png">
+<img src="resources/1.jpg" width = "150" height = "230"  style="display: inline-block" >
+<img src="resources/2.jpg" width = "150" height = "230" style="display: inline-block" >
+<img src="resources/3.jpg" width = "150" height = "230" style="display: inline-block" >
+<img src="resources/4.jpg" width = "150" height = "230"  style="display: inline-block" >
 </div>
 
 ## Features

@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <Preference
-        android:icon="@mipmap/settings_backup"
+        android:icon="@drawable/ic_wallet"
         android:key="pref_wallet"
         android:title="@string/action_wallets" />
 
@@ -15,7 +15,7 @@
 
     <ListPreference
         android:dialogTitle="@string/network_label"
-        android:icon="@mipmap/settings_server"
+        android:icon="@drawable/ic_net"
         android:key="pref_rpcServer"
         android:title="@string/network_label" />
 
@@ -24,7 +24,7 @@
         android:title="@string/title_opensource">
 
         <Preference
-            android:icon="@mipmap/settings_open_source"
+            android:icon="@drawable/ic_source"
             android:title="@string/title_source_code">
             <intent
                 android:action="android.intent.action.VIEW"
@@ -32,7 +32,7 @@
         </Preference>
 
         <Preference
-            android:icon="@mipmap/settings_bug"
+            android:icon="@drawable/ic_bug"
             android:title="@string/title_report_bug">
             <intent
                 android:action="android.intent.action.VIEW"
