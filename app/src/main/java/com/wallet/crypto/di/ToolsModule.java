@@ -3,8 +3,8 @@ package com.wallet.crypto.di;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.safframework.http.interceptor.LoggingInterceptor;
 import com.wallet.crypto.App;
-import com.wallet.crypto.util.LogInterceptor;
 
 import javax.inject.Singleton;
 
@@ -29,7 +29,15 @@ class ToolsModule {
 	@Provides
 	OkHttpClient okHttpClient() {
 		return new OkHttpClient.Builder()
-                .addInterceptor(new LogInterceptor())
+                .addInterceptor(loggingInterceptor)
                 .build();
 	}
+
+    private LoggingInterceptor loggingInterceptor = new LoggingInterceptor.Builder()
+            .loggable(true) // TODO: 发布到生产环境需要改成false
+            .request()
+            .requestTag("Request")
+            .response()
+            .responseTag("Response")
+            .build();
 }

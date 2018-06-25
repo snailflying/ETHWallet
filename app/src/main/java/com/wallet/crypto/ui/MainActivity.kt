@@ -31,7 +31,7 @@ import com.wallet.crypto.ui.widget.OnTransactionClickListener
 import com.wallet.crypto.ui.widget.adapter.TransactionsAdapter
 import com.wallet.crypto.util.RootUtil
 import com.wallet.crypto.viewmodel.BaseNavigationActivity
-import com.wallet.crypto.viewmodel.TransactionsViewModel
+import com.wallet.crypto.viewmodel.MainViewModel
 import com.wallet.crypto.viewmodel.TransactionsViewModelFactory
 import com.wallet.crypto.widget.DepositView
 import com.wallet.crypto.widget.EmptyTransactionsView
@@ -42,7 +42,7 @@ class MainActivity : BaseNavigationActivity(), View.OnClickListener {
 
     @Inject
     internal lateinit var transactionsViewModelFactory: TransactionsViewModelFactory
-    private var viewModel: TransactionsViewModel? = null
+    private var viewModel: MainViewModel? = null
 
     private var systemView: SystemView? = null
     private var adapter: TransactionsAdapter? = null
@@ -73,7 +73,7 @@ class MainActivity : BaseNavigationActivity(), View.OnClickListener {
         systemView!!.attachSwipeRefreshLayout(refreshLayout)
 
         viewModel = ViewModelProviders.of(this, transactionsViewModelFactory!!)
-                .get(TransactionsViewModel::class.java)
+                .get(MainViewModel::class.java)
         viewModel!!.progress().observe(this, Observer<Boolean> { systemView!!.showProgress(it!!) })
         viewModel!!.error().observe(this, Observer<ErrorEnvelope> { this.onError(it!!) })
         viewModel!!.defaultNetwork().observe(this, Observer<NetworkInfo> { this.onDefaultNetwork(it!!) })

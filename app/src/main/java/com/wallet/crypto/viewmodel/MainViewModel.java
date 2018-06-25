@@ -24,7 +24,7 @@ import java.util.Map;
 
 import io.reactivex.disposables.Disposable;
 
-public class TransactionsViewModel extends BaseViewModel {
+public class MainViewModel extends BaseViewModel {
     private static final long GET_BALANCE_INTERVAL = 8;
     private static final long FETCH_TRANSACTIONS_INTERVAL = 10;
     private final MutableLiveData<NetworkInfo> defaultNetwork = new MutableLiveData<>();
@@ -47,7 +47,7 @@ public class TransactionsViewModel extends BaseViewModel {
     private Disposable balanceDisposable;
     private Disposable transactionDisposable;
 
-    TransactionsViewModel(
+    MainViewModel(
             FindDefaultNetworkInteract findDefaultNetworkInteract,
             FindDefaultWalletInteract findDefaultWalletInteract,
             FetchTransactionsInteract fetchTransactionsInteract,
