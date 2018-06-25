@@ -22,8 +22,6 @@ import com.wallet.crypto.router.TransactionDetailRouter;
 
 import java.util.Map;
 
-import io.reactivex.disposables.Disposable;
-
 public class MainViewModel extends BaseViewModel {
     private static final long GET_BALANCE_INTERVAL = 8;
     private static final long FETCH_TRANSACTIONS_INTERVAL = 10;
@@ -44,8 +42,6 @@ public class MainViewModel extends BaseViewModel {
     private final MyAddressRouter myAddressRouter;
     private final MyTokensRouter myTokensRouter;
     private final ExternalBrowserRouter externalBrowserRouter;
-    private Disposable balanceDisposable;
-    private Disposable transactionDisposable;
 
     MainViewModel(
             FindDefaultNetworkInteract findDefaultNetworkInteract,
@@ -70,14 +66,6 @@ public class MainViewModel extends BaseViewModel {
         this.myAddressRouter = myAddressRouter;
         this.myTokensRouter = myTokensRouter;
         this.externalBrowserRouter = externalBrowserRouter;
-    }
-
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-
-        transactionDisposable.dispose();
-        balanceDisposable.dispose();
     }
 
     public LiveData<NetworkInfo> defaultNetwork() {
