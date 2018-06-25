@@ -7,8 +7,8 @@ import android.support.annotation.NonNull;
 import com.wallet.crypto.interact.FetchTokensInteract;
 import com.wallet.crypto.interact.FindDefaultNetworkInteract;
 import com.wallet.crypto.router.AddTokenRouter;
+import com.wallet.crypto.router.MainRouter;
 import com.wallet.crypto.router.SendTokenRouter;
-import com.wallet.crypto.router.TransactionsRouter;
 
 public class TokensViewModelFactory implements ViewModelProvider.Factory {
 
@@ -16,18 +16,18 @@ public class TokensViewModelFactory implements ViewModelProvider.Factory {
     private final FetchTokensInteract fetchTokensInteract;
     private final AddTokenRouter addTokenRouter;
     private final SendTokenRouter sendTokenRouter;
-    private final TransactionsRouter transactionsRouter;
+    private final MainRouter mainRouter;
 
     public TokensViewModelFactory(FindDefaultNetworkInteract findDefaultNetworkInteract,
                                   FetchTokensInteract fetchTokensInteract,
                                   AddTokenRouter addTokenRouter,
                                   SendTokenRouter sendTokenRouter,
-                                  TransactionsRouter transactionsRouter) {
+                                  MainRouter mainRouter) {
         this.findDefaultNetworkInteract = findDefaultNetworkInteract;
         this.fetchTokensInteract = fetchTokensInteract;
         this.addTokenRouter = addTokenRouter;
         this.sendTokenRouter = sendTokenRouter;
-        this.transactionsRouter = transactionsRouter;
+        this.mainRouter = mainRouter;
     }
 
     @NonNull
@@ -38,6 +38,6 @@ public class TokensViewModelFactory implements ViewModelProvider.Factory {
                 fetchTokensInteract,
                 addTokenRouter,
                 sendTokenRouter,
-                transactionsRouter);
+                mainRouter);
     }
 }

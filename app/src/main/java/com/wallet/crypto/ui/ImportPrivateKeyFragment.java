@@ -15,9 +15,12 @@ import com.wallet.crypto.ui.widget.OnImportPrivateKeyListener;
 
 public class ImportPrivateKeyFragment extends Fragment implements View.OnClickListener {
 
-    private static final OnImportPrivateKeyListener dummyOnImportPrivateKeyListener = key -> { };
+    private static final OnImportPrivateKeyListener dummyOnImportPrivateKeyListener = (key, pwd) -> {
+    };
 
     private EditText privateKey;
+    private EditText pwd;
+    private EditText pwdConfirm;
     private OnImportPrivateKeyListener onImportPrivateKeyListener;
 
     public static ImportPrivateKeyFragment create() {
@@ -36,6 +39,8 @@ public class ImportPrivateKeyFragment extends Fragment implements View.OnClickLi
         super.onViewCreated(view, savedInstanceState);
 
         privateKey = view.findViewById(R.id.private_key);
+        pwd = view.findViewById(R.id.pwd);
+        pwdConfirm = view.findViewById(R.id.pwd_confirm);
         view.findViewById(R.id.import_action).setOnClickListener(this);
 
     }
@@ -43,12 +48,21 @@ public class ImportPrivateKeyFragment extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View view) {
         privateKey.setError(null);
-        String value = privateKey.getText().toString();
-        if (TextUtils.isEmpty(value) || value.length() != 64) {
+        String privateKeyValue = privateKey.getText().toString();
+        String pwdValue = pwd.getText().toString();
+        String pwdConfirmValue = pwdConfirm.getText().toString();
+        if (TextUtils.isEmpty(privateKeyValue) || privateKeyValue.length() != 64) {
             privateKey.setError(getString(R.string.error_field_required));
+        } else if (TextUtils.isEmpty(pwdValue)) {
+            pwd.setError(getString(R.string.error_invalid_password));
+        } else if (TextUtils.isEmpty(pwdConfirmValue)) {
+            pwdConfirm.setError(getString(R.string.error_invalid_password));
+        } else if (!pwdValue.equals(pwdConfirmValue)) {
+            pwdConfirm.setError(getString(R.string.error_incorrect_password_confirm));
         } else {
-            onImportPrivateKeyListener.onPrivateKey(privateKey.getText().toString());
+            onImportPrivateKeyListener.onPrivateKey(privateKeyValue, pwdConfirmValue);
         }
+
     }
 
     public void setOnImportPrivateKeyListener(OnImportPrivateKeyListener onImportPrivateKeyListener) {

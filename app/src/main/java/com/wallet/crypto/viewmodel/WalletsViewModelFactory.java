@@ -11,7 +11,7 @@ import com.wallet.crypto.interact.FetchWalletsInteract;
 import com.wallet.crypto.interact.FindDefaultWalletInteract;
 import com.wallet.crypto.interact.SetDefaultWalletInteract;
 import com.wallet.crypto.router.ImportWalletRouter;
-import com.wallet.crypto.router.TransactionsRouter;
+import com.wallet.crypto.router.MainRouter;
 
 import javax.inject.Inject;
 
@@ -25,7 +25,7 @@ public class WalletsViewModelFactory implements ViewModelProvider.Factory {
     private final ExportWalletInteract exportWalletInteract;
 
 	private final ImportWalletRouter importWalletRouter;
-    private final TransactionsRouter transactionsRouter;
+    private final MainRouter mainRouter;
 
 
     @Inject
@@ -37,7 +37,7 @@ public class WalletsViewModelFactory implements ViewModelProvider.Factory {
             FindDefaultWalletInteract findDefaultWalletInteract,
             ExportWalletInteract exportWalletInteract,
             ImportWalletRouter importWalletRouter,
-            TransactionsRouter transactionsRouter) {
+            MainRouter mainRouter) {
 		this.createWalletInteract = createWalletInteract;
 		this.setDefaultWalletInteract = setDefaultWalletInteract;
 		this.deleteWalletInteract = deleteWalletInteract;
@@ -45,7 +45,7 @@ public class WalletsViewModelFactory implements ViewModelProvider.Factory {
 		this.findDefaultWalletInteract = findDefaultWalletInteract;
 		this.exportWalletInteract = exportWalletInteract;
 		this.importWalletRouter = importWalletRouter;
-		this.transactionsRouter = transactionsRouter;
+		this.mainRouter = mainRouter;
 	}
 
 	@NonNull
@@ -59,6 +59,6 @@ public class WalletsViewModelFactory implements ViewModelProvider.Factory {
                 findDefaultWalletInteract,
                 exportWalletInteract,
                 importWalletRouter,
-                transactionsRouter);
+				mainRouter);
 	}
 }

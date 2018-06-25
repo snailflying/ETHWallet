@@ -59,8 +59,8 @@ public class WalletRepository {
         return accountKeystoreService.importKeystore(store, password);
     }
 
-    public Single<Wallet> importPrivateKeyToWallet(String privateKey) {
-        return accountKeystoreService.importPrivateKey(privateKey);
+    public Single<Wallet> importPrivateKeyToWallet(String privateKey,String pwd) {
+        return accountKeystoreService.importPrivateKey(privateKey,pwd);
     }
 
     public Single<String> exportWallet(Wallet wallet) {
