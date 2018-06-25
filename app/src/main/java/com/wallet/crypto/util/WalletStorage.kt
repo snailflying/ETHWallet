@@ -135,7 +135,6 @@ class WalletStorage private constructor() {
      * @return
      */
     fun importWalletByPrivateKey(privateKey: String, pwd: String): Account? {
-        val credentials: Credentials? = null
         val ecKeyPair = ECKeyPair.create(Numeric.toBigInt(privateKey))
         return generateWalletFile(pwd, ecKeyPair)
     }
@@ -228,20 +227,9 @@ class WalletStorage private constructor() {
      * @return
      */
     fun modifyPassword(address: String, oldPassword: String, newPassword: String): Account {
-        var credentials: Credentials? = null
-        var keypair: ECKeyPair? = null
-        try {
-            credentials = getWalletCredentials(oldPassword, address)
-            keypair = credentials.ecKeyPair
-            val destinationDirectory = File(FileUtils.WALLET_DIR, address)
-            WalletUtils.generateWalletFile(newPassword, keypair!!, destinationDirectory, true)
-        } catch (e: IOException) {
-            e.printStackTrace()
-            throw ServiceException(e.message)
-        } catch (e: CipherException) {
-            e.printStackTrace()
-            throw ServiceException(e.message)
-        }
+        val credentials = getWalletCredentials(oldPassword, address)
+        val keypair = credentials.ecKeyPair
+        generateWalletFile(newPassword, keypair)
         val account = Account(address, System.currentTimeMillis())
         add(account)
         return account

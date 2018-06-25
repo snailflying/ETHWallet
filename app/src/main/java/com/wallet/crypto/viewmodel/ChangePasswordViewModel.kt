@@ -36,6 +36,7 @@ class ChangePasswordViewModel : BaseViewModel() {
         }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
+                    toast("修改成功").show()
                     progress.value = false
                     block()
                 }, this::onError)

@@ -9,7 +9,6 @@ import com.wallet.crypto.R
 import com.wallet.crypto.entity.ErrorEnvelope
 import com.wallet.crypto.ext.click
 import com.wallet.crypto.ext.setTextChangeListener
-import com.wallet.crypto.ext.toast
 import com.wallet.crypto.repository.SharedPreferenceRepository
 import com.wallet.crypto.viewmodel.ChangePasswordViewModel
 import dagger.android.AndroidInjection
@@ -40,7 +39,9 @@ class ChangePasswordActivity : BaseActivity() {
         new_password.setTextChangeListener { afterTextChanged { viewModel.newPwd = it.toString() } }
         viewModel.progress().observe(this, Observer<Boolean> { this.onProgress(it!!) })
         viewModel.error().observe(this, Observer { this.onError(it) })
-        btn_ok.click { viewModel.change(sharedPreferenceRepository) { toast("成功").show() } }
+        btn_ok.click {
+            viewModel.change(sharedPreferenceRepository) { finish() }
+        }
     }
 
     private fun onError(error: ErrorEnvelope?) {
