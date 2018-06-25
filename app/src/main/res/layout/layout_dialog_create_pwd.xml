@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
         android:gravity="center_horizontal"
-        android:text="@string/create_pwd_dialog_message"
+        android:text="@string/input_pwd_dialog_message"
         android:textSize="16sp"/>
 
     <com.wallet.crypto.widget.HelperTextInputLayout

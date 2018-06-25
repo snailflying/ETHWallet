@@ -162,7 +162,7 @@
     <string name="dialog_message">Enter the password to encrypt your wallet</string>
     <string name="dialog_message_decrypt">Enter the password to decrypt your wallet</string>
     <string name="dialog_message_enter_password_to_sent">Enter the password</string>
-    <string name="create_pwd_dialog_message">Input the password to encrypt your wallet</string>
+    <string name="input_pwd_dialog_message">Input the password</string>
     <string name="dialog_message_unrecoverable_message">If this device is replaced or this app is deleted, neither you nor Trust Wallet can recover your funds without a backup.</string>
     <string name="toast_message_wallet_imported">The wallet was imported</string>
     <string name="toast_message_wallet_exported">A backup was created</string>
@@ -203,6 +203,7 @@
     <string name="action_shapeshift">Shapeshift (Crypto only)</string>
     <string name="action_changelly">Changelly</string>
     <string name="action_wallets">Wallets</string>
+    <string name="change_password">change Password</string>
     <string name="action_next">Next</string>
     <string name="action_edit">Edit</string>
     <string name="action_save">Save</string>

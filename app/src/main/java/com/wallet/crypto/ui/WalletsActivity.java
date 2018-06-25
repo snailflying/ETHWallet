@@ -19,7 +19,7 @@ import android.view.View;
 import com.wallet.crypto.R;
 import com.wallet.crypto.entity.ErrorEnvelope;
 import com.wallet.crypto.entity.Wallet;
-import com.wallet.crypto.ui.dialog.CreatePwdDialog;
+import com.wallet.crypto.ui.dialog.InputPwdDialog;
 import com.wallet.crypto.ui.dialog.interfaces.IPositiveButtonDialogListener;
 import com.wallet.crypto.ui.widget.adapter.WalletsAdapter;
 import com.wallet.crypto.viewmodel.WalletsViewModel;
@@ -195,7 +195,7 @@ public class WalletsActivity extends BaseActivity implements
 	 */
 	@Override
 	public void onNewWallet(View view) {
-		showCusDialog(this, new CreatePwdDialog());
+		showCusDialog(this, new InputPwdDialog());
 		hideDialog();
 	}
 
