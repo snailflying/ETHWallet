@@ -21,9 +21,7 @@ import com.wallet.crypto.router.SettingsRouter;
 import com.wallet.crypto.router.TransactionDetailRouter;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 
 public class TransactionsViewModel extends BaseViewModel {
@@ -107,20 +105,15 @@ public class TransactionsViewModel extends BaseViewModel {
 
     public void fetchTransactions() {
         getProgress().postValue(true);
-        transactionDisposable = Observable.interval(0, FETCH_TRANSACTIONS_INTERVAL, TimeUnit.SECONDS)
-            .doOnNext(l ->
-                    setDisposable(fetchTransactionsInteract
-                            .fetch(defaultWallet.getValue()/*new Wallet("0x60f7a1cbc59470b74b1df20b133700ec381f15d3")*/)
-                            .subscribe(this::onTransactions, this::onError)))
-            .subscribe();
+        setDisposable(fetchTransactionsInteract
+                .fetch(defaultWallet.getValue()/*new Wallet("0x60f7a1cbc59470b74b1df20b133700ec381f15d3")*/)
+                .subscribe(this::onTransactions, this::onError));
     }
 
     public void getBalance() {
-        balanceDisposable = Observable.interval(0, GET_BALANCE_INTERVAL, TimeUnit.SECONDS)
-                .doOnNext(l -> getDefaultWalletBalance
-                        .get(defaultWallet.getValue())
-                        .subscribe(defaultWalletBalance::postValue, t -> {}))
-                .subscribe();
+        getDefaultWalletBalance
+                .get(defaultWallet.getValue())
+                .subscribe(defaultWalletBalance::postValue, t -> {});
     }
 
     private void onDefaultNetwork(NetworkInfo networkInfo) {
