@@ -23,11 +23,9 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
 
     fun importKeystore(store: String, password: String): Single<Wallet> {
         return Single.fromCallable {
-            val account = keyStore
-                    .importWalletByKeystore(store, password)
+            val account = keyStore.importWalletByKeystore(store, password)
             Wallet(account!!.address.toLowerCase())
-        }
-                .subscribeOn(Schedulers.io())
+        }.subscribeOn(Schedulers.io())
     }
 
     //TODO:导入密码增加输入密码输入框,目前为空

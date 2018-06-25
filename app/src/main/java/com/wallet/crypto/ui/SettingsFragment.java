@@ -12,8 +12,8 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 
-import com.wallet.crypto.TrustConstants;
 import com.wallet.crypto.R;
+import com.wallet.crypto.TrustConstants;
 import com.wallet.crypto.entity.NetworkInfo;
 import com.wallet.crypto.interact.FindDefaultWalletInteract;
 import com.wallet.crypto.repository.EthereumNetworkRepository;
@@ -22,6 +22,7 @@ import com.wallet.crypto.router.ManageWalletsRouter;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
+
 
 public class SettingsFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -48,7 +49,7 @@ public class SettingsFragment extends PreferenceFragment
         });
 
         changePassword.setOnPreferenceClickListener(preference -> {
-
+            startActivity(new Intent(getActivity(),ChangePasswordActivity.class));
             return false;
         });
 

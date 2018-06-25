@@ -235,10 +235,12 @@ class WalletStorage private constructor() {
             keypair = credentials.ecKeyPair
             val destinationDirectory = File(FileUtils.WALLET_DIR, address)
             WalletUtils.generateWalletFile(newPassword, keypair!!, destinationDirectory, true)
-        } catch (e: CipherException) {
-            e.printStackTrace()
         } catch (e: IOException) {
             e.printStackTrace()
+            throw ServiceException(e.message)
+        } catch (e: CipherException) {
+            e.printStackTrace()
+            throw ServiceException(e.message)
         }
         val account = Account(address, System.currentTimeMillis())
         add(account)

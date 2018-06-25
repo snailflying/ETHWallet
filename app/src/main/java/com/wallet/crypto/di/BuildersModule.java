@@ -1,6 +1,7 @@
 package com.wallet.crypto.di;
 
 import com.wallet.crypto.ui.AddTokenActivity;
+import com.wallet.crypto.ui.ChangePasswordActivity;
 import com.wallet.crypto.ui.ConfirmationActivity;
 import com.wallet.crypto.ui.GasSettingsActivity;
 import com.wallet.crypto.ui.ImportWalletActivity;
@@ -49,6 +50,7 @@ public abstract class BuildersModule {
 	@ActivityScope
 	@ContributesAndroidInjector(modules = ConfirmationModule.class)
 	abstract ConfirmationActivity bindConfirmationModule();
+
     @ContributesAndroidInjector
 	abstract MyAddressActivity bindMyAddressModule();
 
@@ -63,4 +65,8 @@ public abstract class BuildersModule {
 	@ActivityScope
     @ContributesAndroidInjector(modules = AddTokenModule.class)
 	abstract AddTokenActivity bindAddTokenActivity();
+
+	@ActivityScope
+	@ContributesAndroidInjector()
+	abstract ChangePasswordActivity bindChangePasswordModule();
 }

@@ -21,7 +21,7 @@ public class SettingsActivity extends BaseActivity implements HasFragmentInjecto
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        AndroidInjection.inject(this);
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         toolbar();
