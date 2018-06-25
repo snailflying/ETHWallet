@@ -8,7 +8,7 @@ import com.wallet.crypto.interact.FindDefaultWalletInteract;
 import com.wallet.crypto.interact.SetDefaultWalletInteract;
 import com.wallet.crypto.repository.WalletRepository;
 import com.wallet.crypto.router.ImportWalletRouter;
-import com.wallet.crypto.router.TransactionsRouter;
+import com.wallet.crypto.router.MainRouter;
 import com.wallet.crypto.viewmodel.WalletsViewModelFactory;
 
 import dagger.Module;
@@ -26,7 +26,7 @@ class AccountsManageModule {
 			FindDefaultWalletInteract findDefaultWalletInteract,
 			ExportWalletInteract exportWalletInteract,
 			ImportWalletRouter importWalletRouter,
-            TransactionsRouter transactionsRouter) {
+            MainRouter mainRouter) {
 		return new WalletsViewModelFactory(createWalletInteract,
                 setDefaultWalletInteract,
                 deleteWalletInteract,
@@ -34,7 +34,7 @@ class AccountsManageModule {
                 findDefaultWalletInteract,
                 exportWalletInteract,
                 importWalletRouter,
-                transactionsRouter);
+				mainRouter);
 	}
 
 	@Provides
@@ -73,7 +73,7 @@ class AccountsManageModule {
 	}
 
 	@Provides
-    TransactionsRouter provideTransactionsRouter() {
-	    return new TransactionsRouter();
+	MainRouter provideTransactionsRouter() {
+	    return new MainRouter();
     }
 }

@@ -2,18 +2,14 @@ package com.wallet.crypto.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import com.wallet.crypto.BuildConfig;
 import com.wallet.crypto.entity.Wallet;
+import com.wallet.crypto.router.MainRouter;
 import com.wallet.crypto.router.ManageWalletsRouter;
-import com.wallet.crypto.router.TransactionsRouter;
 import com.wallet.crypto.viewmodel.SplashViewModel;
 import com.wallet.crypto.viewmodel.SplashViewModelFactory;
 
 import javax.inject.Inject;
-
-import dagger.android.AndroidInjection;
 //import io.fabric.sdk.android.Fabric;
 
 public class SplashActivity extends BaseActivity {
@@ -37,7 +33,7 @@ public class SplashActivity extends BaseActivity {
         if (wallets.length == 0) {
             new ManageWalletsRouter().open(this, false);
         } else {
-            new TransactionsRouter().open(this, false);
+            new MainRouter().open(this, false);
         }
         finish();
     }

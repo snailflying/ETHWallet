@@ -36,7 +36,7 @@
             android:windowSoftInputMode="stateAlwaysVisible|adjustResize" />
 
         <activity
-            android:name=".ui.TransactionsActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/title_import" />
 
         <activity

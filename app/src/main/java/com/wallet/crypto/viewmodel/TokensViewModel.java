@@ -11,9 +11,8 @@ import com.wallet.crypto.entity.Wallet;
 import com.wallet.crypto.interact.FetchTokensInteract;
 import com.wallet.crypto.interact.FindDefaultNetworkInteract;
 import com.wallet.crypto.router.AddTokenRouter;
+import com.wallet.crypto.router.MainRouter;
 import com.wallet.crypto.router.SendTokenRouter;
-import com.wallet.crypto.router.TransactionsRouter;
-import com.wallet.crypto.ui.TokensActivity;
 
 public class TokensViewModel extends BaseViewModel {
     private final MutableLiveData<NetworkInfo> defaultNetwork = new MutableLiveData<>();
@@ -24,19 +23,19 @@ public class TokensViewModel extends BaseViewModel {
     private final FetchTokensInteract fetchTokensInteract;
     private final AddTokenRouter addTokenRouter;
     private final SendTokenRouter sendTokenRouter;
-    private final TransactionsRouter transactionsRouter;
+    private final MainRouter mainRouter;
 
     TokensViewModel(
             FindDefaultNetworkInteract findDefaultNetworkInteract,
             FetchTokensInteract fetchTokensInteract,
             AddTokenRouter addTokenRouter,
             SendTokenRouter sendTokenRouter,
-            TransactionsRouter transactionsRouter) {
+            MainRouter mainRouter) {
         this.findDefaultNetworkInteract = findDefaultNetworkInteract;
         this.fetchTokensInteract = fetchTokensInteract;
         this.addTokenRouter = addTokenRouter;
         this.sendTokenRouter = sendTokenRouter;
-        this.transactionsRouter = transactionsRouter;
+        this.mainRouter = mainRouter;
     }
 
     public void prepare() {
@@ -94,6 +93,6 @@ public class TokensViewModel extends BaseViewModel {
     }
 
     public void showTransactions(Context context, boolean isClearStack) {
-        transactionsRouter.open(context, isClearStack);
+        mainRouter.open(context, isClearStack);
     }
 }

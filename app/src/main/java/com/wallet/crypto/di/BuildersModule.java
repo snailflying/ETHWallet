@@ -10,7 +10,7 @@ import com.wallet.crypto.ui.SettingsActivity;
 import com.wallet.crypto.ui.SplashActivity;
 import com.wallet.crypto.ui.TokensActivity;
 import com.wallet.crypto.ui.TransactionDetailActivity;
-import com.wallet.crypto.ui.TransactionsActivity;
+import com.wallet.crypto.ui.MainActivity;
 import com.wallet.crypto.ui.WalletsActivity;
 
 import dagger.Module;
@@ -32,7 +32,7 @@ public abstract class BuildersModule {
 
 	@ActivityScope
 	@ContributesAndroidInjector(modules = TransactionsModule.class)
-	abstract TransactionsActivity bindTransactionsModule();
+	abstract MainActivity bindTransactionsModule();
 
     @ActivityScope
     @ContributesAndroidInjector(modules = TransactionDetailModule.class)

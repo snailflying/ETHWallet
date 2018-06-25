@@ -5,11 +5,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.wallet.crypto.R;
-import com.wallet.crypto.router.TransactionsRouter;
+import com.wallet.crypto.router.MainRouter;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasFragmentInjector;
@@ -35,7 +34,7 @@ public class SettingsActivity extends BaseActivity implements HasFragmentInjecto
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home: {
-                new TransactionsRouter().open(this, true);
+                new MainRouter().open(this, true);
                 return true;
             }
         }
@@ -44,7 +43,7 @@ public class SettingsActivity extends BaseActivity implements HasFragmentInjecto
 
     @Override
     public void onBackPressed() {
-        new TransactionsRouter().open(this, true);
+        new MainRouter().open(this, true);
     }
 
     @Override

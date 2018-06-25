@@ -6,7 +6,7 @@ import com.wallet.crypto.repository.EthereumNetworkRepository;
 import com.wallet.crypto.repository.TokenRepository;
 import com.wallet.crypto.router.AddTokenRouter;
 import com.wallet.crypto.router.SendTokenRouter;
-import com.wallet.crypto.router.TransactionsRouter;
+import com.wallet.crypto.router.MainRouter;
 import com.wallet.crypto.viewmodel.TokensViewModelFactory;
 
 import dagger.Module;
@@ -21,13 +21,13 @@ class TokensModule {
             FetchTokensInteract fetchTokensInteract,
             AddTokenRouter addTokenRouter,
             SendTokenRouter sendTokenRouter,
-            TransactionsRouter transactionsRouter) {
+            MainRouter mainRouter) {
         return new TokensViewModelFactory(
                 findDefaultNetworkInteract,
                 fetchTokensInteract,
                 addTokenRouter,
                 sendTokenRouter,
-                transactionsRouter);
+                mainRouter);
     }
 
     @Provides
@@ -52,7 +52,7 @@ class TokensModule {
     }
 
     @Provides
-    TransactionsRouter provideTransactionsRouter() {
-        return new TransactionsRouter();
+    MainRouter provideTransactionsRouter() {
+        return new MainRouter();
     }
 }

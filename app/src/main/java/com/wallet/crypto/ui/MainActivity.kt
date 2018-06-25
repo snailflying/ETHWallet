@@ -38,7 +38,7 @@ import com.wallet.crypto.widget.EmptyTransactionsView
 import com.wallet.crypto.widget.SystemView
 import javax.inject.Inject
 
-class TransactionsActivity : BaseNavigationActivity(), View.OnClickListener {
+class MainActivity : BaseNavigationActivity(), View.OnClickListener {
 
     @Inject
     internal lateinit var transactionsViewModelFactory: TransactionsViewModelFactory

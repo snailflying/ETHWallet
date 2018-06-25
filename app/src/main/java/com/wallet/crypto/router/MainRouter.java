@@ -3,11 +3,11 @@ package com.wallet.crypto.router;
 import android.content.Context;
 import android.content.Intent;
 
-import com.wallet.crypto.ui.TransactionsActivity;
+import com.wallet.crypto.ui.MainActivity;
 
-public class TransactionsRouter {
+public class MainRouter {
     public void open(Context context, boolean isClearStack) {
-        Intent intent = new Intent(context, TransactionsActivity.class);
+        Intent intent = new Intent(context, MainActivity.class);
         if (isClearStack) {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         }
