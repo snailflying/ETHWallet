@@ -2,6 +2,7 @@
     <string name="app_name">Trust</string>
     <string name="balance">余额</string>
     <string name="title_send">发送</string>
+    <string name="title_update_pwd">修改密码</string>
     <string name="title_request">我的地址</string>
     <string name="title_import">导入钱包</string>
     <string name="title_create">创建</string>
