@@ -233,8 +233,7 @@ class WalletStorage private constructor() {
         try {
             credentials = getWalletCredentials(oldPassword, address)
             keypair = credentials.ecKeyPair
-            val destinationDirectory = File(FileUtils.WALLET_DIR, address)
-            WalletUtils.generateWalletFile(newPassword, keypair!!, destinationDirectory, true)
+            generateWalletFile(newPassword, keypair!!)
         } catch (e: IOException) {
             e.printStackTrace()
             throw ServiceException(e.message)
