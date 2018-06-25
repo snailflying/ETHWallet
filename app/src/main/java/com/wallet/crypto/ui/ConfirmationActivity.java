@@ -20,18 +20,22 @@ import com.wallet.crypto.TrustConstants;
 import com.wallet.crypto.entity.ErrorEnvelope;
 import com.wallet.crypto.entity.GasSettings;
 import com.wallet.crypto.entity.Wallet;
+import com.wallet.crypto.ui.dialog.InputPwdDialog;
+import com.wallet.crypto.ui.dialog.interfaces.IPositiveButtonDialogListener;
 import com.wallet.crypto.util.BalanceUtils;
-import com.wallet.crypto.util.KeyboardUtils;
 import com.wallet.crypto.viewmodel.ConfirmationViewModel;
 import com.wallet.crypto.viewmodel.ConfirmationViewModelFactory;
 import com.wallet.crypto.viewmodel.GasSettingsViewModel;
-import com.wallet.crypto.widget.PasswordView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 
 import javax.inject.Inject;
 
-public class ConfirmationActivity extends BaseActivity {
+import static com.wallet.crypto.ui.dialog.DialogManagerKt.showCusDialog;
+
+public class ConfirmationActivity extends BaseActivity implements IPositiveButtonDialogListener {
     AlertDialog dialog;
 
     @Inject
@@ -139,22 +143,9 @@ public class ConfirmationActivity extends BaseActivity {
     }
 
     private void onSend() {
-         // 输入密码对话框
-        PasswordView view = new PasswordView(this);
+        // 输入密码对话框
+        showCusDialog(this, new InputPwdDialog());
         hideDialog();
-        dialog = new AlertDialog.Builder(this)
-                .setView(view)
-                .setPositiveButton(R.string.ok,
-                        (dialogInterface, i) -> {
-                            viewModel.getPassword().setValue(view.getPassword());
-                            transfer();
-                        })
-                .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
-                    KeyboardUtils.hideKeyboard(view.findViewById(R.id.password));
-                })
-                .setOnDismissListener(dialog -> KeyboardUtils.hideKeyboard(view.findViewById(R.id.password)))
-                .create();
-        dialog.show();
     }
 
     private void transfer() {
@@ -232,5 +223,11 @@ public class ConfirmationActivity extends BaseActivity {
                 viewModel.gasSettings().postValue(settings);
             }
         }
+    }
+
+    @Override
+    public void onPositiveButtonClicked(int requestCode, @NotNull Object any) {
+        viewModel.getPassword().setValue((String) any);
+        transfer();
     }
 }

@@ -10,6 +10,12 @@
             android:title="@string/action_wallets"
             />
 
+    <Preference
+            android:key="pref_change_password"
+            android:icon="@mipmap/settings_backup"
+            android:title="@string/change_password"
+            />
+
         <ListPreference
             android:key="pref_rpcServer"
             android:title="@string/network_label"

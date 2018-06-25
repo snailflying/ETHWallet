@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.layout_dialog_create_pwd.view.*
  * @Date 21/06/2018 3:04 PM
  * @Version
  */
-class CreatePwdDialog : BaseDialogFragment() {
+class InputPwdDialog : BaseDialogFragment() {
 
     var text = ""
     override fun build(initialBuilder: Builder): Builder {

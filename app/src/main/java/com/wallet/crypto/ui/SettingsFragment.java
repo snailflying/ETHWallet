@@ -40,9 +40,15 @@ public class SettingsFragment extends PreferenceFragment
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.fragment_settings);
         final Preference wallets = findPreference("pref_wallet");
+        final Preference changePassword = findPreference("pref_change_password");
 
         wallets.setOnPreferenceClickListener(preference -> {
             manageWalletsRouter.open(getActivity(), false);
+            return false;
+        });
+
+        changePassword.setOnPreferenceClickListener(preference -> {
+
             return false;
         });
 
