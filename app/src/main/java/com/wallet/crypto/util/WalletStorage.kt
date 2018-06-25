@@ -229,10 +229,7 @@ class WalletStorage private constructor() {
     fun modifyPassword(address: String, oldPassword: String, newPassword: String): Account {
         val credentials = getWalletCredentials(oldPassword, address)
         val keypair = credentials.ecKeyPair
-        generateWalletFile(newPassword, keypair)
-        val account = Account(address, System.currentTimeMillis())
-        add(account)
-        return account
+        return generateWalletFile(newPassword, keypair)
     }
 
 

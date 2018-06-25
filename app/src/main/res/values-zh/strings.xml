@@ -205,6 +205,7 @@
     <string name="action_shapeshift">变形（仅限加密）</string>
     <string name="action_changelly">更改</string>
     <string name="action_wallets">钱包</string>
+    <string name="change_password">修改密码</string>
     <string name="action_next">下一步</string>
     <string name="action_edit">编辑</string>
     <string name="action_save">保存</string>
