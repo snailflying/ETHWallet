@@ -1,15 +1,12 @@
 package com.wallet.crypto.service
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.wallet.crypto.entity.Wallet
 import com.wallet.crypto.util.WalletStorage
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
-import org.web3j.crypto.ECKeyPair
 import org.web3j.crypto.RawTransaction
 import org.web3j.crypto.TransactionEncoder
-import org.web3j.crypto.Wallet.create
 import java.math.BigDecimal
 import java.math.BigInteger
 
@@ -28,7 +25,6 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
         }.subscribeOn(Schedulers.io())
     }
 
-    //TODO:导入密码增加输入密码输入框,目前为空
     /*fun importPrivateKey(privateKey: String): Single<Wallet> {
         val newPassword = ""
         return Single.fromCallable {
@@ -39,10 +35,10 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
         }.compose { upstream -> importKeystore(upstream.blockingGet(), newPassword) }
     }*/
 
-    fun importPrivateKey(privateKey: String,pwd:String): Single<Wallet> {
+    fun importPrivateKey(privateKey: String, pwd: String): Single<Wallet> {
         return Single.fromCallable {
             val account = keyStore
-                    .importWalletByPrivateKey(privateKey,pwd)
+                    .importWalletByPrivateKey(privateKey, pwd)
             Wallet(account!!.address.toLowerCase())
         }
                 .subscribeOn(Schedulers.io())
