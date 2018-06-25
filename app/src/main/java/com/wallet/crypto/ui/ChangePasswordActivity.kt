@@ -35,13 +35,17 @@ class ChangePasswordActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_pwd)
         viewModel = ViewModelProviders.of(this).get(ChangePasswordViewModel::class.java)
-        old_password.setTextChangeListener { afterTextChanged { viewModel.oldPwd = it.toString() } }
-        new_password.setTextChangeListener { afterTextChanged { viewModel.newPwd = it.toString() } }
+        initView()
         viewModel.progress().observe(this, Observer<Boolean> { this.onProgress(it!!) })
         viewModel.error().observe(this, Observer { this.onError(it) })
-        btn_ok.click {
-            viewModel.change(sharedPreferenceRepository) { finish() }
-        }
+    }
+
+    private fun initView() {
+        toolbar()
+        setTitle(getString(R.string.title_update_pwd))
+        old_password.setTextChangeListener { afterTextChanged { viewModel.oldPwd = it.toString() } }
+        new_password.setTextChangeListener { afterTextChanged { viewModel.newPwd = it.toString() } }
+        btn_ok.click { viewModel.change(sharedPreferenceRepository) { finish() } }
     }
 
     private fun onError(error: ErrorEnvelope?) {

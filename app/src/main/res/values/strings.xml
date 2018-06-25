@@ -252,5 +252,7 @@
     <string name="qr_scan_permission">Scan QR code, please turn on camera permissions</string><!-- 扫描二维码，请打开相机权限 -->
     <string name="wallet_added_fatal">Address is non-ERC20 protocol wallet, please reenter</string><!-- 输入的钱包地址非ERC20协议钱包，请重新输入 -->
     <string name="exit_by_double_click">Click again to exit</string>
+    <string name="please_input_original_pwd">请输入原始密码</string>
+    <string name="please_input_new_pwd">请输入新密码</string>
 
 </resources>

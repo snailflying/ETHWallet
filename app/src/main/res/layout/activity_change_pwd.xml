@@ -5,12 +5,14 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <include layout="@layout/layout_simple_toolbar" />
+
     <com.wallet.crypto.widget.HelperTextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:errorEnabled="true"
-        app:helperText="请输入原始密码"
+        app:helperText="@string/please_input_original_pwd"
         app:hintEnabled="false"
         app:passwordToggleEnabled="true">
         <EditText
@@ -23,9 +25,9 @@
     <com.wallet.crypto.widget.HelperTextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         app:errorEnabled="true"
-        app:helperText="请输入新密码"
+        app:helperText="@string/please_input_new_pwd"
         app:hintEnabled="false"
         app:passwordToggleEnabled="true">
         <EditText
