@@ -64,6 +64,7 @@
     <string name="no_transactions">没有交易.\n下拉刷新试试.</string>
     <string name="twitter">Twitter</string>
     <string name="telegram">Telegram 群</string>
+    <string name="qq">QQ群</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->

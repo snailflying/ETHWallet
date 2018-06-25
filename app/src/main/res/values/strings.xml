@@ -65,6 +65,7 @@
     <string name="title_delete_account">Are you sure you want to delete wallet?</string>
     <string name="no_transactions">No Transactions.\nSwipe down to refresh.</string>
     <string name="twitter">Twitter</string>
+    <string name="qq">QQ Group</string>
     <string name="telegram">Telegram Group</string>
 
     <!-- TODO: Remove or change this placeholder text -->
