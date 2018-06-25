@@ -31,7 +31,7 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
     }
 
     //TODO:导入密码增加输入密码输入框,目前为空
-    fun importPrivateKey(privateKey: String): Single<Wallet> {
+    /*fun importPrivateKey(privateKey: String): Single<Wallet> {
         val newPassword = ""
         return Single.fromCallable {
             val key = BigInteger(privateKey, PRIVATE_KEY_RADIX)
@@ -39,6 +39,15 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
             val walletFile = create(newPassword, keypair, N, P)
             ObjectMapper().writeValueAsString(walletFile)
         }.compose { upstream -> importKeystore(upstream.blockingGet(), newPassword) }
+    }*/
+
+    fun importPrivateKey(privateKey: String,pwd:String): Single<Wallet> {
+        return Single.fromCallable {
+            val account = keyStore
+                    .importWalletByPrivateKey(privateKey,pwd)
+            Wallet(account!!.address.toLowerCase())
+        }
+                .subscribeOn(Schedulers.io())
     }
 
     fun exportAccount(wallet: Wallet): Single<String> {

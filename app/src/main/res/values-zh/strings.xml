@@ -22,6 +22,7 @@
     <string name="error_invalid_email">邮件地址无效</string>
     <string name="error_invalid_password">密码太短</string>
     <string name="error_incorrect_password">密码不正确</string>
+    <string name="error_incorrect_password_confirm">两次密码不一致</string>
     <string name="error_field_required">这是必填项</string>
     <string name="permission_rationale">"电子邮件自动填充需要联系人权限"</string>
     <string name="title_activity_account_list">AccountListActivity</string>
@@ -37,7 +38,7 @@
     <string name="title_activity_export_account">ExportAccountActivity</string>
     <string name="action_export">备份密码</string>
     <string name="message_save_this">请确保将此保存在安全的地方</string>
-    <string name="copy">赋值到剪切板</string>
+    <string name="copy">复制到剪切板</string>
     <string name="close">关闭</string>
     <!--<string name="keystore_keyword">KEYSTORE</string>-->
     <string name="prompt_confirm_password">确认密码</string>
@@ -144,8 +145,11 @@
     <string name="suggestion_private_key">密钥长度必须大于64位</string>
     <string name="suggestion_empty_password_available">密码可用空格</string>
     <string name="suggestion_this_is_your_address">钱包地址:%s</string>
+    <string name="suggestion_pwd">密码不能为空</string>
     <!-- Hints -->
     <string name="hint_private_key_field">私钥 *</string>
+    <string name="hint_private_pwd">密码 *</string>
+    <string name="hint_private_pwd_confirm">密码确认 *</string>
     <string name="hint_keystore">密钥库 *</string>
     <!-- Tabs labels-->
     <string name="tab_keystore">密钥库</string>

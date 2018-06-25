@@ -26,10 +26,10 @@ public class ImportWalletViewModel extends BaseViewModel implements OnImportKeys
     }
 
     @Override
-    public void onPrivateKey(String key) {
+    public void onPrivateKey(String privateKey,String pwd) {
         getProgress().postValue(true);
         importWalletInteract
-                .importPrivateKey(key)
+                .importPrivateKey(privateKey,pwd)
                 .subscribe(this::onWallet, this::onError);
     }
 

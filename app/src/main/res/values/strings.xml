@@ -22,6 +22,7 @@
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_incorrect_password_confirm">Two passwords are inconsistent</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
@@ -146,8 +147,11 @@
     <string name="suggestion_private_key">Private key has to be 64 characters long</string>
     <string name="suggestion_empty_password_available">The password can be left blank.</string>
     <string name="suggestion_this_is_your_address">My %s wallet address</string>
+    <string name="suggestion_pwd">password can not be blank</string>
     <!-- Hints -->
     <string name="hint_private_key_field">Private key *</string>
+    <string name="hint_private_pwd">Password *</string>
+    <string name="hint_private_pwd_confirm">Password confirm *</string>
     <string name="hint_keystore">Keystore *</string>
     <!-- Tabs labels-->
     <string name="tab_keystore">Keystore</string>

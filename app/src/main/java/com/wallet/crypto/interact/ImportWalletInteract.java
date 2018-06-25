@@ -22,9 +22,9 @@ public class ImportWalletInteract {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Single<Wallet> importPrivateKey(String privateKey) {
+    public Single<Wallet> importPrivateKey(String privateKey,String pwd) {
         return walletRepository
-                .importPrivateKeyToWallet(privateKey)
+                .importPrivateKeyToWallet(privateKey,pwd)
                 .compose(Operators.savePassword(walletRepository))
                 .observeOn(AndroidSchedulers.mainThread());
     }
