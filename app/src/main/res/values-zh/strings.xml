@@ -1,0 +1,249 @@
+<resources>
+    <string name="app_name">Trust</string>
+    <string name="balance">余额</string>
+    <string name="title_send">发送</string>
+    <string name="title_request">我的地址</string>
+    <string name="title_import">导入钱包</string>
+    <string name="title_create">创建</string>
+    <string name="title_account">钱包</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_create_account">新建钱包</string>
+
+    <!-- Strings relatedwalletount creation -->
+    <string name="prompt_email">钱包名称</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">创建</string>
+    <string name="action_sign_in_short">创建</string>
+
+    <!-- String related to sending -->
+    <string name="prompt_to">到</string>
+    <string name="action_send">发送</string>
+
+    <string name="error_invalid_email">邮件地址无效</string>
+    <string name="error_invalid_password">密码太短</string>
+    <string name="error_incorrect_password">密码不正确</string>
+    <string name="error_field_required">这是必填项</string>
+    <string name="permission_rationale">"电子邮件自动填充需要联系人权限"</string>
+    <string name="title_activity_account_list">AccountListActivity</string>
+    <string name="action_settings">设置</string>
+    <string name="action_select_account">钱包</string>
+    <string name="title_account_list">钱包</string>
+    <string name="title_account_detail">钱包详情</string>
+    <string name="account_delete">删除</string>
+    <string name="cancel">取消</string>
+    <string name="confirm_delete_account">确保你已经备份了钱包.</string>
+    <string name="title_activity_import_account">ImportAccountActivity</string>
+    <string name="action_import">导入</string>
+    <string name="title_activity_export_account">ExportAccountActivity</string>
+    <string name="action_export">备份密码</string>
+    <string name="message_save_this">请确保将此保存在安全的地方</string>
+    <string name="copy">赋值到剪切板</string>
+    <string name="close">关闭</string>
+    <!--<string name="keystore_keyword">KEYSTORE</string>-->
+    <string name="prompt_confirm_password">确认密码</string>
+    <string name="menu_refresh">刷新</string>
+    <string name="sent">发送</string>
+    <string name="received">接收</string>
+    <string name="title_activity_settings">设置</string>
+    <string name="network_label">网络</string>
+    <string name="app_intro">简介</string>
+
+    <string name="title_trust">Trust</string>
+    <!--<string name="low_storage_error">low storage error</string>-->
+    <!--<string name="no_camera_permission">camera permission not given</string>-->
+    <string name="ok">确认</string>
+    <!--<string name="no_barcode_captured">no barcode captured</string>-->
+    <string name="scan_barcode_button">二维码扫描</string>
+    <string name="barcode_error_format">格式不合法: %s</string>
+    <string name="action_request">我的地址</string>
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">面板</string>
+    <string name="title_notifications">通知</string>
+    <string name="title_delete_account">确认要删除此钱包么?</string>
+    <string name="no_transactions">没有交易.\n下拉刷新试试.</string>
+    <string name="twitter">Twitter</string>
+    <string name="telegram">Telegram 群</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->
+    <string name="title_community">社区</string>
+    <string name="title_opensource">开源</string>
+    <string name="title_source_code">源码</string>
+    <string name="title_report_bug">反馈bug</string>
+    <string name="title_rate">点赞</string>
+    <string name="title_support">支持</string>
+    <string name="title_donate">捐赠</string>
+    <string name="account_already_imported">已有相同地址的钱包</string>
+    <string name="message_delete_account">永久删除钱包。确保它已被导出并存储在别处。</string>
+    <string name="error_import">导入错误</string>
+    <string name="message_this_is_your_address">我的以太坊钱包地址</string>
+    <string name="min_pwd_length">密码长度必须大于%d</string>
+    <string name="backup_warning_text">
+       由于只有你控制你的钱，你需要保存你的备份密钥库，以防这个应用程序被删除。\n\n
+         您的钱包永远不会保存到云存储或标准设备备份中。
+    </string>
+    <string name="message_no_backup">创建备份</string>
+    <string name="error_deleting_account">删除钱包时发生错误</string>
+    <string name="error_deleting_account_with_details">错误：%s</string>
+    <string name="error_passwords_must_match">请确保密码正确</string>
+    <string name="label_confirm_new_password">确认密码</string>
+    <string name="label_new_password">新密码</string>
+    <string name="activity_title_backup">备份: %s…</string>
+    <string name="action_backup">备份</string>
+    <string name="title_privacy_policy">隐私政策</string>
+    <string name="title_terms">条款和条件</string>
+    <string name="title_version">版本</string>
+    <string name="title_activity_token_list">Tokens</string>
+    <string name="title_tokens">我的Tokens</string>
+    <string name="prompt_private_key">私钥</string>
+    <string name="error_import_private_key">私钥导入错误</string>
+    <string name="message_importing_private_key">正在导入私钥，请稍候</string>
+    <string name="lock_title">锁屏</string>
+    <string name="lock_body">锁屏密码没有设置，这是不安全的。</string>
+    <string name="lock_settings">锁屏设置</string>
+    <string name="lock_exit">退出</string>
+    <string name="unlock_screen_title_android">屏幕解锁</string>
+    <string name="unlock_screen_prompt_android">请解锁您的安卓设备以继续。</string>
+    <string name="sending_progress">发送中…</string>
+
+    <!--<string name="backup_new_password_text">考虑将安装在备份上的密码。\n密码将可用于此钱包。</string>-->
+    <string name="do_manage_make_backup">已经备份了吗?</string>
+    <string name="yes_continue">是的，下一步</string>
+    <string name="no_repeat">没有，重新备份</string>
+    <string name="unable_unblock_device">无法解锁设备</string>
+    <string name="skip">调过</string>
+    <string name="root_title">获得Root权限</string>
+    <string name="root_body">任何获得Root权限的应用都可轻易的窃取你的钱包，请立刻删除钱包并做好安全备份</string>
+    <string name="gas_fee_title">Gas费用 (Gwei)</string>
+    <string name="transfer">交易 %s</string>
+    <string name="action_buy">购买</string>
+    <string name="title_deposit">你想买什么？</string>
+    <string name="empty" />
+    <string name="try_again">重试</string>
+    <string name="already_have_account">已经有一个钱包？</string>
+    <string name="title_add_account">添加钱包</string>
+    <string name="action_create_new_account">创建钱包</string>
+    <string name="unknown_error">发生错误</string>
+    <string name="action_backup_wallet">备份钱包</string>
+    <string name="action_backup_later">稍后处理</string>
+    <string name="set_account_default">是否想要创建一个新的钱包？</string>
+    <string name="no_tokens">没有Token.</string>
+    <string name="title_email">联系我们</string>
+    <!-- Titles -->
+    <string name="title_item_detail">项目详情</string>
+    <string name="title_my_address">我的地址</string>
+    <string name="title_my_tokens">我的Token</string>
+    <string name="title_activity_send">发送</string>
+    <string name="title_activity_confirmation">去儿呢</string>
+    <string name="title_transaction_details">交易明细</string>
+    <string name="title_add_token">添加Token</string>
+    <string name="title_genera_wallet">生成钱包</string>
+    <!-- Suggestions -->
+    <string name="suggestion_field_required">* 必填字段</string>
+    <string name="suggestion_import_keystore">导入钱包与创建一样简单</string>
+    <string name="suggestion_private_key">密钥长度必须大于64位</string>
+    <string name="suggestion_empty_password_available">密码可用空格</string>
+    <string name="suggestion_this_is_your_address">钱包地址:%s</string>
+    <!-- Hints -->
+    <string name="hint_private_key_field">私钥 *</string>
+    <string name="hint_keystore">密钥库 *</string>
+    <!-- Tabs labels-->
+    <string name="tab_keystore">密钥库</string>
+    <string name="tab_private_key">私钥</string>
+    <!-- Dialog titles -->
+    <string name="title_dialog_error">错误</string>
+    <string name="title_dialog_handling">处理中…</string>
+    <string name="title_dialog_watch_out">小心！</string>
+    <string name="title_dialog_add_account">添加钱包</string>
+    <string name="title_dialog_deposit">你想买什么?</string>
+    <!-- Dialog messages-->
+    <string name="dialog_message">输入密码以解锁钱包</string>
+    <string name="dialog_message_decrypt">输入密码以解锁钱包</string>
+    <string name="dialog_message_enter_password_to_sent">输入密码</string>
+    <string name="create_pwd_dialog_message">输入密码以解锁钱包</string>
+    <string name="dialog_message_unrecoverable_message">如果更换了此设备或删除了该应用程序，则您无法在没有备份的情况下恢复您的资金。</string>
+    <string name="toast_message_wallet_imported">钱包导入成功</string>
+    <string name="toast_message_wallet_exported">钱包备份成功</string>
+    <string name="toast_qr_code_no_address">二维码未包含有效地址</string>
+    <!-- Intro resources-->
+    <string name="intro_title_first_page"><![CDATA[安全]]></string>
+    <string name="intro_title_second_page">完全透明</string>
+    <string name="intro_title_third_page">非常可靠</string>
+    <string name="intro_message_first_page">私钥永远存在你的设备中</string>
+    <string name="intro_message_second_page">代码是开放源代码（GPL-3.0许可证）并经过全面审核。</string>
+    <string name="intro_message_third_page">手机上最快的以太坊钱包体验。</string>
+    <!-- Menus -->
+    <string name="navigation_settings">设置</string>
+    <!-- Labels -->
+    <string name="label_from">来自</string>
+    <string name="label_to">到</string>
+    <string name="label_gas_limit">最低Gas</string>
+    <string name="label_gas_price">Gas价格</string>
+    <string name="label_network_fee">网络费用</string>
+    <string name="button_ok">好的</string>
+    <string name="hint_recipient_address">接收地址</string>
+    <string name="hint_amount">总计</string>
+    <string name="hint_contract_address">合约地址(Contract address)</string>
+    <string name="hint_contract_symbol">符号（Symbol）</string>
+    <string name="hint_contract_decimals">精度(Decimals)</string>
+    <!-- Subtitles -->
+    <string name="subtitle_from">来自</string>
+    <string name="subtitle_to">到</string>
+    <string name="subtitle_gas_fee">Gas费用</string>
+    <string name="subtitle_transaction_num">交易 #</string>
+    <string name="subtitle_transaction_time">交易时间</string>
+    <string name="subtitle_block_num">块 #</string>
+    <!-- Actions -->
+    <string name="action_share">分享</string>
+    <string name="action_more_details">更多</string>
+    <string name="action_add_wallet">添加钱包</string>
+    <string name="action_coinbase">Coinbase</string>
+    <string name="action_shapeshift">变形（仅限加密）</string>
+    <string name="action_changelly">更改</string>
+    <string name="action_wallets">钱包</string>
+    <string name="action_next">下一步</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_save">保存</string>
+    <!-- Subject -->
+    <string name="subject_transaction_detail">交易详情</string>
+    <string name="error_fail_load_transaction">无法加载交易列表</string>
+    <string name="error_fail_generate_qr">无法生成二维码</string>
+    <string name="error_invalid_address">无效地址</string>
+    <string name="error_invalid_amount">无效的金额</string>
+    <string name="error_transaction_failed">交易发生错误</string>
+    <string name="error_must_numeric">必须是数字</string>
+    <string name="transaction_succeeded">交易成功</string>
+    <string name="NA">N/A</string>
+    <string name="minus">-</string>
+    <string name="error_wallet_not_selected">钱包未被选中</string>
+    <string name="no_transactions_yet">暂无交易！</string>
+    <string name="unknown_balance_with_symbol">-- 以太</string>
+    <string name="unknown_balance_without_symbol">--</string>
+    <string name="dummy">虚拟值</string>
+    <string name="dummy_transaction_value">-- 以太</string>
+    <string name="title_dialog_sending">发送中…</string>
+    <string name="welcome.erc20.label.title">兼容ERC20</string>
+    <string name="welcome.erc20.label.description">默认支持ERC20</string>
+    <string name="i_understand">我明白</string>
+    <string name="scan_qr">来自二维码的地址</string>
+    <string name="info_gas_price">Gas价格越高，交易费用越贵，但交易速度处理得越快。</string>
+    <string name="info_gas_limit">Gas限制可以防止智能合约消耗你所有的以太坊。我们会尽力为您自动计算Gas限制，但一些智能合约可能需要定制Gas限制。</string>
+    <string name="title_send_settings">高级</string>
+    <string name="title_activity_barcode">二维码扫描</string>
+    <string name="error_add_token">不能添加Token.</string>
+    <string name="facebook">Facebook</string>
+
+    <string name="generate_text">您即将在此设备上生成新的加密离线钱包。 我们建议您选择一个强大的密码，以确保为您的资金提供最佳的安全性。 请注意，生成强大而安全的钱包是一项高度计算密集型任务，可能需要几分钟的时间！ 该过程将在后台执行，因此您仍然可以像往常一样使用手机。 进度会显示在您设备的通知栏中，只要我们完成了钱包的生成，我们会通知您。</string>
+    <string name="import_text">您即将导入未加密的私钥。 我们建议您选择一个强大的密码，以确保为您的资金提供最佳的安全性。 请注意，导入强大而安全的钱包是一项高度计算密集型任务，可能需要几分钟的时间！ 该过程将在后台执行，因此您仍然可以像往常一样使用手机。 进度会显示在您设备的通知栏中，只要我们完成了钱包的生成，我们会通知您。</string>
+    <string name="import_button">导入</string>
+    <string name="dialog_write_down_pw_title">重要!</string>
+    <string name="dialog_write_down_pw_text">Trust将使用您提供的密码加密您的电子钱包，以确保您的乙太网安全。 你的密码实际上是解锁你的钱包和度过你的以太网的唯一方法，所以请确保你不要忘记它！ 我们建议把它写在一张纸上。</string>
+    <string name="dialog_back_button">取消</string>
+    <string name="setting_show_ad">显示地址</string>
+
+    <string name="qr_scan_permission">扫描二维码，请打开相机权限</string><!-- 扫描二维码，请打开相机权限 -->
+    <string name="wallet_added_fatal">输入的钱包地址非ERC20协议钱包，请重新输入</string><!-- 输入的钱包地址非ERC20协议钱包，请重新输入 -->
+
+    <string name="exit_by_double_click">再次点击退出</string>
+
+</resources>

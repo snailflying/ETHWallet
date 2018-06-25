@@ -80,24 +80,24 @@ fun Toast.setBackground(@ColorInt messageColor: Int = Color.WHITE, @DrawableRes 
 }
 
 @SuppressLint("ShowToast")
-fun toast(text: CharSequence): Toast = Toast.makeText(App.context, text, Toast.LENGTH_LONG)
+fun toast(text: CharSequence, duration:Int = Toast.LENGTH_LONG): Toast = Toast.makeText(App.context, text, duration)
         .setGravityCenter()
         .setBackground()
 
 
 @SuppressLint("ShowToast")
-fun toast(@StringRes res: Int): Toast = Toast.makeText(App.context, App.context.resources.getString(res), Toast.LENGTH_LONG)
+fun toast(@StringRes res: Int, duration:Int = Toast.LENGTH_LONG): Toast = Toast.makeText(App.context, App.context.resources.getString(res), duration)
         .setGravityCenter()
         .setBackground()
 
 @SuppressLint("ShowToast")
-fun toastSuccess(text: CharSequence): Toast = Toast.makeText(App.context, text, Toast.LENGTH_LONG)
+fun toastSuccess(text: CharSequence, duration:Int = Toast.LENGTH_LONG): Toast = Toast.makeText(App.context, text, duration)
         .setGravityCenter()
         .setBackground()
 
 
 @SuppressLint("ShowToast")
-fun toastSuccess(@StringRes res: Int): Toast = Toast.makeText(App.context, App.context.resources.getString(res), Toast.LENGTH_LONG)
+fun toastSuccess(@StringRes res: Int, duration:Int = Toast.LENGTH_LONG): Toast = Toast.makeText(App.context, App.context.resources.getString(res), duration)
         .setGravityCenter()
         .setBackground()
 
