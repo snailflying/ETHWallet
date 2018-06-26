@@ -67,6 +67,10 @@ public class WalletRepository {
         return accountKeystoreService.exportAccount(wallet);
     }
 
+    public Single<String> exportPrivateKey(String pwd,Wallet wallet) {
+        return accountKeystoreService.exportPrivateKey(pwd,wallet);
+    }
+
     public Completable deleteWallet(String address) {
         return accountKeystoreService.deleteAccount(address);
     }

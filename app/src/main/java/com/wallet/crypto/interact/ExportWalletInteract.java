@@ -19,4 +19,10 @@ public class ExportWalletInteract {
                 .exportWallet(wallet)
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    public Single<String> exportPrivateKey(String pwd,Wallet wallet) {
+        return walletRepository
+                .exportPrivateKey(pwd,wallet)
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }

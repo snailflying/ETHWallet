@@ -124,6 +124,12 @@ public class WalletsViewModel extends BaseViewModel {
                 .subscribe(exportedStore::postValue, this::onExportError);
     }
 
+    public void exportPrivateKey(String pwd,Wallet wallet) {
+        exportWalletInteract
+                .exportPrivateKey(pwd,wallet)
+                .subscribe(exportedStore::postValue, this::onExportError);
+    }
+
     private void onExportError(Throwable throwable) {
         getError().postValue(new ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, throwable.getMessage()));
     }

@@ -2,7 +2,7 @@ package com.wallet.crypto.entity
 
 import java.io.Serializable
 
-class Wallet(address: String) : Serializable {
+class Wallet(address: String) :Serializable {
     val address: String = address
         get() = generateAddress(field)
 

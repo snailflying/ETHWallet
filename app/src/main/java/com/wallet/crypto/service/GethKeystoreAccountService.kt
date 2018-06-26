@@ -50,6 +50,12 @@ class GethKeystoreAccountService(private val keyStore: WalletStorage = WalletSto
                 .subscribeOn(Schedulers.io())
     }
 
+    fun exportPrivateKey(pwd:String,wallet: Wallet): Single<String> {
+        return Single
+                .fromCallable<String> { keyStore.exportPrivateKey(pwd,wallet.address)!! }
+                .subscribeOn(Schedulers.io())
+    }
+
     fun deleteAccount(address: String): Completable {
         return Completable.fromCallable { keyStore.deleteWallet(address) }
                 .subscribeOn(Schedulers.io())
