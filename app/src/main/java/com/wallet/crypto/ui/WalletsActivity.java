@@ -36,8 +36,8 @@ import javax.inject.Inject;
 import static cn.magicwindow.core.config.Config.DIALOG_CREATE_PWD_REQUEST_CODE;
 import static cn.magicwindow.core.config.Config.DIALOG_EXPORT_KEYSTORE_CODE;
 import static cn.magicwindow.core.config.Config.DIALOG_EXPORT_PRIVATEKEY_CODE;
-import static com.wallet.crypto.TrustConstants.IMPORT_REQUEST_CODE;
-import static com.wallet.crypto.TrustConstants.SHARE_REQUEST_CODE;
+import static com.wallet.crypto.MercuryConstants.IMPORT_REQUEST_CODE;
+import static com.wallet.crypto.MercuryConstants.SHARE_REQUEST_CODE;
 import static com.wallet.crypto.ui.dialog.DialogManagerKt.showCusDialog;
 
 public class WalletsActivity extends BaseActivity implements

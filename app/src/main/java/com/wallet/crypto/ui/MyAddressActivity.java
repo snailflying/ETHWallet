@@ -23,7 +23,7 @@ import com.wallet.crypto.repository.EthereumNetworkRepository;
 
 import javax.inject.Inject;
 
-import static com.wallet.crypto.TrustConstants.Key.WALLET;
+import static com.wallet.crypto.MercuryConstants.Key.WALLET;
 
 public class MyAddressActivity extends BaseActivity implements View.OnClickListener {
 

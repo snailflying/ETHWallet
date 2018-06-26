@@ -18,7 +18,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 
-public class TrustWalletTickerService implements TickerService {
+public class MercuryWalletTickerService implements TickerService {
 
     private static final String TRUST_API_URL = "https://api.trustwalletapp.com";
 
@@ -26,7 +26,7 @@ public class TrustWalletTickerService implements TickerService {
     private final Gson gson;
     private ApiClient apiClient;
 
-    public TrustWalletTickerService(
+    public MercuryWalletTickerService(
             OkHttpClient httpClient,
             Gson gson) {
         this.httpClient = httpClient;
@@ -61,10 +61,10 @@ public class TrustWalletTickerService implements TickerService {
 
     public interface ApiClient {
         @GET("prices?currency=USD&")
-        Observable<Response<TrustResponse>> fetchTickerPrice(@Query("symbols") String symbols);
+        Observable<Response<MercuryResponse>> fetchTickerPrice(@Query("symbols") String symbols);
     }
 
-    private static class TrustResponse {
+    private static class MercuryResponse {
         Ticker[] response;
     }
 

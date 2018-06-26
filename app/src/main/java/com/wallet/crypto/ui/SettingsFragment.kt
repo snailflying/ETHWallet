@@ -10,7 +10,7 @@ import android.preference.ListPreference
 import android.preference.PreferenceFragment
 import android.preference.PreferenceManager
 import com.wallet.crypto.R
-import com.wallet.crypto.TrustConstants
+import com.wallet.crypto.MercuryConstants
 import com.wallet.crypto.interact.FindDefaultWalletInteract
 import com.wallet.crypto.repository.EthereumNetworkRepository
 import com.wallet.crypto.router.ManageWalletsRouter
@@ -105,7 +105,7 @@ class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPrefere
         val donate = findPreference("pref_donate")
         donate.setOnPreferenceClickListener { preference ->
             val intent = Intent(activity, SendActivity::class.java)
-            intent.putExtra(TrustConstants.EXTRA_ADDRESS, TrustConstants.DONATION_ADDRESS)
+            intent.putExtra(MercuryConstants.EXTRA_ADDRESS, MercuryConstants.DONATION_ADDRESS)
             startActivity(intent)
             true
         }
@@ -133,7 +133,7 @@ class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPrefere
      * @param key 由官网生成的key
      * @return 返回true表示呼起手Q成功，返回fals表示呼起失败
      */
-    fun joinQQGroup(key: String = TrustConstants.QQ_GROUP): Boolean {
+    fun joinQQGroup(key: String = MercuryConstants.QQ_GROUP): Boolean {
         val intent = Intent()
         intent.data = Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D$key")
         // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面

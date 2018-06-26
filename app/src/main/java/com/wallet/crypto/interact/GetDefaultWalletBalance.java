@@ -12,7 +12,7 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.wallet.crypto.TrustConstants.USD_SYMBOL;
+import static com.wallet.crypto.MercuryConstants.USD_SYMBOL;
 import static com.wallet.crypto.util.BalanceUtils.weiToEth;
 
 public class GetDefaultWalletBalance {

@@ -20,7 +20,7 @@ import com.wallet.crypto.service.BlockExplorerClient;
 import com.wallet.crypto.service.EthplorerTokenService;
 import com.wallet.crypto.service.GethKeystoreAccountService;
 import com.wallet.crypto.service.TickerService;
-import com.wallet.crypto.service.TrustWalletTickerService;
+import com.wallet.crypto.service.MercuryWalletTickerService;
 
 import javax.inject.Singleton;
 
@@ -46,7 +46,7 @@ public class RepositoriesModule {
     @Singleton
     @Provides
     TickerService provideTickerService(OkHttpClient httpClient, Gson gson) {
-        return new TrustWalletTickerService(httpClient, gson);
+        return new MercuryWalletTickerService(httpClient, gson);
     }
 
     @Singleton

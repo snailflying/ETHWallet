@@ -27,7 +27,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import static com.wallet.crypto.TrustConstants.Key.TRANSACTION;
+import static com.wallet.crypto.MercuryConstants.Key.TRANSACTION;
 
 public class TransactionDetailActivity extends BaseActivity implements View.OnClickListener {
 

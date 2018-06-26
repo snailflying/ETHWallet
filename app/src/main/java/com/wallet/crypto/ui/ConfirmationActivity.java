@@ -16,7 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wallet.crypto.R;
-import com.wallet.crypto.TrustConstants;
+import com.wallet.crypto.MercuryConstants;
 import com.wallet.crypto.entity.ErrorEnvelope;
 import com.wallet.crypto.entity.GasSettings;
 import com.wallet.crypto.entity.Wallet;
@@ -74,12 +74,12 @@ public class ConfirmationActivity extends BaseActivity implements IPositiveButto
 
         sendButton.setOnClickListener(view -> onSend());
 
-        String toAddress = getIntent().getStringExtra(TrustConstants.EXTRA_TO_ADDRESS);
-        contractAddress = getIntent().getStringExtra(TrustConstants.EXTRA_CONTRACT_ADDRESS);
-        amount = new BigInteger(getIntent().getStringExtra(TrustConstants.EXTRA_AMOUNT));
-        decimals = getIntent().getIntExtra(TrustConstants.EXTRA_DECIMALS, -1);
-        String symbol = getIntent().getStringExtra(TrustConstants.EXTRA_SYMBOL);
-        symbol = symbol == null ? TrustConstants.ETH_SYMBOL : symbol;
+        String toAddress = getIntent().getStringExtra(MercuryConstants.EXTRA_TO_ADDRESS);
+        contractAddress = getIntent().getStringExtra(MercuryConstants.EXTRA_CONTRACT_ADDRESS);
+        amount = new BigInteger(getIntent().getStringExtra(MercuryConstants.EXTRA_AMOUNT));
+        decimals = getIntent().getIntExtra(MercuryConstants.EXTRA_DECIMALS, -1);
+        String symbol = getIntent().getStringExtra(MercuryConstants.EXTRA_SYMBOL);
+        symbol = symbol == null ? MercuryConstants.ETH_SYMBOL : symbol;
 
         confirmationForTokenTransfer = contractAddress != null;
 
@@ -192,12 +192,12 @@ public class ConfirmationActivity extends BaseActivity implements IPositiveButto
     }
 
     private void onGasSettings(GasSettings gasSettings) {
-        String gasPrice = BalanceUtils.weiToGwei(gasSettings.gasPrice) + " " + TrustConstants.GWEI_UNIT;
+        String gasPrice = BalanceUtils.weiToGwei(gasSettings.gasPrice) + " " + MercuryConstants.GWEI_UNIT;
         gasPriceText.setText(gasPrice);
         gasLimitText.setText(gasSettings.gasLimit.toString());
 
         String networkFee = BalanceUtils.weiToEth(gasSettings
-                .gasPrice.multiply(gasSettings.gasLimit)).toPlainString() + " " + TrustConstants.ETH_SYMBOL;
+                .gasPrice.multiply(gasSettings.gasLimit)).toPlainString() + " " + MercuryConstants.ETH_SYMBOL;
         networkFeeText.setText(networkFee);
     }
 
@@ -217,8 +217,8 @@ public class ConfirmationActivity extends BaseActivity implements IPositiveButto
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == GasSettingsViewModel.SET_GAS_SETTINGS) {
             if (resultCode == RESULT_OK) {
-                BigInteger gasPrice = new BigInteger(intent.getStringExtra(TrustConstants.EXTRA_GAS_PRICE));
-                BigInteger gasLimit = new BigInteger(intent.getStringExtra(TrustConstants.EXTRA_GAS_LIMIT));
+                BigInteger gasPrice = new BigInteger(intent.getStringExtra(MercuryConstants.EXTRA_GAS_PRICE));
+                BigInteger gasLimit = new BigInteger(intent.getStringExtra(MercuryConstants.EXTRA_GAS_LIMIT));
                 GasSettings settings = new GasSettings(gasPrice, gasLimit);
                 viewModel.gasSettings().postValue(settings);
             }

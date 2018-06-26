@@ -1,6 +1,6 @@
 package com.wallet.crypto;
 
-public abstract class TrustConstants {
+public abstract class MercuryConstants {
 
     public static final int IMPORT_REQUEST_CODE = 1001;
     public static final int EXPORT_REQUEST_CODE = 1002;

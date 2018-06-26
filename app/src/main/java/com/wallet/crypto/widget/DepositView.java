@@ -12,10 +12,10 @@ import com.wallet.crypto.R;
 import com.wallet.crypto.entity.Wallet;
 import com.wallet.crypto.ui.widget.OnDepositClickListener;
 
-import static com.wallet.crypto.TrustConstants.CHANGELLY_REF_ID;
-import static com.wallet.crypto.TrustConstants.COINBASE_WIDGET_CODE;
-import static com.wallet.crypto.TrustConstants.ETH_SYMBOL;
-import static com.wallet.crypto.TrustConstants.SHAPESHIFT_KEY;
+import static com.wallet.crypto.MercuryConstants.CHANGELLY_REF_ID;
+import static com.wallet.crypto.MercuryConstants.COINBASE_WIDGET_CODE;
+import static com.wallet.crypto.MercuryConstants.ETH_SYMBOL;
+import static com.wallet.crypto.MercuryConstants.SHAPESHIFT_KEY;
 
 public class DepositView extends FrameLayout implements View.OnClickListener {
 

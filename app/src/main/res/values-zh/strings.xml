@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Trust</string>
+    <string name="app_name">Mercury</string>
     <string name="balance">余额</string>
     <string name="title_send">发送</string>
     <string name="title_update_pwd">修改密码</string>
@@ -50,7 +50,7 @@
     <string name="network_label">网络</string>
     <string name="app_intro">简介</string>
 
-    <string name="title_trust">Trust</string>
+    <string name="title_trust">Mercury</string>
     <!--<string name="low_storage_error">low storage error</string>-->
     <!--<string name="no_camera_permission">camera permission not given</string>-->
     <string name="ok">确认</string>
@@ -244,7 +244,7 @@
     <string name="import_text">您即将导入未加密的私钥。 我们建议您选择一个强大的密码，以确保为您的资金提供最佳的安全性。 请注意，导入强大而安全的钱包是一项高度计算密集型任务，可能需要几分钟的时间！ 该过程将在后台执行，因此您仍然可以像往常一样使用手机。 进度会显示在您设备的通知栏中，只要我们完成了钱包的生成，我们会通知您。</string>
     <string name="import_button">导入</string>
     <string name="dialog_write_down_pw_title">重要!</string>
-    <string name="dialog_write_down_pw_text">Trust将使用您提供的密码加密您的电子钱包，以确保您的乙太网安全。 你的密码实际上是解锁你的钱包和度过你的以太网的唯一方法，所以请确保你不要忘记它！ 我们建议把它写在一张纸上。</string>
+    <string name="dialog_write_down_pw_text">Mercury将使用您提供的密码加密您的电子钱包，以确保您的乙太网安全。 你的密码实际上是解锁你的钱包和度过你的以太网的唯一方法，所以请确保你不要忘记它！ 我们建议把它写在一张纸上。</string>
     <string name="dialog_back_button">取消</string>
     <string name="setting_show_ad">显示地址</string>
 

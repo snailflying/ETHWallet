@@ -14,7 +14,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.wallet.crypto.R
-import com.wallet.crypto.TrustConstants
+import com.wallet.crypto.MercuryConstants
 import com.wallet.crypto.ext.toast
 import com.wallet.crypto.ui.barcode.QRScanActivity
 import com.wallet.crypto.util.BalanceUtils
@@ -56,17 +56,17 @@ class SendActivity : BaseActivity() {
         amountInputLayout = findViewById(R.id.amount_input_layout)
         amountText = findViewById(R.id.send_amount)
 
-        contractAddress = intent.getStringExtra(TrustConstants.EXTRA_CONTRACT_ADDRESS)
-        decimals = intent.getIntExtra(TrustConstants.EXTRA_DECIMALS, TrustConstants.ETHER_DECIMALS)
-        symbol = intent.getStringExtra(TrustConstants.EXTRA_SYMBOL)
-        symbol = if (symbol == null) TrustConstants.ETH_SYMBOL else symbol
-        sendingTokens = intent.getBooleanExtra(TrustConstants.EXTRA_SENDING_TOKENS, false)
+        contractAddress = intent.getStringExtra(MercuryConstants.EXTRA_CONTRACT_ADDRESS)
+        decimals = intent.getIntExtra(MercuryConstants.EXTRA_DECIMALS, MercuryConstants.ETHER_DECIMALS)
+        symbol = intent.getStringExtra(MercuryConstants.EXTRA_SYMBOL)
+        symbol = if (symbol == null) MercuryConstants.ETH_SYMBOL else symbol
+        sendingTokens = intent.getBooleanExtra(MercuryConstants.EXTRA_SENDING_TOKENS, false)
 
         setTitle(getString(R.string.title_send) + " " + symbol)
         amountInputLayout!!.hint = getString(R.string.hint_amount) + " " + symbol
 
         // Populate to address if it has been passed forward
-        val toAddress = intent.getStringExtra(TrustConstants.EXTRA_ADDRESS)
+        val toAddress = intent.getStringExtra(MercuryConstants.EXTRA_ADDRESS)
         if (toAddress != null) {
             toAddressText!!.setText(toAddress)
         }
