@@ -29,7 +29,7 @@
 * 支持助记词
 
 
-根据[Mercury](https://github.com/MercuryWallet/trust-wallet-android-source)修改优化
+根据[Trust](https://github.com/MercuryWallet/trust-wallet-android-source)修改优化
 
 ## Dependencies:
 * [Web3j](https://github.com/web3j/web3j)
