@@ -11,15 +11,15 @@ import java.util.Set;
 
 import io.reactivex.Single;
 
-import static com.wallet.crypto.TrustConstants.CLASSIC_NETWORK_NAME;
-import static com.wallet.crypto.TrustConstants.ETC_SYMBOL;
-import static com.wallet.crypto.TrustConstants.ETHEREUM_NETWORK_NAME;
-import static com.wallet.crypto.TrustConstants.ETH_SYMBOL;
-import static com.wallet.crypto.TrustConstants.KOVAN_NETWORK_NAME;
-import static com.wallet.crypto.TrustConstants.POA_NETWORK_NAME;
-import static com.wallet.crypto.TrustConstants.POA_SYMBOL;
-import static com.wallet.crypto.TrustConstants.RINKEBY_NETWORK_NAME;
-import static com.wallet.crypto.TrustConstants.ROPSTEN_NETWORK_NAME;
+import static com.wallet.crypto.MercuryConstants.CLASSIC_NETWORK_NAME;
+import static com.wallet.crypto.MercuryConstants.ETC_SYMBOL;
+import static com.wallet.crypto.MercuryConstants.ETHEREUM_NETWORK_NAME;
+import static com.wallet.crypto.MercuryConstants.ETH_SYMBOL;
+import static com.wallet.crypto.MercuryConstants.KOVAN_NETWORK_NAME;
+import static com.wallet.crypto.MercuryConstants.POA_NETWORK_NAME;
+import static com.wallet.crypto.MercuryConstants.POA_SYMBOL;
+import static com.wallet.crypto.MercuryConstants.RINKEBY_NETWORK_NAME;
+import static com.wallet.crypto.MercuryConstants.ROPSTEN_NETWORK_NAME;
 
 public class EthereumNetworkRepository {
 

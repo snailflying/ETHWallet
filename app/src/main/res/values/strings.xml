@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Trust</string>
+    <string name="app_name">Mercury</string>
     <string name="balance">Balance</string>
     <string name="title_send">Send</string>
     <string name="title_request">My Address</string>
@@ -51,7 +51,7 @@
     <string name="network_label">Network</string>
     <string name="app_intro">Intro</string>
 
-    <string name="title_trust">Trust</string>
+    <string name="title_trust">Mercury</string>
     <string name="low_storage_error">low storage error</string>
     <string name="no_camera_permission">camera permission not given</string>
     <string name="ok">Ok</string>
@@ -117,7 +117,7 @@
     <string name="unable_unblock_device">Unable to unlock the device.</string>
     <string name="skip">Skip</string>
     <string name="root_title">DEVICE SECURITY COMPROMISED</string>
-    <string name="root_body">Any \'rooted\' app can access Trust\'s keychain data and steal your wallet! Wipe this wallet immediately and restore on a secure device.</string>
+    <string name="root_body">Any \'rooted\' app can access Mercury\'s keychain data and steal your wallet! Wipe this wallet immediately and restore on a secure device.</string>
     <string name="gas_fee_title">Gas Fee (Gwei)</string>
     <string name="transfer">Transfer %s</string>
     <string name="action_buy">Buy</string>
@@ -168,7 +168,7 @@
     <string name="dialog_message_decrypt">Enter the password to decrypt your wallet</string>
     <string name="dialog_message_enter_password_to_sent">Enter the password</string>
     <string name="input_pwd_dialog_message">Input the password</string>
-    <string name="dialog_message_unrecoverable_message">If this device is replaced or this app is deleted, neither you nor Trust Wallet can recover your funds without a backup.</string>
+    <string name="dialog_message_unrecoverable_message">If this device is replaced or this app is deleted, neither you nor Mercury Wallet can recover your funds without a backup.</string>
     <string name="toast_message_wallet_imported">The wallet was imported</string>
     <string name="toast_message_wallet_exported">A backup was created</string>
     <string name="toast_qr_code_no_address">QR code doesn\'t contain valid address</string>

@@ -19,8 +19,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.wallet.crypto.R
-import com.wallet.crypto.TrustConstants
-import com.wallet.crypto.TrustConstants.ETHEREUM_NETWORK_NAME
+import com.wallet.crypto.MercuryConstants
+import com.wallet.crypto.MercuryConstants.ETHEREUM_NETWORK_NAME
 import com.wallet.crypto.entity.ErrorEnvelope
 import com.wallet.crypto.entity.NetworkInfo
 import com.wallet.crypto.entity.Transaction
@@ -164,11 +164,11 @@ class MainActivity : BaseNavigationActivity(), View.OnClickListener {
         if (actionBar == null || networkInfo == null || wallet == null) {
             return
         }
-        if (TextUtils.isEmpty(balance[TrustConstants.USD_SYMBOL])) {
+        if (TextUtils.isEmpty(balance[MercuryConstants.USD_SYMBOL])) {
             actionBar.title = balance[networkInfo.symbol] + " " + networkInfo.symbol
             actionBar.subtitle = ""
         } else {
-            actionBar.title = "$" + balance[TrustConstants.USD_SYMBOL]
+            actionBar.title = "$" + balance[MercuryConstants.USD_SYMBOL]
             actionBar.subtitle = balance[networkInfo.symbol] + " " + networkInfo.symbol
         }
     }

@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 
-import com.wallet.crypto.TrustConstants;
+import com.wallet.crypto.MercuryConstants;
 import com.wallet.crypto.entity.ErrorEnvelope;
 import com.wallet.crypto.entity.Wallet;
 import com.wallet.crypto.interact.CreateWalletInteract;
@@ -17,7 +17,7 @@ import com.wallet.crypto.interact.SetDefaultWalletInteract;
 import com.wallet.crypto.router.ImportWalletRouter;
 import com.wallet.crypto.router.MainRouter;
 
-import static com.wallet.crypto.TrustConstants.IMPORT_REQUEST_CODE;
+import static com.wallet.crypto.MercuryConstants.IMPORT_REQUEST_CODE;
 
 public class WalletsViewModel extends BaseViewModel {
 
@@ -125,11 +125,11 @@ public class WalletsViewModel extends BaseViewModel {
     }
 
     private void onExportError(Throwable throwable) {
-        getError().postValue(new ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, throwable.getMessage()));
+        getError().postValue(new ErrorEnvelope(MercuryConstants.ErrorCode.UNKNOWN, throwable.getMessage()));
     }
 
     private void onCreateWalletError(Throwable throwable) {
-        createWalletError.postValue(new ErrorEnvelope(TrustConstants.ErrorCode.UNKNOWN, throwable.getMessage()));
+        createWalletError.postValue(new ErrorEnvelope(MercuryConstants.ErrorCode.UNKNOWN, throwable.getMessage()));
 	}
 
 	public void importWallet(Activity activity) {

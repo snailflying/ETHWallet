@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.wallet.crypto.entity.Wallet;
 import com.wallet.crypto.ui.TokensActivity;
 
-import static com.wallet.crypto.TrustConstants.Key.WALLET;
+import static com.wallet.crypto.MercuryConstants.Key.WALLET;
 
 public class MyTokensRouter {
 

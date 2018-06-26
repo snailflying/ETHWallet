@@ -12,7 +12,7 @@ import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.widget.ProgressBar;
 
-import com.wallet.crypto.TrustConstants;
+import com.wallet.crypto.MercuryConstants;
 import com.wallet.crypto.R;
 import com.wallet.crypto.entity.ErrorEnvelope;
 import com.wallet.crypto.entity.Wallet;
@@ -79,7 +79,7 @@ public class ImportWalletActivity extends BaseActivity {
 
     private void onWallet(Wallet wallet) {
         Intent result = new Intent();
-        result.putExtra(TrustConstants.Key.WALLET, wallet);
+        result.putExtra(MercuryConstants.Key.WALLET, wallet);
         setResult(RESULT_OK, result);
         finish();
     }

@@ -19,7 +19,7 @@ import com.wallet.crypto.ui.widget.OnTransactionClickListener;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import static com.wallet.crypto.TrustConstants.ETHER_DECIMALS;
+import static com.wallet.crypto.MercuryConstants.ETHER_DECIMALS;
 
 public class TransactionHolder extends BinderViewHolder<Transaction> implements View.OnClickListener {
 

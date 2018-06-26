@@ -22,7 +22,7 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.wallet.crypto.App
-import com.wallet.crypto.TrustConstants
+import com.wallet.crypto.MercuryConstants
 import com.wallet.crypto.repository.entity.DbTokenInfo1
 
 /**
@@ -33,16 +33,16 @@ import com.wallet.crypto.repository.entity.DbTokenInfo1
         version = 1,
         exportSchema = false
 )
-abstract class TrustDb : RoomDatabase() {
+abstract class MercuryDb : RoomDatabase() {
 
     abstract fun tokenInfoDao(): TokenInfoDao
 
     companion object {
-        private var db: TrustDb? = null
+        private var db: MercuryDb? = null
 
-        fun getInstance(context: Context = App.context, fileName: String = TrustConstants.DB_NAME): TrustDb {
+        fun getInstance(context: Context = App.context, fileName: String = MercuryConstants.DB_NAME): MercuryDb {
             if (db == null) {
-                db = Room.databaseBuilder(context, TrustDb::class.java, fileName).build()
+                db = Room.databaseBuilder(context, MercuryDb::class.java, fileName).build()
             }
             return db!!
         }
