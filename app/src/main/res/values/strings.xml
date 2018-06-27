@@ -67,6 +67,7 @@
     <string name="twitter">Twitter</string>
     <string name="qq">QQ Group</string>
     <string name="telegram">Telegram Group</string>
+    <string name="telegram_red_packet">Telegram Red Packet</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -11,11 +11,14 @@ import android.preference.PreferenceFragment
 import android.preference.PreferenceManager
 import com.wallet.crypto.R
 import com.wallet.crypto.MercuryConstants
+import com.wallet.crypto.R.string.facebook
 import com.wallet.crypto.interact.FindDefaultWalletInteract
 import com.wallet.crypto.repository.EthereumNetworkRepository
 import com.wallet.crypto.router.ManageWalletsRouter
 import dagger.android.AndroidInjection
 import javax.inject.Inject
+import android.content.pm.ApplicationInfo
+import com.wallet.crypto.ext.toast
 
 
 class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
@@ -101,6 +104,21 @@ class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPrefere
             startActivity(intent)
             false
         }*/
+         val telegram = findPreference("pref_telegram_red_packet")
+        telegram.setOnPreferenceClickListener { preference ->
+            val appName = "org.telegram.messenger"
+            if (checkApplicationExist(appName)){
+                val myIntent = Intent(Intent.ACTION_SEND)
+                myIntent.type = "text/plain"
+                myIntent.`package` = appName
+                myIntent.putExtra(Intent.EXTRA_TEXT, "红包链接...")
+                startActivity(Intent.createChooser(myIntent, "Share with"))
+            }else{
+                toast("请先安装Telegram").show()
+            }
+
+            false
+        }
 
         val donate = findPreference("pref_donate")
         donate.setOnPreferenceClickListener { preference ->
@@ -201,6 +219,19 @@ class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPrefere
         lp.value = currentValue
         lp.summary = currentValue
         lp.entryValues = entryValues
+    }
+
+    fun checkApplicationExist(packageName: String?): Boolean {
+        if (packageName == null || "" == packageName) {
+            return false
+        }
+        return try {
+            val info = activity.packageManager.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+
     }
 }
 

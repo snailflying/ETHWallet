@@ -53,14 +53,20 @@
 
         </Preference>
 
-        <!--<Preference-->
-        <!--android:icon="@mipmap/settings_telegram"-->
-        <!--android:shouldDisableView="true"-->
-        <!--android:title="@string/telegram">-->
-        <!--<intent-->
-        <!--android:action="android.intent.action.VIEW"-->
-        <!--android:data="https://t.me/joinchat/AAMtrQ_wtd918mm_mU0BRQ" />-->
-        <!--</Preference>-->
+        <Preference
+            android:icon="@mipmap/settings_telegram"
+            android:shouldDisableView="true"
+            android:title="@string/telegram">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/joinchat/JGIbYUire6vlXAidADHfOQ" />
+        </Preference>
+
+        <Preference
+        android:icon="@mipmap/settings_telegram"
+        android:key="pref_telegram_red_packet"
+        android:shouldDisableView="true"
+        android:title="@string/telegram_red_packet"/>
 
         <!--<Preference-->
         <!--android:icon="@drawable/ic_facebook"-->
